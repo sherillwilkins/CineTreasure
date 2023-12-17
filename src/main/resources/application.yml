@@ -1,0 +1,32 @@
+server:
+  port: 8080
+logging:
+  level:
+    web: info
+mybatis-plus:
+  mapper-locations: classpath:mapper/*.xml
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    map-underscore-to-camel-case: true
+spring:
+  application:
+    name: cine-treasure
+  profiles:
+    active: test
+  thymeleaf:
+    cache: false
+    mode: HTML
+    prefix: classpath:/templates/
+    suffix: .html
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://${cine.mysql.hostname}:${cine.mysql.port}/${cine.mysql.database}?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
+    username: ${cine.mysql.username}
+    password: ${cine.mysql.password}
+  redis:
+    host: ${cine.redis.hostname}
+    port: ${cine.redis.port}
+    password: ${cine.redis.password}
+    database: ${cine.redis.database}
+    connect-timeout: 180000
+    timeout: 3000
