@@ -1,5 +1,7 @@
 package com.w83ll43.service;
 
+import com.w83ll43.domain.dto.UserLoginDto;
+import com.w83ll43.domain.dto.UserRegisterDto;
 import com.w83ll43.domain.entity.User;
 import com.baomidou.mybatisplus.extension.service.IService;
 
@@ -10,4 +12,9 @@ import com.baomidou.mybatisplus.extension.service.IService;
 */
 public interface UserService extends IService<User> {
 
+    void register(UserRegisterDto userRegisterDto);
+
+    User login(UserLoginDto userLoginDto);
+
+    void openVip(String email);
 }

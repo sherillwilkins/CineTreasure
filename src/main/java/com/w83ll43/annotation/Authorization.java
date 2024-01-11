@@ -1,5 +1,7 @@
 package com.w83ll43.annotation;
 
+import com.w83ll43.domain.enums.Role;
+
 import java.lang.annotation.*;
 
 @Target(ElementType.METHOD)
@@ -7,7 +9,7 @@ import java.lang.annotation.*;
 @Documented
 public @interface Authorization {
 
-    String value() default "";
+    Role value() default Role.VISTOR;
 
     String message() default "";
 }
