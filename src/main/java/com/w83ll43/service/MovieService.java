@@ -2,6 +2,9 @@ package com.w83ll43.service;
 
 import com.w83ll43.domain.entity.Movie;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.w83ll43.domain.vo.QueryMovieRequest;
+
+import java.util.List;
 
 /**
 * @author w83ll43
@@ -10,4 +13,5 @@ import com.baomidou.mybatisplus.extension.service.IService;
 */
 public interface MovieService extends IService<Movie> {
 
+    List<Movie> getQueryMovieList(QueryMovieRequest request);
 }

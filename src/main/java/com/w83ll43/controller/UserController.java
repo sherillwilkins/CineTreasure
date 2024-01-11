@@ -2,17 +2,18 @@ package com.w83ll43.controller;
 
 import com.w83ll43.annotation.Authorization;
 import com.w83ll43.common.Result;
+import com.w83ll43.constant.RedisConstant;
 import com.w83ll43.domain.dto.UserLoginDto;
 import com.w83ll43.domain.dto.UserRegisterDto;
 import com.w83ll43.domain.entity.User;
 import com.w83ll43.domain.enums.Role;
 import com.w83ll43.service.UserService;
-import com.w83ll43.utils.BaseContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
+import java.util.concurrent.TimeUnit;
 
 @RestController
 @RequestMapping("/api/user")
@@ -25,7 +26,7 @@ public class UserController {
     private RedisTemplate redisTemplate;
 
     @GetMapping("/aop")
-    @Authorization(value = Role.USER, message = "message")
+    @Authorization(value = Role.USER, message = "你没有权限！")
     public Result<String> aop() {
         return Result.success("success");
     }
@@ -52,7 +53,7 @@ public class UserController {
         }
         Long uid = user.getUid();
         session.setAttribute("user", uid);
-        redisTemplate.opsForValue().set("uid:" + uid, user);
+        redisTemplate.opsForValue().set(RedisConstant.getKey(RedisConstant.USER_INFO_STRING, uid), user, 60 * 60, TimeUnit.SECONDS);
         return Result.success("登录成功！");
     }
 
@@ -61,8 +62,9 @@ public class UserController {
      * @return
      */
     @PostMapping("/logout")
-    public Result<String> logout() {
-        return Result.success("success");
+    public Result<String> logout(HttpSession session) {
+        session.removeAttribute("user");
+        return Result.success("退出登录成功！");
     }
 
     /**
