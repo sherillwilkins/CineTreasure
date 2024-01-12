@@ -6,6 +6,9 @@ import com.w83ll43.service.RatingsService;
 import com.w83ll43.mapper.RatingsMapper;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
+import java.util.List;
+
 /**
  * @author w83ll43
  * @description 针对表【ratings(电影评分表)】的数据库操作Service实现
@@ -18,6 +21,16 @@ public class RatingsServiceImpl extends ServiceImpl<RatingsMapper, Ratings>
     @Override
     public Ratings queryRatingByMid(Long uid, Long mid) {
         return lambdaQuery().eq(Ratings::getUid, uid).eq(Ratings::getMid, mid).one();
+    }
+
+    @Override
+    public List<Ratings> getUserRatings(Long uid) {
+        return null;
+    }
+
+    @Override
+    public List<Ratings> queryRatingRangeTime(Date startTime, Date endTime) {
+        return lambdaQuery().between(Ratings::getRtime, startTime, endTime).list();
     }
 }
 

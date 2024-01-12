@@ -3,6 +3,9 @@ package com.w83ll43.service;
 import com.w83ll43.domain.entity.Ratings;
 import com.baomidou.mybatisplus.extension.service.IService;
 
+import java.util.Date;
+import java.util.List;
+
 /**
  * @author w83ll43
  * @description 针对表【ratings(电影评分表)】的数据库操作Service
@@ -11,4 +14,8 @@ import com.baomidou.mybatisplus.extension.service.IService;
 public interface RatingsService extends IService<Ratings> {
 
     Ratings queryRatingByMid(Long uid, Long mid);
+
+    List<Ratings> getUserRatings(Long uid);
+
+    List<Ratings> queryRatingRangeTime(Date startTime, Date endTime);
 }

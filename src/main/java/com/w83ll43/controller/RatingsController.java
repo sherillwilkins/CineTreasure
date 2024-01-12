@@ -9,6 +9,7 @@ import com.w83ll43.service.RatingsService;
 import com.w83ll43.utils.BaseContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
@@ -28,6 +29,7 @@ public class RatingsController {
      * @return
      */
     @PostMapping
+    @Transactional
     public Result<String> rating(@RequestBody RatingsMovieRequest request) {
         Long uid = BaseContext.getCurrentId();
 

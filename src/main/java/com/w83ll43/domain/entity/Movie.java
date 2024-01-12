@@ -4,14 +4,16 @@ import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+
 import java.io.Serializable;
+
 import lombok.Data;
 
 /**
  * 电影表
  * @TableName movie
  */
-@TableName(value ="movie")
+@TableName(value = "movie")
 @Data
 public class Movie implements Serializable {
     /**
@@ -34,6 +36,11 @@ public class Movie implements Serializable {
      * 电影简介
      */
     private String description;
+
+    /**
+     * 电影主演
+     */
+    private String actor;
 
     /**
      * 上映年份
@@ -66,9 +73,9 @@ public class Movie implements Serializable {
     private Integer ratingCount;
 
     /**
-     * 电影主演
+     * 是否需要 VIP
      */
-    private String actor;
+    private Integer needVip;
 
     /**
      * 影片热度

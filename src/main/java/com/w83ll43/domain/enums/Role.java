@@ -11,6 +11,7 @@ import java.util.stream.Collectors;
 @AllArgsConstructor
 public enum Role {
 
+    ADMINISTRATOR(-1, "管理员"),
     VISTOR(0, "游客"),
     USER(1, "普通用户"),
     VIPER(2, "VIP用户");

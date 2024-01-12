@@ -24,8 +24,12 @@ public class AuthorizationAOP {
     public Object before(ProceedingJoinPoint joinPoint, Authorization authorization) throws Throwable {
         Long uid = BaseContext.getCurrentId();
         User user = (User) redisTemplate.opsForValue().get(RedisConstant.getKey(RedisConstant.USER_INFO_STRING, uid));
-        Role role = authorization.value();
         int type = user.getRole();
+        // 管理员拥有所有权限
+        if (Role.of(type) == Role.ADMINISTRATOR) {
+            return joinPoint.proceed();
+        }
+        Role role = authorization.value();
         if (Role.of(type) != role) {
             return Result.error(authorization.message());
         }

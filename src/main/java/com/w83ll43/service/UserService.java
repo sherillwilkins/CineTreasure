@@ -17,4 +17,6 @@ public interface UserService extends IService<User> {
     User login(UserLoginDto userLoginDto);
 
     void openVip(Long uid);
+
+    User getUserByUid(Long uid);
 }

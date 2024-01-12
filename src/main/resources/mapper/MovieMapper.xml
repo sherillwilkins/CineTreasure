@@ -9,20 +9,21 @@
             <result property="title" column="title" jdbcType="VARCHAR"/>
             <result property="image" column="image" jdbcType="VARCHAR"/>
             <result property="description" column="description" jdbcType="VARCHAR"/>
+            <result property="actor" column="actor" jdbcType="VARCHAR"/>
             <result property="year" column="year" jdbcType="INTEGER"/>
             <result property="region" column="region" jdbcType="VARCHAR"/>
             <result property="genre" column="genre" jdbcType="INTEGER"/>
             <result property="type" column="type" jdbcType="INTEGER"/>
             <result property="rating" column="rating" jdbcType="FLOAT"/>
             <result property="ratingCount" column="rating_count" jdbcType="INTEGER"/>
-            <result property="actor" column="actor" jdbcType="VARCHAR"/>
+            <result property="needVip" column="need_vip" jdbcType="TINYINT"/>
             <result property="popularity" column="popularity" jdbcType="INTEGER"/>
     </resultMap>
 
     <sql id="Base_Column_List">
         mid,title,image,
-        description,year,region,
-        genre,type,rating,rating_count
-        actor,popularity
+        description,actor,year,region,
+        genre,type,rating,rating_count,
+        need_vip,popularity
     </sql>
 </mapper>

@@ -2,6 +2,7 @@ package com.w83ll43.service.impl;
 
 import cn.hutool.crypto.digest.MD5;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.w83ll43.constant.RedisConstant;
 import com.w83ll43.domain.dto.UserLoginDto;
 import com.w83ll43.domain.dto.UserRegisterDto;
 import com.w83ll43.domain.entity.User;
@@ -12,6 +13,8 @@ import com.w83ll43.utils.MD5Util;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
+
+import java.util.concurrent.TimeUnit;
 
 /**
  * @author w83ll43
@@ -44,6 +47,16 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
         User user = this.getById(uid);
         user.setRole(Role.VIPER.getType());
         this.updateById(user);
+    }
+
+    @Override
+    public User getUserByUid(Long uid) {
+        User user = (User) redisTemplate.opsForValue().get(RedisConstant.getKey(RedisConstant.USER_INFO_STRING, uid));
+        if (user == null) {
+            user = this.getById(uid);
+            redisTemplate.opsForValue().set(RedisConstant.getKey(RedisConstant.USER_INFO_STRING, uid), user, 60 * 60, TimeUnit.SECONDS);
+        }
+        return user;
     }
 
 
