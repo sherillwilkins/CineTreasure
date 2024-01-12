@@ -21,6 +21,11 @@ public class QueryMovieRequest {
     String keyword;
 
     /**
+     * 电影主演
+     */
+    String actor;
+
+    /**
      * 年份
      */
     Integer year;

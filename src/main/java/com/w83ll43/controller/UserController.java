@@ -8,6 +8,7 @@ import com.w83ll43.domain.dto.UserRegisterDto;
 import com.w83ll43.domain.entity.User;
 import com.w83ll43.domain.enums.Role;
 import com.w83ll43.service.UserService;
+import com.w83ll43.utils.BaseContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.web.bind.annotation.*;
@@ -70,9 +71,10 @@ public class UserController {
     /**
      * 开通会员
      */
-    @PostMapping("/vip")
-    public Result<String> openVip(@RequestBody String email) {
-        userService.openVip(email);
+    @PutMapping("/vip")
+    public Result<String> openVip() {
+        Long uid = BaseContext.getCurrentId();
+        userService.openVip(uid);
         return Result.success("开通会员成功！");
     }
 }

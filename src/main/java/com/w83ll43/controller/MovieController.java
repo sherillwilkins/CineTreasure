@@ -43,11 +43,10 @@ public class MovieController {
      * @return
      */
     @GetMapping("/list")
-    public Result<List<Movie>> getMovieList(int pageNo, int pageSize) {
+    public Result<Page<Movie>> getMovieList(int pageNo, int pageSize) {
         Page<Movie> page = new Page<>(pageNo, pageSize);
         movieService.page(page);
-        List<Movie> movies = page.getRecords();
-        return Result.success(movies);
+        return Result.success(page);
     }
 
     /**
@@ -78,6 +77,4 @@ public class MovieController {
         historyService.save(history);
         return Result.success(movie);
     }
-
-
 }

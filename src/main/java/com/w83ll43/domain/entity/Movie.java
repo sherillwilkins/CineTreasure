@@ -61,6 +61,11 @@ public class Movie implements Serializable {
     private Double rating;
 
     /**
+     * 评分人数
+     */
+    private Integer ratingCount;
+
+    /**
      * 电影主演
      */
     private String actor;

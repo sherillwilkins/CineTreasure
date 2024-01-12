@@ -2,6 +2,7 @@ package com.w83ll43.service;
 
 import com.w83ll43.domain.entity.Movie;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.w83ll43.domain.entity.Ratings;
 import com.w83ll43.domain.vo.QueryMovieRequest;
 
 import java.util.List;
@@ -14,4 +15,8 @@ import java.util.List;
 public interface MovieService extends IService<Movie> {
 
     List<Movie> getQueryMovieList(QueryMovieRequest request);
+
+    Movie getMovieByMid(Long mid);
+
+    void updateMovie(Movie movie);
 }

@@ -40,8 +40,8 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
     }
 
     @Override
-    public void openVip(String email) {
-        User user = getUserByEmail(email);
+    public void openVip(Long uid) {
+        User user = this.getById(uid);
         user.setRole(Role.VIPER.getType());
         this.updateById(user);
     }

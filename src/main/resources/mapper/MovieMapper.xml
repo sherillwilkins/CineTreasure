@@ -14,6 +14,7 @@
             <result property="genre" column="genre" jdbcType="INTEGER"/>
             <result property="type" column="type" jdbcType="INTEGER"/>
             <result property="rating" column="rating" jdbcType="FLOAT"/>
+            <result property="ratingCount" column="rating_count" jdbcType="INTEGER"/>
             <result property="actor" column="actor" jdbcType="VARCHAR"/>
             <result property="popularity" column="popularity" jdbcType="INTEGER"/>
     </resultMap>
@@ -21,7 +22,7 @@
     <sql id="Base_Column_List">
         mid,title,image,
         description,year,region,
-        genre,type,rating,
+        genre,type,rating,rating_count
         actor,popularity
     </sql>
 </mapper>

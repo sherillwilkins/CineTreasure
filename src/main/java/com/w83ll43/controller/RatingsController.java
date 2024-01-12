@@ -1,14 +1,15 @@
 package com.w83ll43.controller;
 
 import com.w83ll43.common.Result;
+import com.w83ll43.domain.entity.Movie;
 import com.w83ll43.domain.entity.Ratings;
+import com.w83ll43.domain.vo.RatingsMovieRequest;
+import com.w83ll43.service.MovieService;
 import com.w83ll43.service.RatingsService;
 import com.w83ll43.utils.BaseContext;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
 
@@ -19,23 +20,32 @@ public class RatingsController {
     @Autowired
     private RatingsService ratingsService;
 
+    @Autowired
+    private MovieService movieService;
+
     /**
      * 评分
-     * @param mid
-     * @param score
      * @return
      */
     @PostMapping
-    public Result<String> rating(@RequestBody Long mid, @RequestBody Long score) {
+    public Result<String> rating(@RequestBody RatingsMovieRequest request) {
         Long uid = BaseContext.getCurrentId();
-        Ratings ratings = new Ratings();
+
+        Ratings ratings = ratingsService.queryRatingByMid(uid, request.getMid());
+        if (ratings != null) {
+            return Result.error("您已经评过分了！");
+        }
+
+        ratings = new Ratings();
         ratings.setUid(uid);
-        ratings.setMid(mid);
-        ratings.setValue(score);
+        ratings.setMid(request.getMid());
+        ratings.setValue(request.getScore());
         ratings.setRtime(new Date());
         ratingsService.save(ratings);
 
-        // TODO 评分人数
+        Movie movie = movieService.getMovieByMid(request.getMid());
+        movie.setRating(((movie.getRating() * movie.getRatingCount()) + request.getScore()) / (movie.getRatingCount() + 1));
+        movieService.updateMovie(movie);
         return Result.success("评分成功！");
     }
 }

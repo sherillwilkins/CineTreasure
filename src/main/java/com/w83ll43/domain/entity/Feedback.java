@@ -32,7 +32,7 @@ public class Feedback implements Serializable {
     private String content;
 
     /**
-     * 反馈时间戳
+     * 反馈时间
      */
     private Date ftime;
 
