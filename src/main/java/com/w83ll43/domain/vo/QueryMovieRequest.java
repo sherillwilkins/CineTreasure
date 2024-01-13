@@ -44,10 +44,10 @@ public class QueryMovieRequest {
     /**
      * 题材
      */
-    Integer genre;
+    String genre;
 
     /**
      * 类型
      */
-    Integer type;
+    String type;
 }

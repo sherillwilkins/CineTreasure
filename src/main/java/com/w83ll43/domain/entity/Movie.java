@@ -79,6 +79,21 @@ public class Movie implements Serializable {
     private Integer ratingCount;
 
     /**
+     * 总点击
+     */
+    private Integer hits;
+
+    /**
+     * 周点击
+     */
+    private Integer hitsWeek;
+
+    /**
+     * 月点击
+     */
+    private Integer hitsMonth;
+
+    /**
      * 是否需要 VIP
      */
     private Integer needVip;

@@ -17,6 +17,9 @@
         <result property="url" column="url" jdbcType="VARCHAR"/>
         <result property="rating" column="rating" jdbcType="FLOAT"/>
         <result property="ratingCount" column="rating_count" jdbcType="INTEGER"/>
+        <result property="hits" column="hits" jdbcType="INTEGER"/>
+        <result property="hitsWeek" column="hits_week" jdbcType="INTEGER"/>
+        <result property="hitsMonth" column="hits_month" jdbcType="INTEGER"/>
         <result property="needVip" column="need_vip" jdbcType="TINYINT"/>
         <result property="popularity" column="popularity" jdbcType="INTEGER"/>
     </resultMap>
@@ -25,7 +28,7 @@
         mid,title,image,
         description,actor,year,
         region,genre,type,url,
-        rating,rating_count,need_vip,
-        popularity
+        rating,rating_count,hits,hits_week,hits_month,
+        need_vip,popularity
     </sql>
 </mapper>

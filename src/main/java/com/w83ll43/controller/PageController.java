@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.HashMap;
 import java.util.List;
 
 @Controller
@@ -26,9 +27,9 @@ public class PageController {
     public String index(Model model) {
         List<Movie> movies = movieService.getQueryMovieList(QueryMovieRequest.builder().pageNo(1).pageSize(24).build());
         model.addAttribute("movies", movies);
-        model.addAttribute("recommendMovies", movieService.getMovieRanking(new MovieRankRequest(1, 4, 4)).getRecords());
-//        model.addAttribute("rankMovie1", movieService.getMovieRanking(new MovieRankRequest(1, 9, 1)).getRecords());
-//        model.addAttribute("rankMovie2", movieService.getMovieRanking(new MovieRankRequest(1, 9, 2)).getRecords());
+        model.addAttribute("recommendMovies", movieService.getMovieRanking(new MovieRankRequest(1, 4, 5)).getRecords());
+        model.addAttribute("rankMovie1", movieService.getMovieRanking(new MovieRankRequest(1, 9, 1)).getRecords());
+        model.addAttribute("rankMovie2", movieService.getMovieRanking(new MovieRankRequest(1, 9, 2)).getRecords());
         model.addAttribute("rankMovie3", movieService.getMovieRanking(new MovieRankRequest(1, 9, 3)).getRecords());
         return "index";
     }
@@ -39,9 +40,15 @@ public class PageController {
     }
 
     @RequestMapping("/movie")
-    public String movie(Model model, @RequestParam(defaultValue = "1") Integer pageNo, @RequestParam(defaultValue = "12") Integer pageSize) {
-        Page<Movie> moviePage = movieService.getMovieList(pageNo, pageSize);
+    public String movie(Model model, @RequestParam(defaultValue = "1") Integer pageNo, @RequestParam(defaultValue = "12") Integer pageSize, String type, String genre, String region, Integer year) {
+        Page<Movie> moviePage = movieService.getQueryMoviePage(QueryMovieRequest.builder().type(type).genre(genre).region(region).year(year).pageNo(pageNo).pageSize(pageSize).build());
         model.addAttribute("moviePage", moviePage);
+        HashMap<String, String> hashMap = new HashMap<>();
+        String s = type != null ? hashMap.put("type", type) : hashMap.put("type", "全部");
+        s = region != null ? hashMap.put("region", region) : hashMap.put("region", "全部");
+        s = year != null ? hashMap.put("year", String.valueOf(year)) : hashMap.put("year", "全部");
+        s = genre != null ? hashMap.put("genre", genre) : hashMap.put("genre", "全部");
+        model.addAttribute("obj", hashMap);
         return "movie";
     }
 
@@ -73,5 +80,20 @@ public class PageController {
     @RequestMapping("/feedback")
     public String feedback() {
         return "feedback";
+    }
+
+
+    @RequestMapping("/watch/{mid}")
+    public String watch(@PathVariable("mid") Long mid, Model model) {
+        Movie movie = movieService.getMovieByMid(mid);
+        model.addAttribute("movie", movie);
+        model.addAttribute("recommendMovies", movieService.getMovieRanking(new MovieRankRequest(1, 4, 4)).getRecords());
+        return "watch";
+    }
+
+    @RequestMapping("/search")
+    public String search(Model model, @RequestParam String keyword) {
+        model.addAttribute("movies", movieService.getQueryMovieList(QueryMovieRequest.builder().pageNo(1).pageSize(10).keyword(keyword).build()));
+        return "search";
     }
 }

@@ -18,7 +18,7 @@ public class RedisConstant {
     /**
      * 电影排行榜
      */
-    public static final String MOVIE_RANK_SIRING = "movie:rank_%d";
+    public static final String MOVIE_RANK_SIRING = "movie:rank:type_%d:no_%d:size:%d";
 
 
     public static String getKey(String key, Object... objects) {

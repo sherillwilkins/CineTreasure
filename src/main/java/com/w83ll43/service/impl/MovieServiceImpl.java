@@ -13,6 +13,7 @@ import com.w83ll43.service.MovieService;
 import com.w83ll43.mapper.MovieMapper;
 import com.w83ll43.service.RatingsService;
 import com.w83ll43.utils.BaseContext;
+import com.w83ll43.utils.DateTimeUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
@@ -44,12 +45,32 @@ public class MovieServiceImpl extends ServiceImpl<MovieMapper, Movie>
         lambdaQueryWrapper.like(request.getKeyword() != null, Movie::getTitle, request.getKeyword());
         lambdaQueryWrapper.or();
         lambdaQueryWrapper.like(request.getKeyword() != null, Movie::getActor, request.getKeyword());
-        lambdaQueryWrapper.eq(request.getYear() != null, Movie::getYear, request.getYear());
-        lambdaQueryWrapper.eq(request.getRegion() != null, Movie::getRegion, request.getRegion());
-        lambdaQueryWrapper.eq(request.getGenre() != null, Movie::getGenre, request.getGenre());
-        lambdaQueryWrapper.eq(request.getType() != null, Movie::getType, request.getType());
+        if (request.getYear() != null) {
+            lambdaQueryWrapper.between(request.getYear() != null, Movie::getYear, DateTimeUtil.getYearFirst(request.getYear()), DateTimeUtil.getYearLast(request.getYear()));
+        }
+        lambdaQueryWrapper.like(request.getRegion() != null, Movie::getRegion, request.getRegion());
+        lambdaQueryWrapper.like(request.getGenre() != null, Movie::getGenre, request.getGenre());
+        lambdaQueryWrapper.like(request.getType() != null, Movie::getType, request.getType());
 
         return this.page(page, lambdaQueryWrapper).getRecords();
+    }
+
+    @Override
+    public Page<Movie> getQueryMoviePage(QueryMovieRequest request) {
+        Page<Movie> page = new Page<>(request.getPageNo(), request.getPageSize());
+        LambdaQueryWrapper<Movie> lambdaQueryWrapper = new LambdaQueryWrapper<>();
+
+        lambdaQueryWrapper.like(request.getKeyword() != null, Movie::getTitle, request.getKeyword());
+        lambdaQueryWrapper.or();
+        lambdaQueryWrapper.like(request.getKeyword() != null, Movie::getActor, request.getKeyword());
+        if (request.getYear() != null) {
+            lambdaQueryWrapper.between(request.getYear() != null, Movie::getYear, DateTimeUtil.getYearFirst(request.getYear()), DateTimeUtil.getYearLast(request.getYear()));
+        }
+        lambdaQueryWrapper.like(request.getRegion() != null, Movie::getRegion, request.getRegion());
+        lambdaQueryWrapper.like(request.getGenre() != null, Movie::getGenre, request.getGenre());
+        lambdaQueryWrapper.like(request.getType() != null, Movie::getType, request.getType());
+
+        return this.page(page, lambdaQueryWrapper);
     }
 
     @Override
@@ -82,42 +103,43 @@ public class MovieServiceImpl extends ServiceImpl<MovieMapper, Movie>
 
     @Override
     public Page<Movie> getMovieRanking(MovieRankRequest request) {
-        Page<Movie> page = (Page<Movie>) redisTemplate.opsForValue().get(RedisConstant.getKey(RedisConstant.MOVIE_RANK_SIRING, request.getType()));
+        Page<Movie> page = (Page<Movie>) redisTemplate.opsForValue().get(RedisConstant.getKey(RedisConstant.MOVIE_RANK_SIRING, request.getType(), request.getPageNo(), request.getPageSize()));
         if (!(page == null || page.getRecords().isEmpty())) {
             return page;
         }
         page = new Page<>(request.getPageNo(), request.getPageSize());
         LambdaQueryWrapper<Movie> lambdaQueryWrapper = new LambdaQueryWrapper<>();
-        Date startTime;
-        Date endTime = new Date();
-        Calendar calendar = Calendar.getInstance();
-        calendar.setTime(endTime);
-
-        // TODO 周点击
-
+//        Date startTime;
+//        Date endTime = new Date();
+//        Calendar calendar = Calendar.getInstance();
+//        calendar.setTime(endTime);
         switch (request.getType()) {
             case 1:
-                calendar.add(Calendar.DATE, -7);
-                startTime = calendar.getTime();
-                genWrapper(request, startTime, endTime, lambdaQueryWrapper);
+//                calendar.add(Calendar.DATE, -7);
+//                startTime = calendar.getTime();
+//                genWrapper(request, startTime, endTime, lambdaQueryWrapper);
+                lambdaQueryWrapper.orderByDesc(Movie::getHitsWeek);
                 break;
             case 2:
-                calendar.add(Calendar.MONTH, -1);
-                startTime = calendar.getTime();
-                genWrapper(request, startTime, endTime, lambdaQueryWrapper);
+//                calendar.add(Calendar.MONTH, -1);
+//                startTime = calendar.getTime();
+//                genWrapper(request, startTime, endTime, lambdaQueryWrapper);
+                lambdaQueryWrapper.orderByDesc(Movie::getHitsMonth);
                 break;
             case 3:
-                lambdaQueryWrapper.orderByDesc(Movie::getRating);
+                lambdaQueryWrapper.orderByDesc(Movie::getHits);
                 break;
             case 4:
-                lambdaQueryWrapper.orderByDesc(Movie::getPopularity);
+                lambdaQueryWrapper.orderByDesc(Movie::getRating);
                 break;
+            case 5:
+                lambdaQueryWrapper.orderByDesc(Movie::getPopularity);
             default:
                 break;
         }
         this.page(page, lambdaQueryWrapper);
         // 排行榜每天更新
-        redisTemplate.opsForValue().set(RedisConstant.getKey(RedisConstant.MOVIE_RANK_SIRING, request.getType()), page, 60 * 60 * 24, TimeUnit.SECONDS);
+        redisTemplate.opsForValue().set(RedisConstant.getKey(RedisConstant.MOVIE_RANK_SIRING, request.getType(), request.getPageNo(), request.getPageSize()), page, 60 * 60 * 24, TimeUnit.SECONDS);
         return page;
     }
 

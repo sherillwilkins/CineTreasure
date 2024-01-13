@@ -60,11 +60,17 @@ public class Tests {
                 movie.setNeedVip(0);
                 movie.setRegion(vod.getVodArea());
                 movie.setPopularity(vod.getVodHits());
+                movie.setHits(vod.getVodHits());
+                movie.setHitsWeek(vod.getVodHitsWeek());
+                movie.setHitsMonth(vod.getVodHitsMonth());
                 return movie;
             }
             return null;
         }).collect(Collectors.toList());
-        movies = movies.stream().filter(movie -> movie != null).collect(Collectors.toList());
+        movies = movies.stream()
+                .filter(movie -> movie != null)
+                .filter(movie -> movie.getYear() != null)
+                .collect(Collectors.toList());
         movieService.saveBatch(movies);
     }
 }

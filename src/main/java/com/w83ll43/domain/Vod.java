@@ -28,4 +28,8 @@ public class Vod {
     private Integer vodHits;
 
     private String vodPlayUrl;
+
+    private Integer vodHitsWeek;
+
+    private Integer vodHitsMonth;
 }

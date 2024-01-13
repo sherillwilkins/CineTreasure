@@ -67,87 +67,11 @@
             <div class="aside">
                 <div class="panel-header">
                     <span class="panel-title">周排行</span>
-                    <a href="javascript:;" class="panel-more">更多</a>
+                    <a th:href="@{/page/rank/1}" class="panel-more">更多</a>
                 </div>
                 <div class="movie-rank">
                     <ul>
-                        <li class="movie-rank-top1">
-                            <a href="javascript:;">
-                                <span class="movie-rank-num movie-rank-top3">1</span>
-                                <img src="/static/image/poster/haishanggangqinshi.jpg" alt="">
-                                <div>
-                                    <p class="movie-rank-name">海上钢琴师</p>
-                                    <span class="box-office">1500万</span>
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="javascript:;">
-                                <span class="movie-rank-num movie-rank-top3">2</span>
-                                <p class="movie-rank-name">叶问4</p>
-                                <span class="box-office">1400万</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="javascript:;">
-                                <span class="movie-rank-num movie-rank-top3">3</span>
-                                <p class="movie-rank-name">若能与你共乘海浪之上</p>
-                                <span class="box-office">1000万</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="javascript:;">
-                                <span class="movie-rank-num">4</span>
-                                <p class="movie-rank-name">吹哨人</p>
-                                <span class="box-office">900万</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="javascript:;">
-                                <span class="movie-rank-num">5</span>
-                                <p class="movie-rank-name">大约在冬季</p>
-                                <span class="box-office">800万</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="javascript:;">
-                                <span class="movie-rank-num">6</span>
-                                <p class="movie-rank-name">吹哨人</p>
-                                <span class="box-office">700万</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="javascript:;">
-                                <span class="movie-rank-num">7</span>
-                                <p class="movie-rank-name">天·火</p>
-                                <span class="box-office">600万</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="javascript:;">
-                                <span class="movie-rank-num">8</span>
-                                <p class="movie-rank-name">一生有你</p>
-                                <span class="box-office">550万</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="javascript:;">
-                                <span class="movie-rank-num">9</span>
-                                <p class="movie-rank-name">冰雪奇缘2</p>
-                                <span class="box-office">450万</span>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <div class="aside">
-                <div class="panel-header">
-                    <span class="panel-title">月排行</span>
-                    <a href="javascript:;" class="panel-more">更多</a>
-                </div>
-                <div class="movie-rank">
-                    <ul>
-                        <li th:each="movie, status : ${rankMovie3}"
+                        <li th:each="movie, status : ${rankMovie1}"
                             th:classappend="${status.count == 1}? 'movie-rank-top1' : ''">
                             <a th:href="@{/page/movie/detail/{mid}(mid=${movie.mid})}" th:if="${status.count == 1}">
                                 <span th:text="${status.count}" class="movie-rank-num movie-rank-top3"></span>
@@ -171,75 +95,57 @@
             </div>
             <div class="aside">
                 <div class="panel-header">
-                    <span class="panel-title">好评排行</span>
-                    <a href="javascript:;" class="panel-more">更多</a>
+                    <span class="panel-title">月排行</span>
+                    <a th:href="@{/page/rank/2}" class="panel-more">更多</a>
                 </div>
                 <div class="movie-rank">
                     <ul>
-                        <li class="movie-rank-top1">
-                            <a href="javascript:;">
-                                <span class="movie-rank-num movie-rank-top3">1</span>
-                                <img src="/static/image/poster/haishanggangqinshi.jpg" alt="">
+                        <li th:each="movie, status : ${rankMovie2}"
+                            th:classappend="${status.count == 1}? 'movie-rank-top1' : ''">
+                            <a th:href="@{/page/movie/detail/{mid}(mid=${movie.mid})}" th:if="${status.count == 1}">
+                                <span th:text="${status.count}" class="movie-rank-num movie-rank-top3"></span>
+                                <img th:src="@{/static/image/{image}(image=${movie.image})}">
                                 <div>
-                                    <p class="movie-rank-name">海上钢琴师</p>
-                                    <span class="box-office">1500万</span>
+                                    <p class="movie-rank-name" th:text="${movie.title}"></p>
+                                    <span class="box-office" th:text="${movie.popularity}"></span>
                                 </div>
                             </a>
-                        </li>
-                        <li>
-                            <a href="javascript:;">
-                                <span class="movie-rank-num movie-rank-top3">2</span>
-                                <p class="movie-rank-name">叶问4</p>
-                                <span class="box-office">1400万</span>
+                            <a th:href="@{/page/movie/detail/{mid}(mid=${movie.mid})}" th:if="${status.count != 1}">
+                                <span th:if="${status.count <= 3}" th:text="${status.count}"
+                                      class="movie-rank-num movie-rank-top3"></span>
+                                <span th:if="${status.count > 3}" th:text="${status.count}"
+                                      class="movie-rank-num"></span>
+                                <p class="movie-rank-name" th:text="${movie.title}"></p>
+                                <span class="box-office" th:text="${movie.popularity}"></span>
                             </a>
                         </li>
-                        <li>
-                            <a href="javascript:;">
-                                <span class="movie-rank-num movie-rank-top3">3</span>
-                                <p class="movie-rank-name">若能与你共乘海浪之上</p>
-                                <span class="box-office">1000万</span>
+                    </ul>
+                </div>
+            </div>
+            <div class="aside">
+                <div class="panel-header">
+                    <span class="panel-title">全部排行</span>
+                    <a th:href="@{/page/rank/3}" class="panel-more">更多</a>
+                </div>
+                <div class="movie-rank">
+                    <ul>
+                        <li th:each="movie, status : ${rankMovie3}"
+                            th:classappend="${status.count == 1}? 'movie-rank-top1' : ''">
+                            <a th:href="@{/page/movie/detail/{mid}(mid=${movie.mid})}" th:if="${status.count == 1}">
+                                <span th:text="${status.count}" class="movie-rank-num movie-rank-top3"></span>
+                                <img th:src="@{/static/image/{image}(image=${movie.image})}">
+                                <div>
+                                    <p class="movie-rank-name" th:text="${movie.title}"></p>
+                                    <span class="box-office" th:text="${movie.popularity}"></span>
+                                </div>
                             </a>
-                        </li>
-                        <li>
-                            <a href="javascript:;">
-                                <span class="movie-rank-num">4</span>
-                                <p class="movie-rank-name">吹哨人</p>
-                                <span class="box-office">900万</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="javascript:;">
-                                <span class="movie-rank-num">5</span>
-                                <p class="movie-rank-name">大约在冬季</p>
-                                <span class="box-office">800万</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="javascript:;">
-                                <span class="movie-rank-num">6</span>
-                                <p class="movie-rank-name">吹哨人</p>
-                                <span class="box-office">700万</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="javascript:;">
-                                <span class="movie-rank-num">7</span>
-                                <p class="movie-rank-name">天·火</p>
-                                <span class="box-office">600万</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="javascript:;">
-                                <span class="movie-rank-num">8</span>
-                                <p class="movie-rank-name">一生有你</p>
-                                <span class="box-office">550万</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="javascript:;">
-                                <span class="movie-rank-num">9</span>
-                                <p class="movie-rank-name">冰雪奇缘2</p>
-                                <span class="box-office">450万</span>
+                            <a th:href="@{/page/movie/detail/{mid}(mid=${movie.mid})}" th:if="${status.count != 1}">
+                                <span th:if="${status.count <= 3}" th:text="${status.count}"
+                                      class="movie-rank-num movie-rank-top3"></span>
+                                <span th:if="${status.count > 3}" th:text="${status.count}"
+                                      class="movie-rank-num"></span>
+                                <p class="movie-rank-name" th:text="${movie.title}"></p>
+                                <span class="box-office" th:text="${movie.popularity}"></span>
                             </a>
                         </li>
                     </ul>

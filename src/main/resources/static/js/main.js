@@ -112,7 +112,7 @@ function searchBtnClick(obj, evt) {
 
 
 function searchBtnSubmit(value) {
-    alert(value);
+    window.location.href = "/page/search?keyword=" + value;
 }
 
 function initScrollToTop() {

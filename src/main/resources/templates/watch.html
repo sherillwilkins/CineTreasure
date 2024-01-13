@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/static/css/watch.css"/>
+    <link rel="stylesheet" type="text/css" href="/static/css/index.css">
+</head>
+<body>
+<div th:replace="header::header"></div>
+<div class="container" style="margin-top: 30px;">
+    <div class="grouping">
+        <div class="video-player">
+            <iframe class="youtube-video" src="">
+            </iframe>
+        </div>
+    </div>
+
+    <div class="side-bar">
+        <div class="video-sug">
+            <a th:href="@{/page/movie/detail/{mid}(mid=${movie.mid})}" th:each="movie :${recommendMovies}">
+                <img class="movie-image" th:src="@{/static/image/{image}(image=${movie.image})}"/>
+                <div>
+                    <div class="movie-title" th:text="${movie.title}"></div>
+                    <p class="movie-type" th:text="${movie.type}"></p>
+                    <div class="movie-popularity" th:text="${movie.popularity}"></div>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
+<div th:replace="footer::footer"></div>
+</body>
+
+<script type="text/javascript" src="/static/js/main.js"></script>
+</html>
