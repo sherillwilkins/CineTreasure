@@ -11,16 +11,16 @@
 <div class="subnav">
     <ul class="navbar">
         <li>
-            <a href="/board/7">周排行榜</a>
+            <a id="rank1" th:href="@{/page/rank/1}">周排行榜</a>
         </li>
         <li>
-            <a href="/board/6">月排行榜</a>
+            <a id="rank2" th:href="@{/page/rank/2}">月排行榜</a>
         </li>
         <li>
-            <a href="/board/1">总排行榜</a>
+            <a id="rank3" th:href="@{/page/rank/3}">总排行榜</a>
         </li>
         <li>
-            <a class="active">好评榜</a>
+            <a id="rank4" th:href="@{/page/rank/3}" class="active">好评榜</a>
         </li>
     </ul>
 </div>
@@ -316,6 +316,6 @@
         </div>
     </div>
 </div>
-</div>
+
 </body>
 </html>

@@ -42,13 +42,19 @@ public class MovieServiceImpl extends ServiceImpl<MovieMapper, Movie>
         LambdaQueryWrapper<Movie> lambdaQueryWrapper = new LambdaQueryWrapper<>();
 
         lambdaQueryWrapper.like(request.getKeyword() != null, Movie::getTitle, request.getKeyword());
-        lambdaQueryWrapper.like(request.getActor() != null, Movie::getActor, request.getActor());
+        lambdaQueryWrapper.or();
+        lambdaQueryWrapper.like(request.getKeyword() != null, Movie::getActor, request.getKeyword());
         lambdaQueryWrapper.eq(request.getYear() != null, Movie::getYear, request.getYear());
         lambdaQueryWrapper.eq(request.getRegion() != null, Movie::getRegion, request.getRegion());
         lambdaQueryWrapper.eq(request.getGenre() != null, Movie::getGenre, request.getGenre());
         lambdaQueryWrapper.eq(request.getType() != null, Movie::getType, request.getType());
 
         return this.page(page, lambdaQueryWrapper).getRecords();
+    }
+
+    @Override
+    public Page<Movie> getMovieList(int pageNo, int pageSize) {
+        return this.page(new Page<>(pageNo, pageSize));
     }
 
     @Override
@@ -86,6 +92,9 @@ public class MovieServiceImpl extends ServiceImpl<MovieMapper, Movie>
         Date endTime = new Date();
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(endTime);
+
+        // TODO 周点击
+
         switch (request.getType()) {
             case 1:
                 calendar.add(Calendar.DATE, -7);
@@ -127,7 +136,3 @@ public class MovieServiceImpl extends ServiceImpl<MovieMapper, Movie>
         lambdaQueryWrapper.orderByDesc(Movie::getPopularity);
     }
 }
-
-
-
-

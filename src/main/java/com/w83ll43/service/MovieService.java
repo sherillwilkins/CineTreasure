@@ -18,6 +18,8 @@ public interface MovieService extends IService<Movie> {
 
     List<Movie> getQueryMovieList(QueryMovieRequest request);
 
+    Page<Movie> getMovieList(int pageNo, int pageSize);
+
     Movie getMovieByMid(Long mid);
 
     void updateMovie(Movie movie);

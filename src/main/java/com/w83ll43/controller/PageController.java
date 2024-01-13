@@ -1,6 +1,8 @@
 package com.w83ll43.controller;
 
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.w83ll43.domain.entity.Movie;
+import com.w83ll43.domain.vo.MovieRankRequest;
 import com.w83ll43.domain.vo.QueryMovieRequest;
 import com.w83ll43.service.MovieService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -21,11 +24,12 @@ public class PageController {
 
     @RequestMapping("/index")
     public String index(Model model) {
-        QueryMovieRequest request = new QueryMovieRequest();
-        request.setPageNo(1);
-        request.setPageSize(24);
-        List<Movie> movies = movieService.getQueryMovieList(request);
+        List<Movie> movies = movieService.getQueryMovieList(QueryMovieRequest.builder().pageNo(1).pageSize(24).build());
         model.addAttribute("movies", movies);
+        model.addAttribute("recommendMovies", movieService.getMovieRanking(new MovieRankRequest(1, 4, 4)).getRecords());
+//        model.addAttribute("rankMovie1", movieService.getMovieRanking(new MovieRankRequest(1, 9, 1)).getRecords());
+//        model.addAttribute("rankMovie2", movieService.getMovieRanking(new MovieRankRequest(1, 9, 2)).getRecords());
+        model.addAttribute("rankMovie3", movieService.getMovieRanking(new MovieRankRequest(1, 9, 3)).getRecords());
         return "index";
     }
 
@@ -35,7 +39,9 @@ public class PageController {
     }
 
     @RequestMapping("/movie")
-    public String movie() {
+    public String movie(Model model, @RequestParam(defaultValue = "1") Integer pageNo, @RequestParam(defaultValue = "10") Integer pageSize) {
+        Page<Movie> moviePage = movieService.getMovieList(pageNo, pageSize);
+        model.addAttribute("moviePage", moviePage);
         return "movie";
     }
 
@@ -46,8 +52,11 @@ public class PageController {
         return "movie_detail";
     }
 
-    @RequestMapping("/rank")
-    public String rank() {
+    @RequestMapping("/rank/{type}")
+    public String rank(Model model, @PathVariable(value = "type") Integer type) {
+//        model.addAttribute("rankMovie1", movieService.getMovieRanking(new MovieRankRequest(1, 9, 1)).getRecords());
+//        model.addAttribute("rankMovie2", movieService.getMovieRanking(new MovieRankRequest(1, 9, 2)).getRecords());
+        model.addAttribute("rankMovie3", movieService.getMovieRanking(new MovieRankRequest(1, 9, 3)).getRecords());
         return "rank";
     }
 

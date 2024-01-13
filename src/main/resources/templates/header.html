@@ -19,12 +19,6 @@
                 <li><a href="javascript:;">反馈</a></li>
             </ul>
         </div>
-        <!--购物车-->
-        <div class="headcart">
-            <i class="cart-icon"></i>
-            <b class="card-num"></b>
-            <div class="card-tip"></div>
-        </div>
         <!--用户登陆注册-->
         <div class="user">
             <div class="userout" th:unless="${session.user}">
@@ -48,21 +42,10 @@
             <form class="form-search" action="" method="">
                 <input type="text" id="search-input" class="form-search-input" placeholder="搜电影、影院"
                        autocomplete="off"/>
-                <a class="form-search-icon" href="javascript:;" onclick="searchBtnClick(this,event)"></a>
+                <a class="form-search-icon" onclick="searchBtnClick(this,event)"></a>
             </form>
         </div>
 
-        <!--APP下载-->
-        <div class="app-download">
-            <span class="phone-icon"></span>
-            <span class="app-text">下载APP</span>
-            <span class="caret"></span>
-            <div class="qrcode-tip">
-                <img class="qrcode-img" src="/static/image/dingdang-qrcode.png" alt="扫描二维码下载APP"/>
-                <p class="qrcode-tip-title">扫码下载客户端</p>
-                <p class="qrcode-tip-content">手机购票 方便实惠</p>
-            </div>
-        </div>
     </div>
 </header>
 </body>
@@ -72,36 +55,6 @@
 <script type="text/javascript">
     window.onload = function () {
         initPublic();
-        var $ = layui.$;
-        $.ajax({
-            url: "/api/user/info",
-            method: "GET",
-            dataType: "json",
-            success: function (res) {
-                setSession("info", res.data);
-                $('#avatar').attr('src', res.data.avatar);
-                $('#nickname').text(res.data.nickname);
-            }
-        });
     };
-
-    layui.use(function () {
-        var $ = layui.$;
-        var util = layui.util;
-        var form = layui.form;
-
-        layer.ready(function () {
-            $.ajax({
-                url: "/api/user/info",
-                method: "GET",
-                dataType: "json",
-                success: function (res) {
-                    setSession("info", res.data);
-                    $('#avatar').attr('src', res.data.avatar);
-                    $('#nickname').text(res.data.nickname);
-                }
-            });
-        });
-    });
 </script>
 </html>

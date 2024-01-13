@@ -10,30 +10,10 @@
 <div class="container">
     <div class="slidey">
         <ul id="slidey-content" style="display: none">
-            <li>
-                <img src="/static/image/slideposter/Frozen2.jpg" alt="">
-                <p class="title">冰雪奇缘2</p>
-                <p class="description">为什么艾莎一出生就带着控制冰雪的能力？这个答案一致困扰着她，也威胁着王国的安全。
-                    她将和安娜、克斯托夫、雪宝和驯鹿斯文展开一场危险但非凡的旅程…</p>
-            </li>
-            <li>
-                <img src="/static/image/slideposter/ifseawave.jpg" alt="">
-                <p class="title">若能与你共乘海浪之上</p>
-                <p class="description">青年消防员雏罂粟港和爱好冲浪的向水日菜子相遇并迅速展开热恋。看似命中注定的这对恋人，
-                    却不幸遭遇生死别离。无法接受港已经离世的雏子，某天突然发现，只要唱起属于两个人的那首歌，港就会从水中出现…</p>
-            </li>
-            <li>
-                <img src="/static/image/slideposter/skyfire.jpg" alt="">
-                <p class="title">天·火</p>
-                <p class="description">火山喷发了，这些人的命运纠结在一起。为了看见明天的太阳，他们必须与过去和解，
-                    合力为自己也为众生在绝境中寻找一条生路。
-                    这是一个关于爱与勇气、选择与放弃、自救与他救的中国式英雄的故事…</p>
-            </li>
-            <li>
-                <img src="/static/image/slideposter/yewen4.jpg" alt="">
-                <p class="title">叶问4</p>
-                <p class="description">因故来到美国唐人街的叶问，意外卷入一场当地军方势力与华人武馆的纠纷，面对日益猖狂的
-                    民族歧视与压迫，叶问挺身而出，在美国海军陆战队军营拼死一战，以正宗咏春，向世界证明了中国功夫…</p>
+            <li th:each="movie : ${recommendMovies}">
+                <img th:src="@{/static/image/{image}(image=${movie.image})}" th:alt="${movie.title}">
+                <p class="title" th:text="${movie.title}"></p>
+                <p class="description" th:text="${movie.description}"></p>
             </li>
         </ul>
         <div class="slidey-main">
@@ -48,46 +28,7 @@
         </div>
         <div class="slidey-list">
             <ul>
-                <li>
-                    <table class="slidey-list-table">
-                        <tr>
-                            <td rowspan="2" class="slidey-list-img">
-                                <div></div>
-                            </td>
-                            <td class="slidey-list-title"></td>
-                        </tr>
-                        <tr>
-                            <td class="slidey-list-description"></td>
-                        </tr>
-                    </table>
-                </li>
-                <li>
-                    <table class="slidey-list-table">
-                        <tr>
-                            <td rowspan="2" class="slidey-list-img">
-                                <div></div>
-                            </td>
-                            <td class="slidey-list-title"></td>
-                        </tr>
-                        <tr>
-                            <td class="slidey-list-description"></td>
-                        </tr>
-                    </table>
-                </li>
-                <li>
-                    <table class="slidey-list-table">
-                        <tr>
-                            <td rowspan="2" class="slidey-list-img">
-                                <div></div>
-                            </td>
-                            <td class="slidey-list-title"></td>
-                        </tr>
-                        <tr>
-                            <td class="slidey-list-description"></td>
-                        </tr>
-                    </table>
-                </li>
-                <li>
+                <li th:each="index: ${#numbers.sequence(1, 4)}">
                     <table class="slidey-list-table">
                         <tr>
                             <td rowspan="2" class="slidey-list-img">
@@ -206,8 +147,8 @@
                 </div>
                 <div class="movie-rank">
                     <ul>
-                        <li class="movie-rank-top1">
-                            <a href="javascript:;">
+                        <li th:each="movie, index : ${rankMovie3}">
+                            <a th:href="@{/page/movie/detail/{mid}(mid=${movie.mid})}" th:if="index == 1">
                                 <span class="movie-rank-num movie-rank-top3">1</span>
                                 <img src="/static/image/poster/haishanggangqinshi.jpg" alt="">
                                 <div>
@@ -215,61 +156,17 @@
                                     <span class="box-office">1500人想看</span>
                                 </div>
                             </a>
+                            <a th:href="@{/page/movie/detail/{mid}(mid=${movie.mid})}" th:if="index != 1">
+                                <span class="movie-rank-num movie-rank-top3">3</span>
+                                <p class="movie-rank-name" th:text="${movie.title}"></p>
+                                <span class="box-office">1000人想看</span>
+                            </a>
                         </li>
                         <li>
                             <a href="javascript:;">
                                 <span class="movie-rank-num movie-rank-top3">2</span>
                                 <p class="movie-rank-name">叶问4</p>
                                 <span class="box-office">1400人想看</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="javascript:;">
-                                <span class="movie-rank-num movie-rank-top3">3</span>
-                                <p class="movie-rank-name">若能与你共乘海浪之上</p>
-                                <span class="box-office">1000人想看</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="javascript:;">
-                                <span class="movie-rank-num">4</span>
-                                <p class="movie-rank-name">吹哨人</p>
-                                <span class="box-office">900人想看</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="javascript:;">
-                                <span class="movie-rank-num">5</span>
-                                <p class="movie-rank-name">大约在冬季</p>
-                                <span class="box-office">800人想看</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="javascript:;">
-                                <span class="movie-rank-num">6</span>
-                                <p class="movie-rank-name">吹哨人</p>
-                                <span class="box-office">700人想看</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="javascript:;">
-                                <span class="movie-rank-num">7</span>
-                                <p class="movie-rank-name">天·火</p>
-                                <span class="box-office">600人想看</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="javascript:;">
-                                <span class="movie-rank-num">8</span>
-                                <p class="movie-rank-name">一生有你</p>
-                                <span class="box-office">550人想看</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="javascript:;">
-                                <span class="movie-rank-num">9</span>
-                                <p class="movie-rank-name">冰雪奇缘2</p>
-                                <span class="box-office">450人想看</span>
                             </a>
                         </li>
                     </ul>

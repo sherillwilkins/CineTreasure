@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="/static/css/movie-list.css"/>
     <link rel="stylesheet" type="text/css" href="/static/css/index.css">
+    <link href="/static/plugin/layui/css/layui.css" rel="stylesheet">
 </head>
 <body>
 <div th:replace="header::header"></div>
@@ -351,44 +352,56 @@
         </div>
         <div class="movies-list">
             <dl class="movie-list">
-                <dd>
+                <dd th:each="movie : ${moviePage.records}">
                     <div class="movie-item film-channel">
-                        <a href="" target="_blank">
+                        <a th:href="@{/page/movie/detail/{mid}(mid=${movie.mid})}" target="_blank">
                             <div class="movie-poster">
-                                <img class="poster-default" src=alt=""/>
+                                <img class="poster-default" th:src="@{/static/image/{image}(image=${movie.image})}"/>
                             </div>
                         </a>
                     </div>
-                    <div class="channel-detail movie-item-title" title="三大队">
-                        <a href="" target="_blank">三大队</a>
+                    <div class="channel-detail movie-item-title" th:title="${movie.title}">
+                        <a th:href="@{/page/movie/detail/{mid}(mid=${movie.mid})}" target="_blank"
+                           th:text="${movie.title}"></a>
                     </div>
-                    <div class="channel-detail channel-detail-orange"><i class="integer">9.</i><i class="fraction">3</i>
+                    <div class="channel-detail channel-detail-orange"><i class="integer" th:text="${movie.rating}"></i>
                     </div>
                 </dd>
             </dl>
         </div>
-        <div class="movies-pager">
-            <ul class="list-pager">
-                <li class="active">
-                    <a class="page_1" href="javascript:void(0);" style="cursor: default">1</a>
-                </li>
-                <li>
-                    <a class="page_2" href="?offset=30">2</a>
-                </li>
-                <li>
-                    <a class="page_2" href="?offset=30">下一页</a>
-                </li>
-            </ul>
-        </div>
+        <div id="page" style="text-align: center;"></div>
     </div>
 </div>
 <div th:replace="footer::footer"></div>
 </body>
 <script type="text/javascript" src="/static/js/main.js"></script>
 <script type="text/javascript" src="/static/js/slidey.js"></script>
+<script type="text/javascript" src="/static/plugin/layui/layui.js"></script>
+<script th:inline="javascript">
+    var total = [[${moviePage.total}]];
+    var curr = [[${moviePage.current}]];
+    var size = [[${moviePage.size}]];
+</script>
 <script type="text/javascript">
     window.onload = function () {
         initPublic();
     };
+
+    layui.use(function () {
+        var laypage = layui.laypage;
+        // 完整显示
+        laypage.render({
+            elem: 'page', // 元素 id
+            curr: curr, // 当前页码
+            count: total, // 数据总数
+            limit: size, // 每页条数
+            layout: ['count', 'prev', 'page', 'next', 'limit', 'skip'], // 功能布局
+            jump: function (obj, first) {
+                if (!first) {
+                    window.location.href = '/page/movie?pageNo=' + obj.curr + '&pageSize=' + obj.limit;
+                }
+            }
+        });
+    });
 </script>
 </html>
