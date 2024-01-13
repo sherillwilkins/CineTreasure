@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>影乐宝</title>
+    <link rel="stylesheet" type="text/css" href="/static/css/index.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/mxone.css">
+</head>
+<body id="graypage">
+
+<div th:replace="header::header"></div>
+
+<div class="container white_pal">
+    <div class="input_row">
+        <div class="pannel clearfix">
+            <!--留言开始-->
+            <div class="mac_msg_r">
+                <form class="gbook_form gbook_font">
+                    <input class="gbook_content" name="gbook_content" placeholder="输入留言内容"></input>
+                    <div class="msg_code">
+                        <div class="remaining_w">提示：还可输入<span class="gbook_remaining remaining">200</span>字</div>
+                        <input type="text" name="verify" placeholder="验证码" class="verify">
+                        <img class="comm-code"
+                             src="/index.php/verify/index.html"
+                             data-role="/index.php/verify/index.html"
+                             title="看不清楚? 换一张！"
+                             onclick="this.src=this.src+'?v=1705133506'">
+                        <input type="button" class="gbook_submit submit_btn" value="提交留言">
+                    </div>
+                </form>
+            </div>
+            <!--留言结束-->
+
+        </div>
+    </div>
+    <div class="commlist_row">
+        <div class="comm_list pannel clearfix">
+            <div class="pannel_head clearfix">
+                <span class="pull_right">共&nbsp;<span class="mycol">2</span>&nbsp;条留言，当前第&nbsp;<span
+                        class="mycol">1</span>&nbsp;页</span>
+                <h2 class="title">留言</h2>
+            </div>
+            <ul class="part_rows">
+                <li class="comm_each line_top margin">
+                    <img class="comm_avat part_roun" src="/static/images/touxiang.png">
+                    <div class="comm_head">
+                        <strong class="text_line">1234567</strong>
+                        <span class="part_tips hidden_mb">2024-01-13 16:10<span class="split_line"></span><span
+                                class="mycol">2#</span></span>
+                        <span class="part_tips hidden_xs">2024-01-13 16:10:10<span class="split_line"></span><span
+                                class="mycol">第2条</span>留言</span>
+                    </div>
+                    <div class="comm_cont">
+                        <div class="comm_content">3209
+                            565
+                        </div>
+                    </div>
+                </li>
+                <li class="comm_each line_top margin">
+                    <img class="comm_avat part_roun" src="/static/images/touxiang.png">
+                    <div class="comm_head">
+                        <strong class="text_line">1234567</strong>
+                        <span class="part_tips hidden_mb">2024-01-13 13:31<span class="split_line"></span><span
+                                class="mycol">1#</span></span>
+                        <span class="part_tips hidden_xs">2024-01-13 13:31:07<span class="split_line"></span><span
+                                class="mycol">第1条</span>留言</span>
+                    </div>
+                    <div class="comm_cont">
+                        <div class="comm_content">123</div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!--评分-->
+
+</body>
+</html>

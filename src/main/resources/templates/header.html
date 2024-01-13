@@ -13,10 +13,18 @@
         <!--导航标签-->
         <div class="nav">
             <ul class="navbar">
-                <li><a th:href="@{/page/index}" class="active">首页</a></li>
-                <li><a th:href="@{/page/movie}">电影</a></li>
-                <li><a th:href="@{/page/rank}">排行</a></li>
-                <li><a href="javascript:;">反馈</a></li>
+                <li><a th:href="@{/page/index}"
+                       th:classappend="${#strings.contains(#httpServletRequest.requestURI, '/page/index')} ? 'active' : ''">首页</a>
+                </li>
+                <li><a th:href="@{/page/movie}"
+                       th:classappend="${#strings.contains(#httpServletRequest.requestURI, '/page/movie')} ? 'active' : ''">电影</a>
+                </li>
+                <li><a th:href="@{/page/rank}"
+                       th:classappend="${#strings.contains(#httpServletRequest.requestURI, '/page/rank')} ? 'active' : ''">排行</a>
+                </li>
+                <li><a th:href="@{/page/feedback}"
+                       th:classappend="${#strings.contains(#httpServletRequest.requestURI, '/page/feedback')} ? 'active' : ''">反馈</a>
+                </li>
             </ul>
         </div>
         <!--用户登陆注册-->

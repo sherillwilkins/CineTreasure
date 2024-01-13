@@ -8,7 +8,7 @@
 </head>
 <body>
 <div th:replace="header::header"></div>
-<div class="container" id="app">
+<div class="container" id="app" style="margin-top: 100px;">
     <div class="movies-channel">
         <div class="tags-panel">
             <ul class="tags-lines">
@@ -395,6 +395,7 @@
             curr: curr, // 当前页码
             count: total, // 数据总数
             limit: size, // 每页条数
+            theme: '#FFB800', // 主题
             layout: ['count', 'prev', 'page', 'next', 'limit', 'skip'], // 功能布局
             jump: function (obj, first) {
                 if (!first) {

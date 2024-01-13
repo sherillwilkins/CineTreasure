@@ -147,26 +147,23 @@
                 </div>
                 <div class="movie-rank">
                     <ul>
-                        <li th:each="movie, index : ${rankMovie3}">
-                            <a th:href="@{/page/movie/detail/{mid}(mid=${movie.mid})}" th:if="index == 1">
-                                <span class="movie-rank-num movie-rank-top3">1</span>
-                                <img src="/static/image/poster/haishanggangqinshi.jpg" alt="">
+                        <li th:each="movie, status : ${rankMovie3}"
+                            th:classappend="${status.count == 1}? 'movie-rank-top1' : ''">
+                            <a th:href="@{/page/movie/detail/{mid}(mid=${movie.mid})}" th:if="${status.count == 1}">
+                                <span th:text="${status.count}" class="movie-rank-num movie-rank-top3"></span>
+                                <img th:src="@{/static/image/{image}(image=${movie.image})}">
                                 <div>
-                                    <p class="movie-rank-name">海上钢琴师</p>
-                                    <span class="box-office">1500人想看</span>
+                                    <p class="movie-rank-name" th:text="${movie.title}"></p>
+                                    <span class="box-office" th:text="${movie.popularity}"></span>
                                 </div>
                             </a>
-                            <a th:href="@{/page/movie/detail/{mid}(mid=${movie.mid})}" th:if="index != 1">
-                                <span class="movie-rank-num movie-rank-top3">3</span>
+                            <a th:href="@{/page/movie/detail/{mid}(mid=${movie.mid})}" th:if="${status.count != 1}">
+                                <span th:if="${status.count <= 3}" th:text="${status.count}"
+                                      class="movie-rank-num movie-rank-top3"></span>
+                                <span th:if="${status.count > 3}" th:text="${status.count}"
+                                      class="movie-rank-num"></span>
                                 <p class="movie-rank-name" th:text="${movie.title}"></p>
-                                <span class="box-office">1000人想看</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="javascript:;">
-                                <span class="movie-rank-num movie-rank-top3">2</span>
-                                <p class="movie-rank-name">叶问4</p>
-                                <span class="box-office">1400人想看</span>
+                                <span class="box-office" th:text="${movie.popularity}"></span>
                             </a>
                         </li>
                     </ul>
@@ -253,7 +250,6 @@
 </div>
 <div th:replace="footer::footer"></div>
 <div id="toTop"></div>
-
 <script type="text/javascript" src="/static/js/main.js"></script>
 <script type="text/javascript" src="/static/js/slidey.js"></script>
 <script type="text/javascript">

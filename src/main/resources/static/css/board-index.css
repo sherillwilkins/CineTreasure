@@ -4,7 +4,7 @@
     background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAABmJLR0QA/wD/AP+gvaeTAAAB+klEQVQ4y6WSz0uUURSGn3O/H844jqVEmzKMKCzGaKKBoo2Lglb5BwQDBS76F9rUJiII2kmrtpmraFURaFFZlAUqYRBFkSGF45g5zvd9c+9pMTNpNYHgu73nPpz3PS9sUvK/B/v6MAh7NHYOIx/9wpuWc6bl53cFZEfKw8g5tXrWfaqYZKx/4wBU0XLci2cGURmUbn8XohsD2NkCGB/UniRzcJ9kcn2IO4EYkvF/t/DtbAFgC9ANmkKrWWpuJ15nUbpOB4QRujRTpLa8gJi5ZDy3DFIFSsCS3wAdAC4h/n7C3jbxutoJezOSOQYph1meOa6VD3mSckWrXyLUvgUuAi+agFegN8BclvZ8j3QVIdgOEiI+yN4LRqP5Dvf5ZgfR3AyqwyCTAMbrewmQgH8HrQ7pjwdPtDyqaLxm1CXo1xHV7/cfY6MhCO8CtWBguh5iHVJTcE+xC1d1ZWIJW14DJIto6VmZeOEK6p5DTDAw/fcVBAgBs03C3WnUoaVRdP42YCHVk0JMNyb4o38+6+Uigwlz2MU2/Xatqj8nJ1wpMZI9chS7ksYEh7CrI3hp1xpgwq1AXlen3qO1YbC3iKqi8aMzSHAeTD9euhMotwZAO/AQ3D3UTSGeRTxQex0xYyCngOx6wG8zjUI1DcaN66zlWG9hG+CApBnipvULTHPQiXrYKk4AAAAldEVYdGRhdGU6Y3JlYXRlADIwMTUtMDctMjVUMjE6NDk6MzErMDg6MDBI0w9NAAAAJXRFWHRkYXRlOm1vZGlmeQAyMDE0LTEyLTEwVDE2OjI3OjI2KzA4OjAwousEPAAAAE50RVh0c29mdHdhcmUASW1hZ2VNYWdpY2sgNi44LjgtMTAgUTE2IHg4Nl82NCAyMDE1LTA3LTE5IGh0dHA6Ly93d3cuaW1hZ2VtYWdpY2sub3JnBQycNQAAABh0RVh0VGh1bWI6OkRvY3VtZW50OjpQYWdlcwAxp/+7LwAAABh0RVh0VGh1bWI6OkltYWdlOjpIZWlnaHQAMTI4Q3xBgAAAABd0RVh0VGh1bWI6OkltYWdlOjpXaWR0aAAxMjjQjRHdAAAAGXRFWHRUaHVtYjo6TWltZXR5cGUAaW1hZ2UvcG5nP7JWTgAAABd0RVh0VGh1bWI6Ok1UaW1lADE0MTgyMDAwNDYTe9gmAAAAE3RFWHRUaHVtYjo6U2l6ZQAyLjQ3S0JCLd4EVQAAAFp0RVh0VGh1bWI6OlVSSQBmaWxlOi8vL2hvbWUvd3d3cm9vdC93d3cuZWFzeWljb24ubmV0L2Nkbi1pbWcuZWFzeWljb24uY24vc3JjLzExODIyLzExODIyNjQucG5nQgs00wAAAABJRU5ErkJggg==)
 }
 
-.movie-star-bg,.movie-star-fg {
+.movie-star-bg, .movie-star-fg {
     height: 16px;
     background-repeat: repeat-x
 }
@@ -19,7 +19,7 @@
     white-space: nowrap
 }
 
-.subnav li,.subnav ul {
+.subnav li, .subnav ul {
     margin: 0;
     padding: 0;
     list-style: none
@@ -126,11 +126,11 @@
     color: #fff
 }
 
-li,ul {
+li, ul {
     list-style: none
 }
 
-dd,dl,h4,li,p,ul {
+dd, dl, h4, li, p, ul {
     padding: 0;
     margin: 0
 }
@@ -145,7 +145,7 @@ dd,dl,h4,li,p,ul {
     margin-top: 70px
 }
 
-.board-content,.update-time {
+.board-content, .update-time {
     text-align: center;
     font-size: 12px;
     color: #999
@@ -180,7 +180,7 @@ dd,dl,h4,li,p,ul {
     font-size: 0
 }
 
-.board-index-2,.board-index-3 {
+.board-index-2, .board-index-3 {
     background: #ffb400;
     color: #fff
 }

@@ -39,7 +39,7 @@ public class PageController {
     }
 
     @RequestMapping("/movie")
-    public String movie(Model model, @RequestParam(defaultValue = "1") Integer pageNo, @RequestParam(defaultValue = "10") Integer pageSize) {
+    public String movie(Model model, @RequestParam(defaultValue = "1") Integer pageNo, @RequestParam(defaultValue = "12") Integer pageSize) {
         Page<Movie> moviePage = movieService.getMovieList(pageNo, pageSize);
         model.addAttribute("moviePage", moviePage);
         return "movie";
@@ -52,11 +52,11 @@ public class PageController {
         return "movie_detail";
     }
 
-    @RequestMapping("/rank/{type}")
-    public String rank(Model model, @PathVariable(value = "type") Integer type) {
-//        model.addAttribute("rankMovie1", movieService.getMovieRanking(new MovieRankRequest(1, 9, 1)).getRecords());
-//        model.addAttribute("rankMovie2", movieService.getMovieRanking(new MovieRankRequest(1, 9, 2)).getRecords());
-        model.addAttribute("rankMovie3", movieService.getMovieRanking(new MovieRankRequest(1, 9, 3)).getRecords());
+    @RequestMapping(value = {"/rank/{type}", "/rank"})
+    public String rank(Model model, @PathVariable(value = "type", required = false) Integer type, @RequestParam(defaultValue = "1") Integer pageNo, @RequestParam(defaultValue = "10") Integer pageSize) {
+        if (type == null) type = 1;
+        model.addAttribute("type", type);
+        model.addAttribute("rankMoviePage", movieService.getMovieRanking(new MovieRankRequest(pageNo, pageSize, type)));
         return "rank";
     }
 
@@ -68,5 +68,10 @@ public class PageController {
     @RequestMapping("/register")
     public String register() {
         return "register";
+    }
+
+    @RequestMapping("/feedback")
+    public String feedback() {
+        return "feedback";
     }
 }
