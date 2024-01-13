@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="/static/css/board-index.css"/>
+    <link rel="stylesheet" href="/static/css/index.css"/>
+    <!--    <link rel="stylesheet" href="/static/css/common.css"/>-->
+</head>
+<body>
+<div th:replace="header::header"></div>
+<div class="subnav">
+    <ul class="navbar">
+        <li>
+            <a href="/board/7">周排行榜</a>
+        </li>
+        <li>
+            <a href="/board/6">月排行榜</a>
+        </li>
+        <li>
+            <a href="/board/1">总排行榜</a>
+        </li>
+        <li>
+            <a class="active">好评榜</a>
+        </li>
+    </ul>
+</div>
+<div class="container" id="app">
+    <div class="content">
+        <div class="wrapper">
+            <div class="main">
+                <dl class="board-wrapper">
+                    <dd>
+                        <i class="board-index board-index-1">1</i>
+                        <a href="/films/1200486" title="我不是药神" class="image-link" data-act="boarditem-click"
+                           data-val="{movieId:1200486}">
+                            <img src="//s3.meituan.net/static-prod01/com.sankuai.movie.fe.mywww-files/image/loading_2.e3d934bf.png"
+                                 alt="" class="poster-default"/>
+                            <img data-src="https://p0.pipi.cn/mmdb/d2dad59253751bd236338fa5bd5a27c710413.jpg?imageView2/1/w/160/h/220"
+                                 alt="我不是药神" class="board-img"/>
+                        </a>
+                        <div class="board-item-main">
+                            <div class="board-item-content">
+                                <div class="movie-item-info">
+                                    <p class="name"><a href="/films/1200486" title="我不是药神"
+                                                       data-act="boarditem-click"
+                                                       data-val="{movieId:1200486}">我不是药神</a></p>
+                                    <p class="star">
+                                        主演：徐峥,周一围,王传君
+                                    </p>
+                                    <p class="releasetime">上映时间：2018-07-05</p></div>
+                                <div class="movie-item-number score-num">
+                                    <p class="score"><i class="integer">9.</i><i class="fraction">6</i></p>
+                                </div>
+                            </div>
+                        </div>
+                    </dd>
+                    <dd>
+                        <i class="board-index board-index-2">2</i>
+                        <a href="/films/1297" title="肖申克的救赎" class="image-link" data-act="boarditem-click"
+                           data-val="{movieId:1297}">
+                            <img src="//s3.meituan.net/static-prod01/com.sankuai.movie.fe.mywww-files/image/loading_2.e3d934bf.png"
+                                 alt="" class="poster-default"/>
+                            <img data-src="https://p0.pipi.cn/mmdb/fb7386020fa51b0fafcf3e2e3a0bbe694d17d.jpg?imageView2/1/w/160/h/220"
+                                 alt="肖申克的救赎" class="board-img"/>
+                        </a>
+                        <div class="board-item-main">
+                            <div class="board-item-content">
+                                <div class="movie-item-info">
+                                    <p class="name"><a href="/films/1297" title="肖申克的救赎"
+                                                       data-act="boarditem-click"
+                                                       data-val="{movieId:1297}">肖申克的救赎</a></p>
+                                    <p class="star">
+                                        主演：蒂姆·罗宾斯,摩根·弗里曼,鲍勃·冈顿
+                                    </p>
+                                    <p class="releasetime">上映时间：1994-09-10(加拿大)</p></div>
+                                <div class="movie-item-number score-num">
+                                    <p class="score"><i class="integer">9.</i><i class="fraction">5</i></p>
+                                </div>
+                            </div>
+                        </div>
+                    </dd>
+                    <dd>
+                        <i class="board-index board-index-3">3</i>
+                        <a href="/films/1292" title="海上钢琴师" class="image-link" data-act="boarditem-click"
+                           data-val="{movieId:1292}">
+                            <img src="//s3.meituan.net/static-prod01/com.sankuai.movie.fe.mywww-files/image/loading_2.e3d934bf.png"
+                                 alt="" class="poster-default"/>
+                            <img data-src="https://p0.pipi.cn/mmdb/d2dad592c7e7e1d2365bf1b63cd25951b722b.jpg?imageView2/1/w/160/h/220"
+                                 alt="海上钢琴师" class="board-img"/>
+                        </a>
+                        <div class="board-item-main">
+                            <div class="board-item-content">
+                                <div class="movie-item-info">
+                                    <p class="name"><a href="/films/1292" title="海上钢琴师" data-act="boarditem-click"
+                                                       data-val="{movieId:1292}">海上钢琴师</a></p>
+                                    <p class="star">
+                                        主演：蒂姆·罗斯,比尔·努恩 ,克兰伦斯·威廉姆斯三世
+                                    </p>
+                                    <p class="releasetime">上映时间：2019-11-15</p></div>
+                                <div class="movie-item-number score-num">
+                                    <p class="score"><i class="integer">9.</i><i class="fraction">3</i></p>
+                                </div>
+                            </div>
+                        </div>
+                    </dd>
+                    <dd>
+                        <i class="board-index board-index-4">4</i>
+                        <a href="/films/1206605" title="绿皮书" class="image-link" data-act="boarditem-click"
+                           data-val="{movieId:1206605}">
+                            <img src="//s3.meituan.net/static-prod01/com.sankuai.movie.fe.mywww-files/image/loading_2.e3d934bf.png"
+                                 alt="" class="poster-default"/>
+                            <img data-src="https://p0.pipi.cn/mmdb/d2dad59253751b230f21f0818a5bfd4d8679c.jpg?imageView2/1/w/160/h/220"
+                                 alt="绿皮书" class="board-img"/>
+                        </a>
+                        <div class="board-item-main">
+                            <div class="board-item-content">
+                                <div class="movie-item-info">
+                                    <p class="name"><a href="/films/1206605" title="绿皮书" data-act="boarditem-click"
+                                                       data-val="{movieId:1206605}">绿皮书</a></p>
+                                    <p class="star">
+                                        主演：维果·莫腾森,马赫沙拉·阿里,琳达·卡德里尼
+                                    </p>
+                                    <p class="releasetime">上映时间：2019-03-01</p></div>
+                                <div class="movie-item-number score-num">
+                                    <p class="score"><i class="integer">9.</i><i class="fraction">5</i></p>
+                                </div>
+                            </div>
+                        </div>
+                    </dd>
+                    <dd>
+                        <i class="board-index board-index-5">5</i>
+                        <a href="/films/1203" title="霸王别姬" class="image-link" data-act="boarditem-click"
+                           data-val="{movieId:1203}">
+                            <img src="//s3.meituan.net/static-prod01/com.sankuai.movie.fe.mywww-files/image/loading_2.e3d934bf.png"
+                                 alt="" class="poster-default"/>
+                            <img data-src="https://p0.pipi.cn/mmdb/fb7386beddd338537c8ea3bb80d25a9078b13.jpg?imageView2/1/w/160/h/220"
+                                 alt="霸王别姬" class="board-img"/>
+                        </a>
+                        <div class="board-item-main">
+                            <div class="board-item-content">
+                                <div class="movie-item-info">
+                                    <p class="name"><a href="/films/1203" title="霸王别姬" data-act="boarditem-click"
+                                                       data-val="{movieId:1203}">霸王别姬</a></p>
+                                    <p class="star">
+                                        主演：张国荣,张丰毅,巩俐
+                                    </p>
+                                    <p class="releasetime">上映时间：1993-07-26</p></div>
+                                <div class="movie-item-number score-num">
+                                    <p class="score"><i class="integer">9.</i><i class="fraction">4</i></p>
+                                </div>
+                            </div>
+                        </div>
+                    </dd>
+                    <dd>
+                        <i class="board-index board-index-6">6</i>
+                        <a href="/films/1303" title="美丽人生" class="image-link" data-act="boarditem-click"
+                           data-val="{movieId:1303}">
+                            <img src="//s3.meituan.net/static-prod01/com.sankuai.movie.fe.mywww-files/image/loading_2.e3d934bf.png"
+                                 alt="" class="poster-default"/>
+                            <img data-src="https://p0.pipi.cn/mmdb/d2dad592c7e7e1d2367a3507befaed31a5903.jpg?imageView2/1/w/160/h/220"
+                                 alt="美丽人生" class="board-img"/>
+                        </a>
+                        <div class="board-item-main">
+                            <div class="board-item-content">
+                                <div class="movie-item-info">
+                                    <p class="name"><a href="/films/1303" title="美丽人生" data-act="boarditem-click"
+                                                       data-val="{movieId:1303}">美丽人生</a></p>
+                                    <p class="star">
+                                        主演：罗伯托·贝尼尼,朱斯蒂诺·杜拉诺,赛尔乔·比尼·布斯特里克
+                                    </p>
+                                    <p class="releasetime">上映时间：2020-01-03</p></div>
+                                <div class="movie-item-number score-num">
+                                    <p class="score"><i class="integer">9.</i><i class="fraction">3</i></p>
+                                </div>
+                            </div>
+                        </div>
+                    </dd>
+                    <dd>
+                        <i class="board-index board-index-7">7</i>
+                        <a href="/films/4055" title="这个杀手不太冷" class="image-link" data-act="boarditem-click"
+                           data-val="{movieId:4055}">
+                            <img src="//s3.meituan.net/static-prod01/com.sankuai.movie.fe.mywww-files/image/loading_2.e3d934bf.png"
+                                 alt="" class="poster-default"/>
+                            <img data-src="https://p0.pipi.cn/mmdb/d2dad592c7e7e13ba3ddd25677b4d70fc45fa.jpg?imageView2/1/w/160/h/220"
+                                 alt="这个杀手不太冷" class="board-img"/>
+                        </a>
+                        <div class="board-item-main">
+                            <div class="board-item-content">
+                                <div class="movie-item-info">
+                                    <p class="name"><a href="/films/4055" title="这个杀手不太冷"
+                                                       data-act="boarditem-click"
+                                                       data-val="{movieId:4055}">这个杀手不太冷</a></p>
+                                    <p class="star">
+                                        主演：让·雷诺,加里·奥德曼,娜塔莉·波特曼
+                                    </p>
+                                    <p class="releasetime">上映时间：1994-09-14(法国)</p></div>
+                                <div class="movie-item-number score-num">
+                                    <p class="score"><i class="integer">9.</i><i class="fraction">4</i></p>
+                                </div>
+                            </div>
+                        </div>
+                    </dd>
+                    <dd>
+                        <i class="board-index board-index-8">8</i>
+                        <a href="/films/1216365" title="小偷家族" class="image-link" data-act="boarditem-click"
+                           data-val="{movieId:1216365}">
+                            <img src="//s3.meituan.net/static-prod01/com.sankuai.movie.fe.mywww-files/image/loading_2.e3d934bf.png"
+                                 alt="" class="poster-default"/>
+                            <img data-src="https://p0.pipi.cn/mmdb/d2dad5925372ffd7c387a9d01bddad81625c3.jpg?imageView2/1/w/160/h/220"
+                                 alt="小偷家族" class="board-img"/>
+                        </a>
+                        <div class="board-item-main">
+                            <div class="board-item-content">
+                                <div class="movie-item-info">
+                                    <p class="name"><a href="/films/1216365" title="小偷家族" data-act="boarditem-click"
+                                                       data-val="{movieId:1216365}">小偷家族</a></p>
+                                    <p class="star">
+                                        主演：中川雅也,安藤樱,松冈茉优
+                                    </p>
+                                    <p class="releasetime">上映时间：2018-08-03</p></div>
+                                <div class="movie-item-number score-num">
+                                    <p class="score"><i class="integer">8.</i><i class="fraction">1</i></p>
+                                </div>
+                            </div>
+                        </div>
+                    </dd>
+                    <dd>
+                        <i class="board-index board-index-9">9</i>
+                        <a href="/films/78341" title="星际穿越" class="image-link" data-act="boarditem-click"
+                           data-val="{movieId:78341}">
+                            <img src="//s3.meituan.net/static-prod01/com.sankuai.movie.fe.mywww-files/image/loading_2.e3d934bf.png"
+                                 alt="" class="poster-default"/>
+                            <img data-src="https://p0.pipi.cn/mmdb/d2dad592b125bfc9fd300b8a46169f8008efb.jpg?imageView2/1/w/160/h/220"
+                                 alt="星际穿越" class="board-img"/>
+                        </a>
+                        <div class="board-item-main">
+                            <div class="board-item-content">
+                                <div class="movie-item-info">
+                                    <p class="name"><a href="/films/78341" title="星际穿越" data-act="boarditem-click"
+                                                       data-val="{movieId:78341}">星际穿越</a></p>
+                                    <p class="star">
+                                        主演：马修·麦康纳,安妮·海瑟薇,杰西卡·查斯坦
+                                    </p>
+                                    <p class="releasetime">上映时间：2014-11-12</p></div>
+                                <div class="movie-item-number score-num">
+                                    <p class="score"><i class="integer">9.</i><i class="fraction">3</i></p>
+                                </div>
+                            </div>
+                        </div>
+                    </dd>
+                    <dd>
+                        <i class="board-index board-index-10">10</i>
+                        <a href="/films/46818" title="怦然心动" class="image-link" data-act="boarditem-click"
+                           data-val="{movieId:46818}">
+                            <img src="//s3.meituan.net/static-prod01/com.sankuai.movie.fe.mywww-files/image/loading_2.e3d934bf.png"
+                                 alt="" class="poster-default"/>
+                            <img data-src="https://p0.pipi.cn/mmdb/d2dad592b122ff8d3387a93ccab6036f616c1.jpg?imageView2/1/w/160/h/220"
+                                 alt="怦然心动" class="board-img"/>
+                        </a>
+                        <div class="board-item-main">
+                            <div class="board-item-content">
+                                <div class="movie-item-info">
+                                    <p class="name"><a href="/films/46818" title="怦然心动" data-act="boarditem-click"
+                                                       data-val="{movieId:46818}">怦然心动</a></p>
+                                    <p class="star">
+                                        主演：玛德琳·卡罗尔,卡兰·麦克奥利菲,艾丹·奎因
+                                    </p>
+                                    <p class="releasetime">上映时间：2010-07-26(美国)</p></div>
+                                <div class="movie-item-number score-num">
+                                    <p class="score"><i class="integer">8.</i><i class="fraction">9</i></p>
+                                </div>
+                            </div>
+                        </div>
+                    </dd>
+                </dl>
+            </div>
+            <div class="pager-main">
+                <ul class="list-pager">
+                    <li class="active">
+                        <a class="page_1"
+                           href="javascript:void(0);" style="cursor: default"
+                        >1</a>
+                    </li>
+                    <li>
+                        <a class="page_2"
+                           href="?timeStamp=1705064594209&amp;channelId=40011&amp;index=10&amp;signKey=e4238b4e2b661e8117ea386057b948c5&amp;sVersion=1&amp;webdriver=false&amp;offset=10"
+                        >2</a>
+                    </li>
+                    <li>
+                        <a class="page_3"
+                           href="?timeStamp=1705064594209&amp;channelId=40011&amp;index=10&amp;signKey=e4238b4e2b661e8117ea386057b948c5&amp;sVersion=1&amp;webdriver=false&amp;offset=20"
+                        >3</a>
+                    </li>
+                    <li>
+                        <a class="page_4"
+                           href="?timeStamp=1705064594209&amp;channelId=40011&amp;index=10&amp;signKey=e4238b4e2b661e8117ea386057b948c5&amp;sVersion=1&amp;webdriver=false&amp;offset=30"
+                        >4</a>
+                    </li>
+                    <li>
+                        <a class="page_5"
+                           href="?timeStamp=1705064594209&amp;channelId=40011&amp;index=10&amp;signKey=e4238b4e2b661e8117ea386057b948c5&amp;sVersion=1&amp;webdriver=false&amp;offset=40"
+                        >5</a>
+                    </li>
+                    <li class="sep">...</li>
+                    <li>
+                        <a class="page_10"
+                           href="?timeStamp=1705064594209&amp;channelId=40011&amp;index=10&amp;signKey=e4238b4e2b661e8117ea386057b948c5&amp;sVersion=1&amp;webdriver=false&amp;offset=90"
+                        >10</a>
+                    </li>
+                    <li><a class="page_2"
+                           href="?timeStamp=1705064594209&amp;channelId=40011&amp;index=10&amp;signKey=e4238b4e2b661e8117ea386057b948c5&amp;sVersion=1&amp;webdriver=false&amp;offset=10"
+                    >下一页</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</body>
+</html>

@@ -1,243 +1,736 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
-    <link href="/static/plugin/layui/css/layui.css" rel="stylesheet">
+    <title>影乐宝</title>
+    <link rel="stylesheet" type="text/css" href="/static/css/index.css">
 </head>
 <body>
-<div class="layui-container">
-    <div th:replace="header::header"></div>
-<!--    <div class="layui-header ws-header ws-bg-light">-->
-<!--        <div class="layui-container">-->
-<!--            <div class="ws-logo">-->
-<!--                <a class="logo" href="/">-->
-<!--                    <img src="//res.sentcss.com/static/images/layui/logo.png" alt="layui">-->
-<!--                </a>-->
-<!--            </div>-->
-<!--            <div class="ws-header-assist">-->
-<!--                <div class="layui-form layui-hide-xs ws-search" lay-filter="LAY-ws-header-component"><select lay-search="" lay-filter="component"><option value="">搜索</option><optgroup label="热门组件">,<option value="form/">表单 Form</option>,<option value="table/">表格 Table</option>,<option value="layer/">弹层 Layer 🔥</option>,</optgroup><optgroup label="布局">,<option value="layout/">框体布局 Layout</option>,<option value="layout/grid.html">栅格布局 Grid</option>,</optgroup><optgroup label="通用">,<option value="color/">颜色 Color</option>,<option value="button/">按钮 Button</option>,<option value="icon/">图标 Icon</option>,<option value="anim/">动画 Anim</option>,</optgroup><optgroup label="表单">,<option value="form/">表单组件 Form</option>,<option value="form/input.html">输入框 Input</option>,<option value="form/input.html#affix-number">数字输入框 Number</option>,<option value="form/input.html">多行输入框 Textarea</option>,<option value="form/select.html">选择框 Select</option>,<option value="form/checkbox.html">复选框 Checkbox</option>,<option value="form/checkbox.html#switch">开关 Switch</option>,<option value="form/radio.html">单选框 Radio</option>,</optgroup><optgroup label="展示">,<option value="table/">表格 Table</option>,<option value="laypage/">分页 Laypage</option>,<option value="treeTable/">树形表格 TreeTable</option>,<option value="nav/">导航菜单 Nav</option>,<option value="menu/">基础菜单 Menu</option>,<option value="tab/">选项卡 Tab</option>,<option value="badge/">徽章 Badge</option>,<option value="auxiliar/#blockquote">引用 Blockquote</option>,<option value="auxiliar/#fieldset">字段集 Fieldset</option>,<option value="auxiliar/#hr">水平线 hr</option>,<option value="class/">公共类 Class</option>,<option value="panel/">面板 Panel</option>,<option value="panel/#card">卡片面板 Card</option>,<option value="panel/#collapse">折叠面板 Collapse</option>,<option value="progress/">进度条 Progress</option>,<option value="timeline/">时间线 Timeline</option>,<option value="fixbar/">固定条 Fixbar</option>,<option value="tree/">树组件 Tree</option>,<option value="carousel/">轮播 Carousel</option>,<option value="flow/">流加载 Flow</option>,<option value="code/">代码预览 Code</option>,</optgroup><optgroup label="交互">,<option value="layer/">弹出层 Layer</option>,<option value="laydate/">日期与时间 Laydate</option>,<option value="upload/">上传 Upload</option>,<option value="dropdown/">下拉菜单 Dropdown</option>,<option value="colorpicker/">颜色选择器 Colorpicker</option>,<option value="transfer/">穿梭框 Transfer</option>,<option value="slider/">滑块 Slider</option>,<option value="rate/">评分 Rate</option>,</optgroup><optgroup label="其他">,<option value="laytpl/">模板引擎 Laytpl</option>,<option value="util/">工具模块 Util</option>,</optgroup><optgroup label="主题">,<option value="https://dev.layuion.com/themes/layim/">LayIM</option>,<option value="https://dev.layuion.com/themes/layuiAdmin/">layuiAdmin</option>,</optgroup></select><div class="layui-form-select"><div class="layui-select-title"><input type="text" placeholder="搜索" value="" class="layui-input"><i class="layui-edge"></i></div><dl class="layui-anim layui-anim-upbit layui-select-group"><dd lay-value="" class="layui-select-tips">搜索</dd><dt>热门组件</dt><dd lay-value="form/" class="">表单 Form</dd><dd lay-value="table/" class="">表格 Table</dd><dd lay-value="layer/" class="">弹层 Layer 🔥</dd><dt>布局</dt><dd lay-value="layout/" class="">框体布局 Layout</dd><dd lay-value="layout/grid.html" class="">栅格布局 Grid</dd><dt>通用</dt><dd lay-value="color/" class="">颜色 Color</dd><dd lay-value="button/" class="">按钮 Button</dd><dd lay-value="icon/" class="">图标 Icon</dd><dd lay-value="anim/" class="">动画 Anim</dd><dt>表单</dt><dd lay-value="form/" class="">表单组件 Form</dd><dd lay-value="form/input.html" class="">输入框 Input</dd><dd lay-value="form/input.html#affix-number" class="">数字输入框 Number</dd><dd lay-value="form/input.html" class="">多行输入框 Textarea</dd><dd lay-value="form/select.html" class="">选择框 Select</dd><dd lay-value="form/checkbox.html" class="">复选框 Checkbox</dd><dd lay-value="form/checkbox.html#switch" class="">开关 Switch</dd><dd lay-value="form/radio.html" class="">单选框 Radio</dd><dt>展示</dt><dd lay-value="table/" class="">表格 Table</dd><dd lay-value="laypage/" class="">分页 Laypage</dd><dd lay-value="treeTable/" class="">树形表格 TreeTable</dd><dd lay-value="nav/" class="">导航菜单 Nav</dd><dd lay-value="menu/" class="">基础菜单 Menu</dd><dd lay-value="tab/" class="">选项卡 Tab</dd><dd lay-value="badge/" class="">徽章 Badge</dd><dd lay-value="auxiliar/#blockquote" class="">引用 Blockquote</dd><dd lay-value="auxiliar/#fieldset" class="">字段集 Fieldset</dd><dd lay-value="auxiliar/#hr" class="">水平线 hr</dd><dd lay-value="class/" class="">公共类 Class</dd><dd lay-value="panel/" class="">面板 Panel</dd><dd lay-value="panel/#card" class="">卡片面板 Card</dd><dd lay-value="panel/#collapse" class="">折叠面板 Collapse</dd><dd lay-value="progress/" class="">进度条 Progress</dd><dd lay-value="timeline/" class="">时间线 Timeline</dd><dd lay-value="fixbar/" class="">固定条 Fixbar</dd><dd lay-value="tree/" class="">树组件 Tree</dd><dd lay-value="carousel/" class="">轮播 Carousel</dd><dd lay-value="flow/" class="">流加载 Flow</dd><dd lay-value="code/" class="">代码预览 Code</dd><dt>交互</dt><dd lay-value="layer/" class="">弹出层 Layer</dd><dd lay-value="laydate/" class="">日期与时间 Laydate</dd><dd lay-value="upload/" class="">上传 Upload</dd><dd lay-value="dropdown/" class="">下拉菜单 Dropdown</dd><dd lay-value="colorpicker/" class="">颜色选择器 Colorpicker</dd><dd lay-value="transfer/" class="">穿梭框 Transfer</dd><dd lay-value="slider/" class="">滑块 Slider</dd><dd lay-value="rate/" class="">评分 Rate</dd><dt>其他</dt><dd lay-value="laytpl/" class="">模板引擎 Laytpl</dd><dd lay-value="util/" class="">工具模块 Util</dd><dt>主题</dt><dd lay-value="https://dev.layuion.com/themes/layim/" class="">LayIM</dd><dd lay-value="https://dev.layuion.com/themes/layuiAdmin/" class="">layuiAdmin</dd></dl></div><i class="layui-icon layui-icon-search"></i></div>-->
-<!--                <div class="layui-hide-xs ws-notice"></div>-->
-<!--            </div>-->
+<div th:replace="header::header"></div>
+<div class="container">
+    <div class="slidey">
+        <ul id="slidey-content" style="display: none">
+            <li>
+                <img src="/static/image/slideposter/Frozen2.jpg" alt="">
+                <p class="title">冰雪奇缘2</p>
+                <p class="description">为什么艾莎一出生就带着控制冰雪的能力？这个答案一致困扰着她，也威胁着王国的安全。
+                    她将和安娜、克斯托夫、雪宝和驯鹿斯文展开一场危险但非凡的旅程…</p>
+            </li>
+            <li>
+                <img src="/static/image/slideposter/ifseawave.jpg" alt="">
+                <p class="title">若能与你共乘海浪之上</p>
+                <p class="description">青年消防员雏罂粟港和爱好冲浪的向水日菜子相遇并迅速展开热恋。看似命中注定的这对恋人，
+                    却不幸遭遇生死别离。无法接受港已经离世的雏子，某天突然发现，只要唱起属于两个人的那首歌，港就会从水中出现…</p>
+            </li>
+            <li>
+                <img src="/static/image/slideposter/skyfire.jpg" alt="">
+                <p class="title">天·火</p>
+                <p class="description">火山喷发了，这些人的命运纠结在一起。为了看见明天的太阳，他们必须与过去和解，
+                    合力为自己也为众生在绝境中寻找一条生路。
+                    这是一个关于爱与勇气、选择与放弃、自救与他救的中国式英雄的故事…</p>
+            </li>
+            <li>
+                <img src="/static/image/slideposter/yewen4.jpg" alt="">
+                <p class="title">叶问4</p>
+                <p class="description">因故来到美国唐人街的叶问，意外卷入一场当地军方势力与华人武馆的纠纷，面对日益猖狂的
+                    民族歧视与压迫，叶问挺身而出，在美国海军陆战队军营拼死一战，以正宗咏春，向世界证明了中国功夫…</p>
+            </li>
+        </ul>
+        <div class="slidey-main">
+            <a href="movie.html" class="slidey-main-link"></a>
+            <div class="slidey-overlay">
+                <p class="slidey-overlay-title"></p>
+                <p class="slidey-overlay-description"></p>
+                <span class="slidey-progress"></span>
+            </div>
+            <div class="slidey-ctrls slidey-ctrls-pre"></div>
+            <div class="slidey-ctrls slidey-ctrls-next"></div>
+        </div>
+        <div class="slidey-list">
+            <ul>
+                <li>
+                    <table class="slidey-list-table">
+                        <tr>
+                            <td rowspan="2" class="slidey-list-img">
+                                <div></div>
+                            </td>
+                            <td class="slidey-list-title"></td>
+                        </tr>
+                        <tr>
+                            <td class="slidey-list-description"></td>
+                        </tr>
+                    </table>
+                </li>
+                <li>
+                    <table class="slidey-list-table">
+                        <tr>
+                            <td rowspan="2" class="slidey-list-img">
+                                <div></div>
+                            </td>
+                            <td class="slidey-list-title"></td>
+                        </tr>
+                        <tr>
+                            <td class="slidey-list-description"></td>
+                        </tr>
+                    </table>
+                </li>
+                <li>
+                    <table class="slidey-list-table">
+                        <tr>
+                            <td rowspan="2" class="slidey-list-img">
+                                <div></div>
+                            </td>
+                            <td class="slidey-list-title"></td>
+                        </tr>
+                        <tr>
+                            <td class="slidey-list-description"></td>
+                        </tr>
+                    </table>
+                </li>
+                <li>
+                    <table class="slidey-list-table">
+                        <tr>
+                            <td rowspan="2" class="slidey-list-img">
+                                <div></div>
+                            </td>
+                            <td class="slidey-list-title"></td>
+                        </tr>
+                        <tr>
+                            <td class="slidey-list-description"></td>
+                        </tr>
+                    </table>
+                </li>
+            </ul>
+        </div>
+    </div>
 
-<!--            <div class="ws-header-menu">-->
-<!--                <ul class="layui-nav layui-bg-gray ws-bg-light" id="LAY_NAV_TOP">-->
-<!--                    <li class="layui-nav-item layui-this" data-dir="docs">-->
-<!--                        <a href="/docs/2/">组件</a>-->
-<!--                    </li>-->
-<!--                    <li class="layui-nav-item" data-dir="notes">-->
-<!--                        <a href="/notes/">笔记</a>-->
-<!--                    </li>-->
-<!--                    <li class="layui-nav-item">-->
-<!--                        <a href="javascript:;">2.9.3<i class="layui-icon layui-icon-down layui-nav-more"></i></a>-->
-<!--                        <dl class="layui-nav-child layui-nav-child-c">-->
-<!--                            <dd lay-unselect="" class="layui-this"><a href="/">2.9.3</a></dd>-->
-<!--                            <dd lay-unselect=""><a href="/2.7/">2.7.6</a></dd>-->
-<!--                        </dl>-->
-<!--                    </li>-->
-<!--                    <li class="layui-nav-item">-->
-<!--                        <a href="javascript:;">-->
-<!--                            &lt;!&ndash;<span class="layui-badge-dot" style="left:0; right: auto; margin: -4px 0 0 5px;"></span>&ndash;&gt;-->
-<!--                            生态-->
-<!--                            <i class="layui-icon layui-icon-down layui-nav-more"></i></a>-->
-<!--                        <dl class="layui-nav-child layui-nav-child-r" style="margin-right: -21px;">-->
-<!--                            <dd lay-unselect="">-->
-<!--                                <a href="//dev.layuion.com/extend/" target="_blank">Layui 第三方扩展组件</a>-->
-<!--                            </dd>-->
-<!--                            <dd lay-unselect="">-->
-<!--                                <a href="//dev.layuion.com/themes/" target="_blank">Layui 纯静态主题库</a>-->
-<!--                            </dd>-->
-<!--                            <dd lay-unselect="">-->
-<!--                                <a href="https://github.com/Sight-wcg/layui-theme-dark" target="_blank" lay-unselect="">-->
-<!--                                    Layui 深色主题 <span>(社区贡献)</span>-->
-<!--                                </a>-->
-<!--                            </dd>-->
-<!--                            <dd lay-unselect="">-->
-<!--                                <a href="https://gitee.com/layui/layui-vue/" target="_blank" lay-unselect="">-->
-<!--                                    Layui of Vue <span>(他人实现)</span>-->
-<!--                                </a>-->
-<!--                            </dd>-->
-<!--                        </dl>-->
-<!--                    </li>-->
-<!--                    <span class="layui-nav-bar"></span></ul>-->
-<!--                <div class="ws-header-more">-->
-<!--                    <i class="layui-icon layui-icon-shrink-right"></i>-->
-<!--                </div>-->
-<!--                <div class="ws-header-tool ws-bg-light">-->
-<!--                    <div class="layui-form ws-header-theme" lay-filter="header-theme">-->
-<!--                        <input type="checkbox" name="theme-mode" id="ID-header-theme-mode" lay-filter="header-theme-mode" lay-skin="switch" title=""><div class="layui-unselect layui-form-switch" lay-skin="switch"><div>-->
-<!--                        <i class="layui-icon layui-icon-light"></i>-->
-<!--                    </div><i></i></div>-->
-<!--                        <div lay-checkbox="">-->
-<!--                            <i class="layui-icon layui-icon-moon"></i> |-->
-<!--                            <i class="layui-icon layui-icon-light"></i>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                    <div>-->
-<!--                        <a href="https://github.com/layui/layui" target="_blank" title="Github">-->
-<!--                            <i class="layui-icon layui-icon-github layui-font-20"></i>-->
-<!--                        </a>-->
-<!--                    </div>-->
-<!--                    <div>-->
-<!--                        <a href="https://gitee.com/layui/layui" target="_blank" title="Gitee">-->
-<!--                            <i class="layui-icon layui-icon-gitee layui-font-20" style="color: #C71D23;"></i>-->
-<!--                        </a>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--        <input type="hidden" id="WS-ID" value="1089712111710546100101118|108111999710846108971211171051111104699111109">-->
-<!--    </div>-->
+    <div class="movie-grid">
+        <div class="panel">
+            <div class="main">
+                <div class="panel-header">
+                    <span class="panel-title">热播</span>
+                    <a href="javascript:;" class="panel-more">更多</a>
+                </div>
+                <div class="movie-list">
+                    <ul>
+                        <li>
+                            <a href="movie.html" class="movie-poster">
+                                <img src="/static/image/poster/bingxueqiyuan2.jpg" alt="" class="poster">
+                                <span class="movie-score">8.0</span>
+                            </a>
+                            <span class="movie-title">冰雪奇缘2</span>
 
-<!--    <ul class="layui-nav">-->
-<!--        <li class="layui-nav-item layui-this"><a href="">选中</a></li>-->
-<!--        <li class="layui-nav-item">-->
-<!--            <a href="javascript:;">常规</a>-->
-<!--        </li>-->
-<!--        <li class="layui-nav-item"><a href="">导航</a></li>-->
-<!--        <li class="layui-nav-item">-->
-<!--            <a href="javascript:;">子级</a>-->
-<!--            <dl class="layui-nav-child">-->
-<!--                <dd><a href="">菜单1</a></dd>-->
-<!--                <dd><a href="">菜单2</a></dd>-->
-<!--                <dd><a href="">菜单3</a></dd>-->
-<!--            </dl>-->
-<!--        </li>-->
-<!--    </ul>-->
+                        </li>
+                        <li>
+                            <a href="movie.html" class="movie-poster">
+                                <img src="/static/image/poster/chuixiaoren.jpg" alt="" class="poster">
+                                <span class="movie-score">8.5</span>
+                            </a>
+                            <span class="movie-title">吹哨人</span>
+                        </li>
+                        <li>
+                            <a href="movie.html" class="movie-poster">
+                                <img src="/static/image/poster/dayuezaidongji.jpg" alt="" class="poster">
+                                <span class="movie-score">8.8</span>
+                            </a>
+                            <span class="movie-title">大约在冬季</span>
 
-    <div class="layui-row">
-        <div class="layui-col-md8">
-            <div class="layui-card">
-                <div class="layui-card-header">电影</div>
-                <div class="layui-card-body">
-                    <div class="layui-panel" style="width: 140px;height: 198px;">
-                        <img th:src="@{/static/image/movie.jpg}" style="width: 100%; height: 100%;">
-                    </div>
+                        </li>
+                        <li>
+                            <a href="movie.html" class="movie-poster">
+                                <img src="/static/image/poster/haishanggangqinshi.jpg" alt="" class="poster">
+                                <span class="movie-score">9.2</span>
+                            </a>
+                            <span class="movie-title">海上钢琴师</span>
+
+                        </li>
+                        <li>
+                            <a href="movie.html" class="movie-poster">
+                                <img src="/static/image/poster/ruonengyuni.jpg" alt="" class="poster">
+                                <span class="movie-score">8.7</span>
+                            </a>
+                            <span class="movie-title">若能与你共乘海浪之上</span>
+
+                        </li>
+                        <li>
+                            <a href="movie.html" class="movie-poster">
+                                <img src="/static/image/poster/tianhuo.jpg" alt="" class="poster">
+                                <span class="movie-score">8.3</span>
+                            </a>
+                            <span class="movie-title">天·火</span>
+
+                        </li>
+                        <li>
+                            <a href="movie.html" class="movie-poster">
+                                <img src="/static/image/poster/yewen4.jpg" alt="" class="poster">
+                                <span class="movie-score">8.8</span>
+                            </a>
+                            <span class="movie-title">叶问4</span>
+
+                        </li>
+                        <li>
+                            <a href="movie.html" class="movie-poster">
+                                <img src="/static/image/poster/yishengyouni.jpg" alt="" class="poster">
+                                <span class="movie-score">8.3</span>
+                            </a>
+                            <span class="movie-title">一生有你</span>
+
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="aside">
+                <div class="panel-header">
+                    <span class="panel-title">周排行</span>
+                    <a href="javascript:;" class="panel-more">更多</a>
+                </div>
+                <div class="movie-rank">
+                    <ul>
+                        <li class="movie-rank-top1">
+                            <a href="javascript:;">
+                                <span class="movie-rank-num movie-rank-top3">1</span>
+                                <img src="/static/image/poster/haishanggangqinshi.jpg" alt="">
+                                <div>
+                                    <p class="movie-rank-name">海上钢琴师</p>
+                                    <span class="box-office">1500万</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:;">
+                                <span class="movie-rank-num movie-rank-top3">2</span>
+                                <p class="movie-rank-name">叶问4</p>
+                                <span class="box-office">1400万</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:;">
+                                <span class="movie-rank-num movie-rank-top3">3</span>
+                                <p class="movie-rank-name">若能与你共乘海浪之上</p>
+                                <span class="box-office">1000万</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:;">
+                                <span class="movie-rank-num">4</span>
+                                <p class="movie-rank-name">吹哨人</p>
+                                <span class="box-office">900万</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:;">
+                                <span class="movie-rank-num">5</span>
+                                <p class="movie-rank-name">大约在冬季</p>
+                                <span class="box-office">800万</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:;">
+                                <span class="movie-rank-num">6</span>
+                                <p class="movie-rank-name">吹哨人</p>
+                                <span class="box-office">700万</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:;">
+                                <span class="movie-rank-num">7</span>
+                                <p class="movie-rank-name">天·火</p>
+                                <span class="box-office">600万</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:;">
+                                <span class="movie-rank-num">8</span>
+                                <p class="movie-rank-name">一生有你</p>
+                                <span class="box-office">550万</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:;">
+                                <span class="movie-rank-num">9</span>
+                                <p class="movie-rank-name">冰雪奇缘2</p>
+                                <span class="box-office">450万</span>
+                            </a>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
-        <div class="layui-col-md4">
-            <div class="layui-card">
-                <div class="layui-card-header">卡片标题</div>
-                <div class="layui-card-body">
-                    卡片内容
+        <div class="panel">
+            <div class="main">
+
+                <div class="movie-list">
+                    <ul>
+                        <li>
+                            <a href="javascript:;" class="movie-poster">
+                                <img src="/static/image/poster/bingxueqiyuan2.jpg" alt="" class="poster">
+                                <span class="movie-score">12月25日上映</span>
+                            </a>
+                            <span class="movie-title">冰雪奇缘2</span>
+
+                        </li>
+                        <li>
+                            <a href="javascript:;" class="movie-poster">
+                                <img src="/static/image/poster/chuixiaoren.jpg" alt="" class="poster">
+                                <span class="movie-score">12月25日上映</span>
+                            </a>
+                            <span class="movie-title">吹哨人</span>
+
+                        </li>
+                        <li>
+                            <a href="javascript:;" class="movie-poster">
+                                <img src="/static/image/poster/dayuezaidongji.jpg" alt="" class="poster">
+                                <span class="movie-score">12月26日上映</span>
+                            </a>
+                            <span class="movie-title">大约在冬季</span>
+                        </li>
+                        <li>
+                            <a href="javascript:;" class="movie-poster">
+                                <img src="/static/image/poster/haishanggangqinshi.jpg" alt="" class="poster">
+                                <span class="movie-score">12月26日上映</span>
+                            </a>
+                            <span class="movie-title">海上钢琴师</span>
+                        </li>
+                        <li>
+                            <a href="javascript:;" class="movie-poster">
+                                <img src="/static/image/poster/ruonengyuni.jpg" alt="" class="poster">
+                                <span class="movie-score">12月26日上映</span>
+                            </a>
+                            <span class="movie-title">若能与你共乘海浪之上</span>
+                        </li>
+                        <li>
+                            <a href="javascript:;" class="movie-poster">
+                                <img src="/static/image/poster/tianhuo.jpg" alt="" class="poster">
+                                <span class="movie-score">12月27日上映</span>
+                            </a>
+                            <span class="movie-title">天·火</span>
+                        </li>
+                        <li>
+                            <a href="javascript:;" class="movie-poster">
+                                <img src="/static/image/poster/yewen4.jpg" alt="" class="poster">
+                                <span class="movie-score">12月28日上映</span>
+                            </a>
+                            <span class="movie-title">叶问4</span>
+                        </li>
+                        <li>
+                            <a href="javascript:;" class="movie-poster">
+                                <img src="/static/image/poster/yishengyouni.jpg" alt="" class="poster">
+                                <span class="movie-score">12月28日上映</span>
+                            </a>
+                            <span class="movie-title">一生有你</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="aside">
+                <div class="panel-header">
+                    <span class="panel-title">月排行</span>
+                    <a href="javascript:;" class="panel-more">更多</a>
+                </div>
+                <div class="movie-rank">
+                    <ul>
+                        <li class="movie-rank-top1">
+                            <a href="javascript:;">
+                                <span class="movie-rank-num movie-rank-top3">1</span>
+                                <img src="/static/image/poster/haishanggangqinshi.jpg" alt="">
+                                <div>
+                                    <p class="movie-rank-name">海上钢琴师</p>
+                                    <span class="box-office">1500人想看</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:;">
+                                <span class="movie-rank-num movie-rank-top3">2</span>
+                                <p class="movie-rank-name">叶问4</p>
+                                <span class="box-office">1400人想看</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:;">
+                                <span class="movie-rank-num movie-rank-top3">3</span>
+                                <p class="movie-rank-name">若能与你共乘海浪之上</p>
+                                <span class="box-office">1000人想看</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:;">
+                                <span class="movie-rank-num">4</span>
+                                <p class="movie-rank-name">吹哨人</p>
+                                <span class="box-office">900人想看</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:;">
+                                <span class="movie-rank-num">5</span>
+                                <p class="movie-rank-name">大约在冬季</p>
+                                <span class="box-office">800人想看</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:;">
+                                <span class="movie-rank-num">6</span>
+                                <p class="movie-rank-name">吹哨人</p>
+                                <span class="box-office">700人想看</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:;">
+                                <span class="movie-rank-num">7</span>
+                                <p class="movie-rank-name">天·火</p>
+                                <span class="box-office">600人想看</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:;">
+                                <span class="movie-rank-num">8</span>
+                                <p class="movie-rank-name">一生有你</p>
+                                <span class="box-office">550人想看</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:;">
+                                <span class="movie-rank-num">9</span>
+                                <p class="movie-rank-name">冰雪奇缘2</p>
+                                <span class="box-office">450人想看</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel">
+            <div class="main">
+
+                <div class="movie-list">
+                    <ul>
+                        <li>
+                            <a href="movie.html" class="movie-poster">
+                                <img src="/static/image/poster/bingxueqiyuan2.jpg" alt="" class="poster">
+                                <span class="movie-score">8.0</span>
+                            </a>
+                            <span class="movie-title">冰雪奇缘2</span>
+
+                        </li>
+                        <li>
+                            <a href="movie.html" class="movie-poster">
+                                <img src="/static/image/poster/chuixiaoren.jpg" alt="" class="poster">
+                                <span class="movie-score">8.5</span>
+                            </a>
+                            <span class="movie-title">吹哨人</span>
+
+                        </li>
+                        <li>
+                            <a href="movie.html" class="movie-poster">
+                                <img src="/static/image/poster/dayuezaidongji.jpg" alt="" class="poster">
+                                <span class="movie-score">8.8</span>
+                            </a>
+                            <span class="movie-title">大约在冬季</span>
+
+                        </li>
+                        <li>
+                            <a href="movie.html" class="movie-poster">
+                                <img src="/static/image/poster/haishanggangqinshi.jpg" alt="" class="poster">
+                                <span class="movie-score">9.2</span>
+                            </a>
+                            <span class="movie-title">海上钢琴师</span>
+
+                        </li>
+                        <li>
+                            <a href="movie.html" class="movie-poster">
+                                <img src="/static/image/poster/ruonengyuni.jpg" alt="" class="poster">
+                                <span class="movie-score">8.7</span>
+                            </a>
+                            <span class="movie-title">若能与你共乘海浪之上</span>
+
+                        </li>
+                        <li>
+                            <a href="movie.html" class="movie-poster">
+                                <img src="/static/image/poster/tianhuo.jpg" alt="" class="poster">
+                                <span class="movie-score">8.3</span>
+                            </a>
+                            <span class="movie-title">天·火</span>
+
+                        </li>
+                        <li>
+                            <a href="movie.html" class="movie-poster">
+                                <img src="/static/image/poster/yewen4.jpg" alt="" class="poster">
+                                <span class="movie-score">8.8</span>
+                            </a>
+                            <span class="movie-title">叶问4</span>
+
+                        </li>
+                        <li>
+                            <a href="movie.html" class="movie-poster">
+                                <img src="/static/image/poster/yishengyouni.jpg" alt="" class="poster">
+                                <span class="movie-score">8.3</span>
+                            </a>
+                            <span class="movie-title">一生有你</span>
+
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="aside">
+                <div class="panel-header">
+                    <span class="panel-title">总排行</span>
+                    <a href="javascript:;" class="panel-more">更多</a>
+                </div>
+                <div class="movie-rank">
+                    <ul>
+                        <li class="movie-rank-top1">
+                            <a href="javascript:;">
+                                <span class="movie-rank-num movie-rank-top3">1</span>
+                                <img src="/static/image/poster/haishanggangqinshi.jpg" alt="">
+                                <div>
+                                    <p class="movie-rank-name">海上钢琴师</p>
+                                    <span class="box-office">1500万</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:;">
+                                <span class="movie-rank-num movie-rank-top3">2</span>
+                                <p class="movie-rank-name">叶问4</p>
+                                <span class="box-office">1400万</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:;">
+                                <span class="movie-rank-num movie-rank-top3">3</span>
+                                <p class="movie-rank-name">若能与你共乘海浪之上</p>
+                                <span class="box-office">1000万</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:;">
+                                <span class="movie-rank-num">4</span>
+                                <p class="movie-rank-name">吹哨人</p>
+                                <span class="box-office">900万</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:;">
+                                <span class="movie-rank-num">5</span>
+                                <p class="movie-rank-name">大约在冬季</p>
+                                <span class="box-office">800万</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:;">
+                                <span class="movie-rank-num">6</span>
+                                <p class="movie-rank-name">吹哨人</p>
+                                <span class="box-office">700万</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:;">
+                                <span class="movie-rank-num">7</span>
+                                <p class="movie-rank-name">天·火</p>
+                                <span class="box-office">600万</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:;">
+                                <span class="movie-rank-num">8</span>
+                                <p class="movie-rank-name">一生有你</p>
+                                <span class="box-office">550万</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:;">
+                                <span class="movie-rank-num">9</span>
+                                <p class="movie-rank-name">冰雪奇缘2</p>
+                                <span class="box-office">450万</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel">
+            <div class="main">
+
+                <div class="movie-list">
+                    <ul>
+                        <li>
+                            <a href="movie.html" class="movie-poster">
+                                <img src="/static/image/poster/bingxueqiyuan2.jpg" alt="" class="poster">
+                                <span class="movie-score">8.0</span>
+                            </a>
+                            <span class="movie-title">冰雪奇缘2</span>
+
+                        </li>
+                        <li>
+                            <a href="movie.html" class="movie-poster">
+                                <img src="/static/image/poster/chuixiaoren.jpg" alt="" class="poster">
+                                <span class="movie-score">8.5</span>
+                            </a>
+                            <span class="movie-title">吹哨人</span>
+
+                        </li>
+                        <li>
+                            <a href="movie.html" class="movie-poster">
+                                <img src="/static/image/poster/dayuezaidongji.jpg" alt="" class="poster">
+                                <span class="movie-score">8.8</span>
+                            </a>
+                            <span class="movie-title">大约在冬季</span>
+
+                        </li>
+                        <li>
+                            <a href="movie.html" class="movie-poster">
+                                <img src="/static/image/poster/haishanggangqinshi.jpg" alt="" class="poster">
+                                <span class="movie-score">9.2</span>
+                            </a>
+                            <span class="movie-title">海上钢琴师</span>
+
+                        </li>
+                        <li>
+                            <a href="movie.html" class="movie-poster">
+                                <img src="/static/image/poster/ruonengyuni.jpg" alt="" class="poster">
+                                <span class="movie-score">8.7</span>
+                            </a>
+                            <span class="movie-title">若能与你共乘海浪之上</span>
+
+                        </li>
+                        <li>
+                            <a href="movie.html" class="movie-poster">
+                                <img src="/static/image/poster/tianhuo.jpg" alt="" class="poster">
+                                <span class="movie-score">8.3</span>
+                            </a>
+                            <span class="movie-title">天·火</span>
+
+                        </li>
+                        <li>
+                            <a href="movie.html" class="movie-poster">
+                                <img src="/static/image/poster/yewen4.jpg" alt="" class="poster">
+                                <span class="movie-score">8.8</span>
+                            </a>
+                            <span class="movie-title">叶问4</span>
+
+                        </li>
+                        <li>
+                            <a href="movie.html" class="movie-poster">
+                                <img src="/static/image/poster/yishengyouni.jpg" alt="" class="poster">
+                                <span class="movie-score">8.3</span>
+                            </a>
+                            <span class="movie-title">一生有你</span>
+
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="aside">
+                <div class="panel-header">
+                    <span class="panel-title">好评排行</span>
+                    <a href="javascript:;" class="panel-more">更多</a>
+                </div>
+                <div class="movie-rank">
+                    <ul>
+                        <li class="movie-rank-top1">
+                            <a href="javascript:;">
+                                <span class="movie-rank-num movie-rank-top3">1</span>
+                                <img src="/static/image/poster/haishanggangqinshi.jpg" alt="">
+                                <div>
+                                    <p class="movie-rank-name">海上钢琴师</p>
+                                    <span class="box-office">1500万</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:;">
+                                <span class="movie-rank-num movie-rank-top3">2</span>
+                                <p class="movie-rank-name">叶问4</p>
+                                <span class="box-office">1400万</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:;">
+                                <span class="movie-rank-num movie-rank-top3">3</span>
+                                <p class="movie-rank-name">若能与你共乘海浪之上</p>
+                                <span class="box-office">1000万</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:;">
+                                <span class="movie-rank-num">4</span>
+                                <p class="movie-rank-name">吹哨人</p>
+                                <span class="box-office">900万</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:;">
+                                <span class="movie-rank-num">5</span>
+                                <p class="movie-rank-name">大约在冬季</p>
+                                <span class="box-office">800万</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:;">
+                                <span class="movie-rank-num">6</span>
+                                <p class="movie-rank-name">吹哨人</p>
+                                <span class="box-office">700万</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:;">
+                                <span class="movie-rank-num">7</span>
+                                <p class="movie-rank-name">天·火</p>
+                                <span class="box-office">600万</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:;">
+                                <span class="movie-rank-num">8</span>
+                                <p class="movie-rank-name">一生有你</p>
+                                <span class="box-office">550万</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="javascript:;">
+                                <span class="movie-rank-num">9</span>
+                                <p class="movie-rank-name">冰雪奇缘2</p>
+                                <span class="box-office">450万</span>
+                            </a>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
     </div>
-
-    <div th:replace="footer::footer"></div>
 </div>
 
-
-<div id="demo-laypage-layout-1"></div>
-<button type="button" class="layui-btn layui-btn-primary" lay-on="test-page-custom">
-    <span class="layui-badge-dot"></span> 弹出任意自定义内容
-</button>
-<button type="button" lay-on="get">测试</button>
-</body>
-
-<script src="/static/plugin/layui/layui.js"></script>
-<script>
-    layui.use(function () {
-        var $ = layui.$;
-        var layer = layui.layer;
-        var util = layui.util;
-        var form = layui.form;
-        var laypage = layui.laypage;
-        laypage.render({
-            elem: 'demo-laypage-layout-1',
-            count: 1000,
-            layout: ['limit', 'prev', 'page', 'next']
-        });
-        // 事件
-        util.on('lay-on', {
-            'get': function () {
-                // 此处可执行 Ajax 等操作
-                $.get({
-                    url: '/api/user/aop', success: function (res) {
-                        console.log(res);
-                    }
-                });
-            },
-            'test-page-custom': function () {
-                layer.open({
-                    type: 1,
-                    area: '350px',
-                    resize: false,
-                    shadeClose: true,
-                    title: 'demo : layer + form',
-                    content: `
-          <div class="layui-form" lay-filter="filter-test-layer" style="margin: 16px;">
-            <div class="demo-login-container">
-              <div class="layui-form-item">
-                <div class="layui-input-wrap">
-                  <div class="layui-input-prefix">
-                    <i class="layui-icon layui-icon-username"></i>
-                  </div>
-                  <input type="text" name="username" value="" lay-verify="required" placeholder="用户名" lay-reqtext="请填写用户名" autocomplete="off" class="layui-input" lay-affix="clear">
-                </div>
-              </div>
-              <div class="layui-form-item">
-                <div class="layui-input-wrap">
-                  <div class="layui-input-prefix">
-                    <i class="layui-icon layui-icon-password"></i>
-                  </div>
-                  <input type="password" name="password" value="" lay-verify="required" placeholder="密   码" lay-reqtext="请填写密码" autocomplete="off" class="layui-input" lay-affix="eye">
-                </div>
-              </div>
-              <div class="layui-form-item">
-                <div class="layui-row">
-                  <div class="layui-col-xs7">
-                    <div class="layui-input-wrap">
-                      <div class="layui-input-prefix">
-                        <i class="layui-icon layui-icon-vercode"></i>
-                      </div>
-                      <input type="text" name="captcha" value="" lay-verify="required" placeholder="验证码" lay-reqtext="请填写验证码" autocomplete="off" class="layui-input" lay-affix="clear">
-                    </div>
-                  </div>
-                  <div class="layui-col-xs5">
-                    <div style="margin-left: 10px;">
-                      <img src="https://www.oschina.net/action/user/captcha" onclick="this.src='https://www.oschina.net/action/user/captcha?t='+ new Date().getTime();">
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="layui-form-item">
-                <input type="checkbox" name="remember" lay-skin="primary" title="记住密码">
-                <a href="#forget" style="float: right; margin-top: 7px;">忘记密码？</a>
-              </div>
-              <div class="layui-form-item">
-                <button class="layui-btn layui-btn-fluid" lay-submit lay-filter="demo-login">登录</button>
-              </div>
-              <div class="layui-form-item demo-login-other">
-                <label>社交账号登录</label>
-                <span style="padding: 0 21px 0 6px;">
-                  <a href="javascript:;"><i class="layui-icon layui-icon-login-qq" style="color: #3492ed;"></i></a>
-                  <a href="javascript:;"><i class="layui-icon layui-icon-login-wechat" style="color: #4daf29;"></i></a>
-                  <a href="javascript:;"><i class="layui-icon layui-icon-login-weibo" style="color: #cf1900;"></i></a>
-                </span>
-                或 <a href="#reg">注册帐号</a></span>
-              </div>
-            </div>
-          </div>
-        `,
-                    success: function () {
-                        // 对弹层中的表单进行初始化渲染
-                        form.render();
-                        // 表单提交事件
-                        form.on('submit(demo-login)', function (data) {
-                            var field = data.field; // 获取表单字段值
-                            // 显示填写结果，仅作演示用
-                            layer.alert(JSON.stringify(field), {
-                                title: '当前填写的字段值'
-                            });
-                            return false; // 阻止默认 form 跳转
-                        });
-                    }
-                });
-            }
-        })
-    });
+<footer class="footer">
+    <div class="container">
+        <div class="link-nav">
+            <ul>
+                <li><a href="javascript:;">关于影乐宝</a></li>
+                <li><a href="javascript:;">加入我们</a></li>
+                <li><a href="javascript:;">联系我们</a></li>
+                <li><a href="javascript:;">隐私政策</a></li>
+                <li><a href="javascript:;">问题反馈</a></li>
+            </ul>
+            <div class="copyright">Copyright © 2024 影乐宝</div>
+        </div>
+        <div class="sns">
+            <a href="javascript:;" class="sina-icon icon"></a>
+            <a href="javascript:;" class="wechat-icon icon"></a>
+            <a href="javascript:;" class="rss-icon icon"></a>
+        </div>
+    </div>
+</footer>
+<div id="toTop"></div>
+<script type="text/javascript" src="/static/js/main.js"></script>
+<script type="text/javascript" src="/static/js/slidey.js"></script>
+<script type="text/javascript">
+    window.onload = function () {
+        setPage("index.html");
+        initPublic();
+        initScrollToTop();
+        new initSlidey();
+    };
 </script>
+</body>
 </html>

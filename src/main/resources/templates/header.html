@@ -1,223 +1,78 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" type="text/css" href="/static/css/index.css">
+</head>
+
 <body>
-
-
-<!--<header id="header" class="wrapper">-->
-<!--    <div class="nav">-->
-<!--        <h1 class="slogan">{$maccms.site_name}</h1>-->
-<!--        <div id="index-nav">-->
-<!--            <ul class="nav-menu-items">-->
-<!--                <li class="nav-menu-item {if condition=" $maccms.aid eq 1-->
-<!--                "}selected{/if}">-->
-<!--                <a href="{$maccms.path}" title="{$maccms.site_name}首页">首页</a>-->
-<!--                </li>-->
-<!--                {maccms:type order="asc" by="sort" ids="parent" flag="vod"}-->
-<!--                <li class="nav-menu-item {if condition=">-->
-<!--                    <a class="nav-link" href="{:mac_url_type($vo)}"> {$vo.type_name} </a>-->
-<!--                </li>-->
-<!--                {/maccms:type}-->
-<!--                <li class="nav-menu-item domain">网址<em>+</em></li>-->
-<!--                <li class="space-line-bold"></li>-->
-<!--                <li class="nav-menu-item">-->
-<!--                    <a href="{:mac_url('label/app')}" title="下载{$maccms.site_name}APP"><i class="icon-app"></i>APP</a>-->
-<!--                </li>-->
-<!--                <li class="nav-menu-item drop">-->
-<!--					<span class="nav-menu-icon">-->
-<!--                        <i class="icon-all"></i>-->
-<!--                    </span>-->
-<!--                    <div class="drop-content sub-block">-->
-<!--                        <div class="drop-content-box grid-box">-->
-<!--                            <ul class="drop-content-items grid-items">-->
-<!--                                <li class="grid-item">-->
-<!--                                    <a href="{$maccms.path}">-->
-<!--                                        <i class="icon-home"></i>-->
-<!--                                        <div class="grid-item-name" title="{$maccms.site_name}首页">首页</div>-->
-<!--                                    </a>-->
-<!--                                </li>-->
-<!--                                {maccms:type order="asc" by="sort" ids="parent" flag="vod"}-->
-<!--                                <li class="grid-item">-->
-<!--                                    <a href="{:mac_url_type($vo)}" title="{$vo.type_name}">-->
-<!--                                        <i class="{switch name=" vo.type_id"}{case value="1"}icon-cate-dy{/case}{case-->
-<!--                                        value="2"}icon-cate-ds{/case}{case value="3"}icon-cate-zy{/case}{case-->
-<!--                                        value="4"}icon-cate-dm{/case}{case value="5"}icon-cate-dy{/case}{/switch}"></i>-->
-<!--                                        <div class="grid-item-name">{$vo.type_name}</div>-->
-<!--                                    </a>-->
-<!--                                </li>-->
-<!--                                {/maccms:type}-->
-<!--                                <li class="grid-item domain">-->
-<!--                                    <a href="javascript:;"><i class="icon-domain"></i>-->
-<!--                                        <div class="grid-item-name" title="网址">网址</div>-->
-<!--                                    </a>-->
-<!--                                </li>-->
-<!--                                <li class="grid-item grid-more">-->
-<!--                                    <a class="grid-more-link" href="{:mac_url_type($obj,['id'=>1],'show')}"-->
-<!--                                       title="查看全部影片">-->
-<!--                                        <div class="grid-item-name">全部影片</div>-->
-<!--                                    </a>-->
-<!--                                </li>-->
-<!--                                <li class="grid-item grid-more android">-->
-<!--                                    <a href="{:mac_url('label/app')}" class="grid-more-link"-->
-<!--                                       title="下载{$maccms.site_name}APP">-->
-<!--                                        <div class="grid-item-name">下载客户端</div>-->
-<!--                                    </a>-->
-<!--                                </li>-->
-<!--                            </ul>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                    <div class="shortcuts-mobile-overlay"></div>-->
-<!--                </li>-->
-<!--                <li class="space-line-bold"></li>-->
-<!--                <li class="nav-menu-item drop">-->
-<!--					<span class="nav-menu-icon">-->
-<!--                        <i class="icon-watch-history"></i>-->
-<!--                    </span>-->
-<!--                    <div class="drop-content drop-history">-->
-<!--                        <div class="drop-content-box">-->
-<!--                            <ul class="drop-content-items" id="history">-->
-<!--                                <li class="list-item list-item-title">-->
-<!--                                    <a href="" class="playlist historyclean">-->
-<!--                                        <i class="icon-clear"></i>-->
-<!--                                    </a>-->
-<!--                                    <strong>我的观影记录</strong>-->
-<!--                                </li>-->
-<!--                            </ul>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                    <div class="shortcuts-mobile-overlay"></div>-->
-<!--                </li>-->
-<!--            </ul>-->
-<!--        </div>-->
-<!--    </div>-->
-<!--    <div id="search-content">-->
-<!--        <div class="index-logo">-->
-<!--            <span class="logo-s">-->
-<!--                <img src="{$maccms.path_tpl}static/picture/index-logo.png" title="{$maccms.site_name}">-->
-<!--            </span>-->
-<!--        </div>-->
-<!--        <form action="{:mac_url('vod/search')}">-->
-<!--            <div class="search-box">-->
-<!--                <input class="search-input ac_wd" id="txtKeywords" type="text" name="wd" autocomplete="off"-->
-<!--                       placeholder="搜索电影、电视剧、综艺、动漫">-->
-<!--                <div class="search-drop">-->
-<!--                    <div class="drop-content-items ac_hot none">-->
-<!--                        <div class="list-item list-item-title"><strong>大家都在搜这些影片</strong></div>-->
-<!--                        <div class="search-tag">-->
-<!--                            {maccms:foreach name=":explode(',',$maccms.search_hot)" id="vo2" key="key2"}-->
-<!--                            <a href="{:mac_url('vod/search',['wd'=>$vo2])}" class="{if condition=" $key2 lt 4 "}hot-->
-<!--                            {else}{/if}"><i class="icon-hot"></i>{$vo2}</a>-->
-<!--                            {/maccms:foreach}-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--                <button class="search-btn search-go" type="submit"><i class="icon-search"></i></button>-->
-<!--                <button class="cancel-btn" type="button">取消</button>-->
-<!--            </div>-->
-<!--        </form>-->
-<!--    </div>-->
-<!--</header>-->
-
-
-<div th:fragment="header">
-    <div id="nav" class="layui-row">
-        <div id="slogan" class="layui-col-md4">
-            <h1 class="slogan">影乐宝</h1>
-        </div>
-        <div id="head_menu" class="layui-col-md4">
-            <ul class="layui-nav">
-                <li class="layui-nav-item">
-                    <a href="{:mac_url('vod/type')}">
-                        <i class="icon-cate-dy"></i>
-                        <span>电影</span>
-                    </a>
-                </li>
-                <li class="layui-nav-item">
-                    <a href="{:mac_url('tv/type')}">
-                        <i class="icon-cate-ds"></i>
-                        <span>电视剧</span>
-                    </a>
-                </li>
-                <li class="layui-nav-item">
-                    <a href="{:mac_url('actor/type')}">
-                        <i class="icon-cate-zy"></i>
-                        <span>演员</span>
-                    </a>
-                </li>
-                <li class="layui-nav-item">
-                    <a href="{:mac_url('director/type')}">
-                        <i class="icon-cate-dm"></i>
-                        <span>导演</span>
-                    </a>
-                </li>
-                <li class="layui-nav-item">
-                    <a href="{:mac_url('topic/type')}">
-                        <i class="icon-cate-tj"></i>
-                        <span>专题</span>
-                    </a>
-                </li>
+<header class="header">
+    <div class="container">
+        <!--logo-->
+        <a th:href="@{/page/index}" class="logo"></a>
+        <!--导航标签-->
+        <div class="nav">
+            <ul class="navbar">
+                <li><a th:href="@{/page/index}" class="active">首页</a></li>
+                <li><a th:href="@{/page/movie}">电影</a></li>
+                <li><a th:href="@{/page/rank}">排行</a></li>
+                <li><a href="javascript:;">反馈</a></li>
             </ul>
         </div>
-        <div id="head_user" class="layui-col-md4">
-            <ul class="layui-nav">
-                <li class="layui-nav-item">
-                    <a href="javascript:;" class="history" title="观看历史"><i class="iconfont"></i></a>
-                </li>
-                <li class="layui-nav-item">
-                    <a href="#" title="留言"><i class="iconfont"></i></a>
-                </li>
-                <li class="layui-nav-item">
-                    <a href="#" title="最近更新"><i class="iconfont"></i></a>
-                </li>
-                <li class="layui-nav-item">
-                    <a href="#" title="排行榜"><i class="iconfont"></i></a>
-                </li>
-                <li class="layui-nav-item">
-                    <a class="top_ico btn_wxgzh" href="#" title="二维码"><i class="iconfont"></i></a>
-                </li>
-                <li class="layui-nav-item">
-                    <a class="face_pic" href="#" title="w83ll43">
-                        <img class="face" src="/static/images/touxiang.png" alt="会员头像"></a>
-                    <div id="dhgb12" class="dhgb12 mac_user_box dropbox user" style="top: 1.5rem; display: none;">
-                        <div class="user_list_box">
-                            <div class="user_list"><a class="mac_user_n" href="javascript:;">w83ll43</a><a
-                                    class="mac_user_g" href="javascript:;">默认会员</a><a href="/index.php/user"
-                                                                                          target="_blank"><i
-                                    class="iconfont"></i>个人中心</a><a href="/index.php/user/favs" target="_blank"><i
-                                    class="iconfont"></i>我的收藏</a><a href="javascript:;" onclick="MAC.User.Logout();"
-                                                                        target="_self"><i class="iconfont"></i>退出账号</a>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-            </ul>
+        <!--购物车-->
+        <div class="headcart">
+            <i class="cart-icon"></i>
+            <b class="card-num"></b>
+            <div class="card-tip"></div>
         </div>
-    </div>
-    <div id="search-content" class="layui-row">
-        <div class="layui-col-md1">
-            <button type="button" class="layui-btn layui-btn-lg layui-btn-fluid layui-btn-normal">大型按钮</button>
+        <!--用户登陆注册-->
+        <div class="user">
+            <div class="userout">
+                <a href="login.html" class="login cur">登录</a>
+                <a href="register.html" class="register cur">注册</a>
+            </div>
+            <div class="userin">
+                <a href="javascript:;" class="menu-item-user">
+                    <img class="user-face" src="/static/image/userface.jpg" alt="userface">
+                    <span class="user-name"></span>
+                </a>
+                <span class="caret"></span>
+                <ul class="dropdown-menu">
+                    <li><a href="javascript:;">个人中心</a></li>
+                    <li><a href="javascript:;">退出登录</a></li>
+                </ul>
+            </div>
         </div>
-        <div class="layui-col-md6">
-            <form action="">
-                <div class="search-box">
-                    <div class="layui-input-group">
-                        <input type="text" placeholder="带任意后置内容" class="layui-input">
-                        <div class="layui-input-split layui-input-suffix" style="cursor: pointer;">
-                            <i class="layui-icon layui-icon-search"></i>
-                        </div>
-                    </div>
-                </div>
+        <!--搜索栏-->
+        <div class="search">
+            <form class="form-search" action="" method="">
+                <input type="text" id="search-input" class="form-search-input" placeholder="搜电影、影院"
+                       autocomplete="off"/>
+                <a class="form-search-icon" href="javascript:;" onclick="searchBtnClick(this,event)"></a>
             </form>
         </div>
-        <div class="layui-col-md5">
-            <div style="height: 100%; width: 100%;"></div>
+
+        <!--APP下载-->
+        <div class="app-download">
+            <span class="phone-icon"></span>
+            <span class="app-text">下载APP</span>
+            <span class="caret"></span>
+            <div class="qrcode-tip">
+                <img class="qrcode-img" src="/static/image/dingdang-qrcode.png" alt="扫描二维码下载APP"/>
+                <p class="qrcode-tip-title">扫码下载客户端</p>
+                <p class="qrcode-tip-content">手机购票 方便实惠</p>
+            </div>
         </div>
     </div>
-    <!--    <div class="layui-col-md4">-->
-    <!--        <a th:href="@{/index}">-->
-    <!--            <img th:src="@{/static/image/logo.png}">-->
-    <!--        </a>-->
-    <!--    </div>-->
-    <!--    <div class="layui-col-md4"></div>-->
-</div>
+</header>
 </body>
+<script type="text/javascript" src="/static/js/main.js"></script>
+<script type="text/javascript" src="/static/js/slidey.js"></script>
+<script type="text/javascript">
+    window.onload = function () {
+        setPage("index.html");
+        initPublic();
+        initScrollToTop();
+        new initSlidey();
+    };
+</script>
 </html>

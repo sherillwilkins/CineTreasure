@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
+@RequestMapping("/page")
 public class PageController {
 
     @RequestMapping("/index")
@@ -15,5 +16,25 @@ public class PageController {
     @RequestMapping("/test")
     public String test() {
         return "test";
+    }
+
+    @RequestMapping("/movie")
+    public String movie() {
+        return "movie";
+    }
+
+    @RequestMapping("/rank")
+    public String rank() {
+        return "rank";
+    }
+
+    @RequestMapping("/login")
+    public String login() {
+        return "login";
+    }
+
+    @RequestMapping("/register")
+    public String register() {
+        return "register";
     }
 }

@@ -3,7 +3,7 @@ package com.w83ll43.domain.dto;
 import lombok.Data;
 
 @Data
-public class UserRegisterDto {
+public class  UserRegisterDto {
 
     /**
      * 用户邮箱
