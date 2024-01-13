@@ -1,0 +1,377 @@
+@charset "UTF-8";
+@import "public-style.css";
+@import "header.css";
+@import "footer.css";
+
+.footer {
+    margin-top: 60px;
+}
+
+.body-bg {
+    background-color: #127BAB;
+    width: 100%;
+    height: 220px;
+
+    .
+;
+}
+
+/*********************************************/
+/* 电影海报信息 */
+.content .movie-info-bar {
+    margin-top: -150px;
+    padding: 25px 0 0 0;
+    background-color: #fff;
+    border-radius: 7px 7px 0 0;
+    position: relative;
+}
+
+.movie-info-bar .movie-poster {
+    float: left;
+    width: fit-content;
+    height: fit-content;
+    border: 1px solid #bababa;
+    box-shadow: 0 0 2px #ccc;
+    border-radius: 0 7px 7px 7px;
+    background: #fff;
+    padding: 10px;
+}
+
+.movie-info-bar .movie-poster img {
+    border-radius: 7px;
+    width: 280px;
+    height: 400px;
+}
+
+/* 电影信息 */
+.movie-info-bar .movie-info {
+    margin-left: 50px;
+    float: left;
+    color: #2d3237;
+    font-size: 16px;
+}
+
+.movie-info-bar .movie-info .movie-name-zh {
+    font-size: 26px;
+    font-weight: 700;
+    color: #FF8D1B;
+}
+
+.movie-info-bar .movie-info .movie-name-ods {
+    font-size: 20px;
+    line-height: 1.3;
+    color: #FF8D1B;
+    margin-bottom: 20px;
+}
+
+.movie-info-bar .movie-info ul p {
+    display: inline-block;
+    padding: 8px 0;
+    width: 350px;
+}
+
+.movie-info-bar .movie-info ul .movie-profile {
+    padding-top: 10px;
+    line-height: 1.7;
+    width: 700px;
+    height: 100px;
+    overflow: hidden;
+}
+
+/* 想看、评分 按钮 */
+.movie-info-bar .movie-wish-grade-btn a {
+    margin: 0 20px 0 0;
+    width: 120px;
+    height: 32px;
+    background-color: #127BAB;
+    color: #fff;
+    border-radius: 3px;
+    vertical-align: middle;
+}
+
+.movie-info-bar .movie-wish-grade-btn a:hover {
+    background-color: #FF8D1B;
+}
+
+.movie-info-bar .movie-wish-grade-btn i {
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    margin-right: 5px;
+    background-size: contain;
+}
+
+.movie-info-bar .movie-wish-btn i {
+    background-image: url("/static/image/icons/like-icon.png");
+}
+
+.movie-info-bar .movie-grade-btn i {
+    background-image: url("/static/image/icons/star-icon.png");
+}
+
+/* 电影成绩 */
+.movie-grade-box {
+    position: absolute;
+    top: 60px;
+    right: 80px;
+}
+
+.movie-grade-box .grade-box {
+    display: inline-block;
+    width: 80px;
+    height: 80px;
+    background-color: #679c21;
+    color: #fff;
+    text-align: center;
+}
+
+.movie-grade-box .grade-box b {
+    font-size: 35px;
+}
+
+.movie-grade-box .grade-box p {
+    font-size: 12px;
+}
+
+.movie-grade-box ul {
+    display: inline-block;
+    margin-left: 10px;
+    vertical-align: top;
+}
+
+.movie-grade-box ul li {
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.movie-grade-box ul li:nth-child(1) {
+    color: #f83838;
+}
+
+.movie-grade-box ul li:nth-child(2) {
+    color: #40a0e0;
+}
+
+.movie-grade-box ul li:nth-child(3) {
+    color: #FF8D1B;
+}
+
+/********************************************************/
+/* 主要内容器容 */
+.movie-main-container {
+    margin-top: 60px;
+}
+
+/************************************/
+/* 右边 侧边更多热映 */
+.movie-main-container .aside-content {
+    float: right;
+    width: 350px;
+}
+
+.aside-content .ac-title {
+    font-size: 18px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #eee;
+    color: #FF8D1B;
+}
+
+.aside-content .more-movie {
+    margin-top: 30px;
+}
+
+.aside-content .more-movie li {
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #EEE;
+}
+
+.aside-content .more-movie img {
+    width: 105px;
+    height: 150px;
+    vertical-align: top;
+    border: 1px solid #ccc;
+}
+
+.aside-content .more-movie .aside-info {
+    display: inline-block;
+    margin-left: 15px;
+    width: 225px;
+}
+
+
+.more-movie .aside-info h3 {
+    margin-bottom: 10px;
+}
+
+.more-movie .aside-info h3 a {
+    display: inline-block;
+    width: 180px;
+    color: #127BAB;
+    font-weight: 600;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.more-movie .aside-info h3 span {
+    float: right;
+    color: #fff;
+    background-color: #679c21;
+    padding: 0 5px;
+}
+
+.more-movie .aside-info p {
+    font-size: 12px;
+    margin-bottom: 7px;
+}
+
+/****************************************/
+/* 左边 主要内容*/
+.movie-main-container .main-content {
+    float: left;
+    width: 750px;
+}
+
+.main-content .tab-subtitle {
+    font-size: 18px;
+    border-bottom: 2px solid #EEE;
+}
+
+.main-content .tab-subtitle a {
+    display: inline-block;
+    color: #2d3237;
+    margin-right: 30px;
+    padding-bottom: 10px;
+}
+
+.main-content .tab-subtitle a:hover, .main-content .tab-subtitle a.active {
+    color: #FF8D1B;
+    border-bottom: 2px solid #FF8D1B;
+    margin-bottom: -2px;
+}
+
+.main-content .tab-content {
+    margin-top: 20px;
+}
+
+.tab-content .bodpnd {
+    border-bottom: 2px solid #EEE;
+    padding-bottom: 20px;
+}
+
+
+/* 收起（折叠） */
+.ticket-choose-buy .fold {
+    float: right;
+    margin-top: 10px;
+}
+
+.wrapper {
+    min-width: 400px;
+    max-width: 800px;
+    display: flex;
+    justify-content: flex-end;
+    margin-left: 0px;
+}
+
+.avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    overflow: hidden;
+    /* 不允许超出大盒子 */
+    background: url(./images/avatar.jpg) no-repeat center / cover;
+    /* 大部分情况下，图片样式都是这样设置的 */
+    margin-right: 20px;
+}
+
+
+.wrapper textarea {
+    border: groove;
+    border-color: black;
+    /* 边框颜色为透明 */
+
+    resize: none;
+    /* 用户无法自行调元素的尺寸，常用于文本域 */
+
+    background: #f5f5f5;
+    border-radius: 4px;
+    flex: 1;
+    padding: 10px;
+
+    /* 这行代码与下面.wrapper textarea:focus的那几行代码配合，可以让相关样式在获取焦点事件的时候平滑过渡 */
+    transition: all 0.5s;
+
+    height: 40px;
+}
+
+/*用法类似于 选择器:hover */
+.wrapper textarea:focus {
+    border-color: #e4e4e4;
+    background: #fff;
+    height: 50px;
+}
+
+.wrapper button {
+    background: #00aeec;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    margin-left: 10px;
+    width: 70px;
+    cursor: pointer;
+}
+
+.wrapper .total {
+    margin-right: 80px;
+    color: #999;
+    margin-top: 5px;
+    opacity: 0;
+    /*
+        opacity设置透明度，0是完全透明，1是完全不透明
+        opacity从0变成1时，元素会平滑显现
+    */
+    transition: all 0.5s;
+}
+
+.list {
+    min-width: 400px;
+    max-width: 800px;
+}
+
+.list .item {
+    width: 100%;
+    display: flex;
+}
+
+.list .item .info {
+    flex: 1;
+    border-bottom: 1px dashed #e4e4e4;
+    padding-bottom: 10px;
+}
+
+.list .item p {
+    margin: 0;
+}
+
+.list .item .name {
+    color: #FB7299;
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 2em;
+}
+
+.list .item .text {
+    color: #333;
+    padding: 10px 0;
+}
+
+.list .item .time {
+    color: #999;
+    font-size: 12px;
+}
+
+
+
+

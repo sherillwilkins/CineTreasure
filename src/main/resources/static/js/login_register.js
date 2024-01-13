@@ -8,18 +8,7 @@ function initLoginPage() {
     captcha.onclick = function () {
         captcha.src = generateCaptcha();
     };
-
-    //初始化输入框的事件
-    initInputEvent();
-
-    //初始化登录按钮点击事件
-    document.getElementById("form-submit-btn").onclick = login;
 }
-
-function initRegisterPage() {
-
-}
-
 
 /**
  * 产生验证码并且设置session
@@ -118,86 +107,4 @@ function getStringCanvas(string) {
     return canvas;
 }
 
-//Start Login Code
-{
-    var ele_username = document.getElementById("username");
-    var ele_password = document.getElementById("password");
-    var ele_captcha = document.getElementById("captcha");
-
-    var ele_usernameError = ele_username.parentElement.querySelector(".input-tip");
-    var ele_passwordError = ele_password.parentElement.querySelector(".input-tip");
-    var ele_captchaError = ele_captcha.parentElement.querySelector(".input-tip");
-
-    function login() {
-        if (checkLoginInfo()) {
-            setSession("UserName", ele_username.value);
-            let pg = getSession("PreviousPage");
-            if (pg === "null" || pg === "register.html") {
-                window.location.href = "index.html";
-            } else {
-                window.location.href = pg;
-            }
-        }
-    }
-
-    function initInputEvent() {
-        ele_username.onfocus = function () {
-            this.placeholder = "";
-            ele_usernameError.style.color = "#FF8D1B";
-            ele_usernameError.innerHTML = "✎ 用户名：";
-        };
-
-        ele_username.onblur = function () {
-            this.placeholder = "请输入您的用户名";
-            ele_usernameError.innerHTML = ""
-        };
-
-        ele_password.onfocus = function () {
-            this.placeholder = "";
-            ele_passwordError.style.color = "#FF8D1B";
-            ele_passwordError.innerHTML = "✎ 密码：";
-        };
-
-        ele_password.onblur = function () {
-            this.placeholder = "请输入您的密码";
-            ele_passwordError.innerHTML = "";
-        };
-
-        ele_captcha.onfocus = function () {
-            this.placeholder = "";
-            ele_captchaError.style.color = "#FF8D1B";
-            ele_captchaError.innerHTML = "✎ 验证码：";
-        };
-
-        ele_captcha.onblur = function () {
-            this.placeholder = "请输入验证码";
-            ele_captchaError.innerHTML = "";
-        };
-    }
-
-    function checkLoginInfo() {
-        let isSuccess = true;
-
-        // !!把一个任意类型的值转换为布尔类型，存在为true，不存在为false
-        if (!!user[ele_username.value]) {
-            if (user[ele_username.value] !== ele_password.value) {
-                ele_passwordError.style.color = "#F00";
-                ele_passwordError.innerHTML = "× 密码错误！";
-                isSuccess = false;
-            }
-        } else {
-            ele_usernameError.style.color = "#F00";
-            ele_usernameError.innerHTML = "× 用户名错误！";
-            isSuccess = false;
-        }
-
-        if (ele_captcha.value.toLowerCase() !== getSession("Captcha").toLowerCase()) {
-            ele_captchaError.style.color = "#F00";
-            ele_captchaError.innerHTML = "× 验证码错误！";
-            isSuccess = false;
-        }
-
-        return isSuccess;
-    }
-}
 //End Login Code

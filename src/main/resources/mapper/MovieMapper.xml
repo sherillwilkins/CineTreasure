@@ -5,25 +5,27 @@
 <mapper namespace="com.w83ll43.mapper.MovieMapper">
 
     <resultMap id="BaseResultMap" type="com.w83ll43.domain.entity.Movie">
-            <id property="mid" column="mid" jdbcType="BIGINT"/>
-            <result property="title" column="title" jdbcType="VARCHAR"/>
-            <result property="image" column="image" jdbcType="VARCHAR"/>
-            <result property="description" column="description" jdbcType="VARCHAR"/>
-            <result property="actor" column="actor" jdbcType="VARCHAR"/>
-            <result property="year" column="year" jdbcType="INTEGER"/>
-            <result property="region" column="region" jdbcType="VARCHAR"/>
-            <result property="genre" column="genre" jdbcType="INTEGER"/>
-            <result property="type" column="type" jdbcType="INTEGER"/>
-            <result property="rating" column="rating" jdbcType="FLOAT"/>
-            <result property="ratingCount" column="rating_count" jdbcType="INTEGER"/>
-            <result property="needVip" column="need_vip" jdbcType="TINYINT"/>
-            <result property="popularity" column="popularity" jdbcType="INTEGER"/>
+        <id property="mid" column="mid" jdbcType="BIGINT"/>
+        <result property="title" column="title" jdbcType="VARCHAR"/>
+        <result property="image" column="image" jdbcType="VARCHAR"/>
+        <result property="description" column="description" jdbcType="VARCHAR"/>
+        <result property="actor" column="actor" jdbcType="VARCHAR"/>
+        <result property="year" column="year" jdbcType="DATE"/>
+        <result property="region" column="region" jdbcType="VARCHAR"/>
+        <result property="genre" column="genre" jdbcType="VARCHAR"/>
+        <result property="type" column="type" jdbcType="VARCHAR"/>
+        <result property="url" column="url" jdbcType="VARCHAR"/>
+        <result property="rating" column="rating" jdbcType="FLOAT"/>
+        <result property="ratingCount" column="rating_count" jdbcType="INTEGER"/>
+        <result property="needVip" column="need_vip" jdbcType="TINYINT"/>
+        <result property="popularity" column="popularity" jdbcType="INTEGER"/>
     </resultMap>
 
     <sql id="Base_Column_List">
         mid,title,image,
-        description,actor,year,region,
-        genre,type,rating,rating_count,
-        need_vip,popularity
+        description,actor,year,
+        region,genre,type,url,
+        rating,rating_count,need_vip,
+        popularity
     </sql>
 </mapper>

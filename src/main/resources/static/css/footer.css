@@ -57,13 +57,13 @@
 }
 
 .footer .sns .sina-icon {
-    background-image: url("../imgs/icons/sina-icon.png");
+    background-image: url("/static/image/icons/sina-icon.png");
 }
 
 .footer .sns .wechat-icon {
-    background-image: url("../imgs/icons/wechat_icon.png");
+    background-image: url("/static/image/icons/wechat_icon.png");
 }
 
 .footer .sns .rss-icon {
-    background-image: url("../imgs/icons/rss-icon.png");
+    background-image: url("/static/image/icons/rss-icon.png");
 }

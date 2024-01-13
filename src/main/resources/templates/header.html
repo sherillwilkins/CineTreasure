@@ -1,11 +1,12 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
 <head>
     <link rel="stylesheet" type="text/css" href="/static/css/index.css">
+    <link href="/static/plugin/layui/css/layui.css" rel="stylesheet">
 </head>
 
 <body>
-<header class="header">
+<header class="header" th:fragment="header">
     <div class="container">
         <!--logo-->
         <a th:href="@{/page/index}" class="logo"></a>
@@ -26,19 +27,19 @@
         </div>
         <!--用户登陆注册-->
         <div class="user">
-            <div class="userout">
-                <a href="login.html" class="login cur">登录</a>
-                <a href="register.html" class="register cur">注册</a>
+            <div class="userout" th:unless="${session.user}">
+                <a th:href="@{/page/login}" class="login cur">登录</a>
+                <a th:href="@{/page/register}" class="register cur">注册</a>
             </div>
-            <div class="userin">
+            <div class="userin" th:if="${session.info}">
                 <a href="javascript:;" class="menu-item-user">
-                    <img class="user-face" src="/static/image/userface.jpg" alt="userface">
-                    <span class="user-name"></span>
+                    <img class="user-face" id="avatar" th:src="${session.info.avatar}" alt="头像">
+                    <span class="user-name" id="nickname" th:text="${session.info.nickname}"></span>
                 </a>
                 <span class="caret"></span>
                 <ul class="dropdown-menu">
                     <li><a href="javascript:;">个人中心</a></li>
-                    <li><a href="javascript:;">退出登录</a></li>
+                    <li><a th:href="@{/api/user/logout}">退出登录</a></li>
                 </ul>
             </div>
         </div>
@@ -67,12 +68,40 @@
 </body>
 <script type="text/javascript" src="/static/js/main.js"></script>
 <script type="text/javascript" src="/static/js/slidey.js"></script>
+<script type="text/javascript" src="/static/plugin/layui/layui.js"></script>
 <script type="text/javascript">
     window.onload = function () {
-        setPage("index.html");
         initPublic();
-        initScrollToTop();
-        new initSlidey();
+        var $ = layui.$;
+        $.ajax({
+            url: "/api/user/info",
+            method: "GET",
+            dataType: "json",
+            success: function (res) {
+                setSession("info", res.data);
+                $('#avatar').attr('src', res.data.avatar);
+                $('#nickname').text(res.data.nickname);
+            }
+        });
     };
+
+    layui.use(function () {
+        var $ = layui.$;
+        var util = layui.util;
+        var form = layui.form;
+
+        layer.ready(function () {
+            $.ajax({
+                url: "/api/user/info",
+                method: "GET",
+                dataType: "json",
+                success: function (res) {
+                    setSession("info", res.data);
+                    $('#avatar').attr('src', res.data.avatar);
+                    $('#nickname').text(res.data.nickname);
+                }
+            });
+        });
+    });
 </script>
 </html>

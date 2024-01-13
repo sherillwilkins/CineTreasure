@@ -162,6 +162,7 @@
 
 /* 排行榜 */
 .movie-grid .panel .aside {
+    margin-top: 80px;
     float: right;
     width: 350px;
 }

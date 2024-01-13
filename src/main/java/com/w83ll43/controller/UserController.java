@@ -1,5 +1,6 @@
 package com.w83ll43.controller;
 
+import cn.hutool.core.bean.BeanUtil;
 import com.w83ll43.annotation.Authorization;
 import com.w83ll43.common.Result;
 import com.w83ll43.constant.RedisConstant;
@@ -7,6 +8,7 @@ import com.w83ll43.domain.dto.UserLoginDto;
 import com.w83ll43.domain.dto.UserRegisterDto;
 import com.w83ll43.domain.entity.User;
 import com.w83ll43.domain.enums.Role;
+import com.w83ll43.domain.vo.UserVo;
 import com.w83ll43.service.UserService;
 import com.w83ll43.utils.BaseContext;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,6 +34,15 @@ public class UserController {
         return Result.success("success");
     }
 
+    @GetMapping("/info")
+    public Result<UserVo> getUserInfo() {
+        Long uid = BaseContext.getCurrentId();
+        User user = userService.getUserByUid(uid);
+        UserVo userVo = new UserVo();
+        BeanUtil.copyProperties(user, userVo);
+        return Result.success(userVo);
+    }
+
     /**
      * 会员注册
      * @return
@@ -54,6 +65,9 @@ public class UserController {
         }
         Long uid = user.getUid();
         session.setAttribute("user", uid);
+        UserVo userVo = new UserVo();
+        BeanUtil.copyProperties(user, userVo);
+        session.setAttribute("info", userVo);
         redisTemplate.opsForValue().set(RedisConstant.getKey(RedisConstant.USER_INFO_STRING, uid), user, 60 * 60, TimeUnit.SECONDS);
         return Result.success("登录成功！");
     }

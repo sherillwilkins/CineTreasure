@@ -71,26 +71,26 @@ function stopPropagation(evt) {
     evt.stopPropagation ? evt.stopPropagation() : evt.cancelBubble = true;
 }
 
-/**
- * 设置当前页面ulr session
- * session键：CurrentPage 当前页面，PreviousPage 上一页面
- * @param pageURL 当前页面url
- */
-function setPage(pageURL) {
-    //当前页面不等于上一个页面
-    if (pageURL !== getSession("CurrentPage")) {
-        setSession("PreviousPage", getSession("CurrentPage"));
-        setSession("CurrentPage", pageURL);
-    }
-}
+// /**
+//  * 设置当前页面 ulr session
+//  * session键：CurrentPage 当前页面，PreviousPage 上一页面
+//  * @param pageURL 当前页面url
+//  */
+// function setPage(pageURL) {
+//     //当前页面不等于上一个页面
+//     if (pageURL !== getSession("CurrentPage")) {
+//         setSession("PreviousPage", getSession("CurrentPage"));
+//         setSession("CurrentPage", pageURL);
+//     }
+// }
 
-/**
- * 用户是否登录了
- * @returns {boolean}登陆了返回true；反之
- */
-function isLogin() {
-    return !!getSession("UserName");
-}
+// /**
+//  * 用户是否登录了
+//  * @returns {boolean}登陆了返回true；反之
+//  */
+// function isLogin() {
+//     return !!getSession("UserName");
+// }
 
 /**
  * 初始化公共
@@ -98,55 +98,51 @@ function isLogin() {
 function initPublic() {
     //初始化搜索框
     initSearch();
-    //初始化登录后的行为
-    initSignInOutBehavior();
-    //退出登录
-    signOut();
 }
 
-/**
- * 初始化用户登录与未登录的行为
- */
-function initSignInOutBehavior() {
-    //已登录
-    if (isLogin()) {
-        document.querySelector(".user .userout").style.display = "none";
-        document.querySelector(".user .userin").setAttribute("style", "display:flex;display:-webkit-flex;");
-        document.querySelector(".user .userin .user-name").innerHTML = getSession("UserName");
-    } else { //未登录
-        let tag_a = document.querySelectorAll("a");
-        for (let a of tag_a) {
-            let flag = false;
-            for (let h of ["index.html", "login.html", "register.html", "javascript:;"]) {
-                let as = (a.href).slice((a.href).length - h.length, (a.href).length);
-                if (as === h) {
-                    flag = true;
-                    break;
-                }
-            }
-            // 阻止未登录访问 不允许访问的页面
-            if (!flag) {
-                a.addEventListener("click", function () {
-                    if (confirm("登陆后可访问，您确定要登录吗？")) {
-                        window.location.href = "login.html";
-                    }
-                    //阻止a标签的默认事件
-                    event.preventDefault();
-                }, false);
-            }
-        }
-    }
-}
-
-/**
- * 退出登录
- */
-function signOut() {
-    document.querySelector(".dropdown-menu>li:nth-child(2)>a").onclick = function () {
-        removeSession("UserName");
-        window.location.reload();
-    };
-}
+// /**
+//  * 初始化用户登录与未登录的行为
+//  */
+// function initSignInOutBehavior() {
+//     //已登录
+//     if (isLogin()) {
+//         document.querySelector(".user .userout").style.display = "none";
+//         document.querySelector(".user .userin").setAttribute("style", "display:flex;display:-webkit-flex;");
+//         document.querySelector(".user .userin .user-name").innerHTML = getSession("UserName");
+//     } else { //未登录
+//         let tag_a = document.querySelectorAll("a");
+//         for (let a of tag_a) {
+//             let flag = false;
+//             for (let h of ["index.html", "login.html", "register.html", "javascript:;"]) {
+//                 let as = (a.href).slice((a.href).length - h.length, (a.href).length);
+//                 if (as === h) {
+//                     flag = true;
+//                     break;
+//                 }
+//             }
+//             // 阻止未登录访问 不允许访问的页面
+//             if (!flag) {
+//                 a.addEventListener("click", function () {
+//                     if (confirm("登陆后可访问，您确定要登录吗？")) {
+//                         window.location.href = "login.html";
+//                     }
+//                     //阻止a标签的默认事件
+//                     event.preventDefault();
+//                 }, false);
+//             }
+//         }
+//     }
+// }
+//
+// /**
+//  * 退出登录
+//  */
+// function signOut() {
+//     document.querySelector(".dropdown-menu>li:nth-child(2)>a").onclick = function () {
+//         removeSession("UserName");
+//         window.location.reload();
+//     };
+// }
 
 
 /**

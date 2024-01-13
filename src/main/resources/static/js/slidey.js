@@ -1,50 +1,5 @@
 //
 
-
-/**
- * 进度条，宽度、时间可控，可中断
- * @param element 元素对象，可改变宽度的
- * @param width 进度条宽度，单位px，默认从0 - width)
- * @param duration 持续时间，单位s
- * @constructor
- */
-// function ProgressBar(element, width, duration) {
-//     // current width 当前进度条宽度
-//     var cw = 0;
-//     // setInterval函数对象
-//     var interval = null;
-//
-//     //
-//     let timeSpace = 5;
-//
-//     this.startProgress = function () {
-//         clearInterval(interval);
-//         cw = 0;
-//         let step = width / (duration * 1000 / timeSpace);
-//         interval = setInterval(function () {
-//             if ((cw += step) < width) {
-//                 element.style.width = cw + "px";
-//             } else {
-//                 clearInterval(interval);
-//             }
-//         }, timeSpace);
-//     };
-//
-//     this.stopProgress = function () {
-//         clearInterval(interval);
-//         let step = cw / 400 * timeSpace;
-//         interval = setInterval(function () {
-//             if ((cw -= step) > 0) {
-//                 element.style.width = cw + "px";
-//             } else {
-//                 element.style.width = 0;
-//                 clearInterval(interval);
-//             }
-//         }, timeSpace);
-//     };
-// }
-
-
 function initSlidey() {
     var slideyProgress = document.querySelector(".slidey-progress");
 

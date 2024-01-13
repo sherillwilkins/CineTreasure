@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>影乐宝</title>
@@ -109,72 +109,16 @@
             <div class="main">
                 <div class="panel-header">
                     <span class="panel-title">热播</span>
-                    <a href="javascript:;" class="panel-more">更多</a>
+                    <a th:href="@{/page/movie}" class="panel-more">更多</a>
                 </div>
                 <div class="movie-list">
                     <ul>
-                        <li>
-                            <a href="movie.html" class="movie-poster">
-                                <img src="/static/image/poster/bingxueqiyuan2.jpg" alt="" class="poster">
-                                <span class="movie-score">8.0</span>
+                        <li th:each="movie : ${movies}">
+                            <a th:href="@{/page/movie/detail/{mid}(mid=${movie.mid})}" class="movie-poster">
+                                <img th:src="@{/static/image/{image}(image=${movie.image})}" alt="" class="poster">
+                                <span th:text="${movie.rating}" class="movie-score"></span>
                             </a>
-                            <span class="movie-title">冰雪奇缘2</span>
-
-                        </li>
-                        <li>
-                            <a href="movie.html" class="movie-poster">
-                                <img src="/static/image/poster/chuixiaoren.jpg" alt="" class="poster">
-                                <span class="movie-score">8.5</span>
-                            </a>
-                            <span class="movie-title">吹哨人</span>
-                        </li>
-                        <li>
-                            <a href="movie.html" class="movie-poster">
-                                <img src="/static/image/poster/dayuezaidongji.jpg" alt="" class="poster">
-                                <span class="movie-score">8.8</span>
-                            </a>
-                            <span class="movie-title">大约在冬季</span>
-
-                        </li>
-                        <li>
-                            <a href="movie.html" class="movie-poster">
-                                <img src="/static/image/poster/haishanggangqinshi.jpg" alt="" class="poster">
-                                <span class="movie-score">9.2</span>
-                            </a>
-                            <span class="movie-title">海上钢琴师</span>
-
-                        </li>
-                        <li>
-                            <a href="movie.html" class="movie-poster">
-                                <img src="/static/image/poster/ruonengyuni.jpg" alt="" class="poster">
-                                <span class="movie-score">8.7</span>
-                            </a>
-                            <span class="movie-title">若能与你共乘海浪之上</span>
-
-                        </li>
-                        <li>
-                            <a href="movie.html" class="movie-poster">
-                                <img src="/static/image/poster/tianhuo.jpg" alt="" class="poster">
-                                <span class="movie-score">8.3</span>
-                            </a>
-                            <span class="movie-title">天·火</span>
-
-                        </li>
-                        <li>
-                            <a href="movie.html" class="movie-poster">
-                                <img src="/static/image/poster/yewen4.jpg" alt="" class="poster">
-                                <span class="movie-score">8.8</span>
-                            </a>
-                            <span class="movie-title">叶问4</span>
-
-                        </li>
-                        <li>
-                            <a href="movie.html" class="movie-poster">
-                                <img src="/static/image/poster/yishengyouni.jpg" alt="" class="poster">
-                                <span class="movie-score">8.3</span>
-                            </a>
-                            <span class="movie-title">一生有你</span>
-
+                            <span th:text="${movie.title}" class="movie-title"></span>
                         </li>
                     </ul>
                 </div>
@@ -255,73 +199,6 @@
                     </ul>
                 </div>
             </div>
-        </div>
-        <div class="panel">
-            <div class="main">
-
-                <div class="movie-list">
-                    <ul>
-                        <li>
-                            <a href="javascript:;" class="movie-poster">
-                                <img src="/static/image/poster/bingxueqiyuan2.jpg" alt="" class="poster">
-                                <span class="movie-score">12月25日上映</span>
-                            </a>
-                            <span class="movie-title">冰雪奇缘2</span>
-
-                        </li>
-                        <li>
-                            <a href="javascript:;" class="movie-poster">
-                                <img src="/static/image/poster/chuixiaoren.jpg" alt="" class="poster">
-                                <span class="movie-score">12月25日上映</span>
-                            </a>
-                            <span class="movie-title">吹哨人</span>
-
-                        </li>
-                        <li>
-                            <a href="javascript:;" class="movie-poster">
-                                <img src="/static/image/poster/dayuezaidongji.jpg" alt="" class="poster">
-                                <span class="movie-score">12月26日上映</span>
-                            </a>
-                            <span class="movie-title">大约在冬季</span>
-                        </li>
-                        <li>
-                            <a href="javascript:;" class="movie-poster">
-                                <img src="/static/image/poster/haishanggangqinshi.jpg" alt="" class="poster">
-                                <span class="movie-score">12月26日上映</span>
-                            </a>
-                            <span class="movie-title">海上钢琴师</span>
-                        </li>
-                        <li>
-                            <a href="javascript:;" class="movie-poster">
-                                <img src="/static/image/poster/ruonengyuni.jpg" alt="" class="poster">
-                                <span class="movie-score">12月26日上映</span>
-                            </a>
-                            <span class="movie-title">若能与你共乘海浪之上</span>
-                        </li>
-                        <li>
-                            <a href="javascript:;" class="movie-poster">
-                                <img src="/static/image/poster/tianhuo.jpg" alt="" class="poster">
-                                <span class="movie-score">12月27日上映</span>
-                            </a>
-                            <span class="movie-title">天·火</span>
-                        </li>
-                        <li>
-                            <a href="javascript:;" class="movie-poster">
-                                <img src="/static/image/poster/yewen4.jpg" alt="" class="poster">
-                                <span class="movie-score">12月28日上映</span>
-                            </a>
-                            <span class="movie-title">叶问4</span>
-                        </li>
-                        <li>
-                            <a href="javascript:;" class="movie-poster">
-                                <img src="/static/image/poster/yishengyouni.jpg" alt="" class="poster">
-                                <span class="movie-score">12月28日上映</span>
-                            </a>
-                            <span class="movie-title">一生有你</span>
-                        </li>
-                    </ul>
-                </div>
-            </div>
             <div class="aside">
                 <div class="panel-header">
                     <span class="panel-title">月排行</span>
@@ -394,230 +271,6 @@
                                 <p class="movie-rank-name">冰雪奇缘2</p>
                                 <span class="box-office">450人想看</span>
                             </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-        <div class="panel">
-            <div class="main">
-
-                <div class="movie-list">
-                    <ul>
-                        <li>
-                            <a href="movie.html" class="movie-poster">
-                                <img src="/static/image/poster/bingxueqiyuan2.jpg" alt="" class="poster">
-                                <span class="movie-score">8.0</span>
-                            </a>
-                            <span class="movie-title">冰雪奇缘2</span>
-
-                        </li>
-                        <li>
-                            <a href="movie.html" class="movie-poster">
-                                <img src="/static/image/poster/chuixiaoren.jpg" alt="" class="poster">
-                                <span class="movie-score">8.5</span>
-                            </a>
-                            <span class="movie-title">吹哨人</span>
-
-                        </li>
-                        <li>
-                            <a href="movie.html" class="movie-poster">
-                                <img src="/static/image/poster/dayuezaidongji.jpg" alt="" class="poster">
-                                <span class="movie-score">8.8</span>
-                            </a>
-                            <span class="movie-title">大约在冬季</span>
-
-                        </li>
-                        <li>
-                            <a href="movie.html" class="movie-poster">
-                                <img src="/static/image/poster/haishanggangqinshi.jpg" alt="" class="poster">
-                                <span class="movie-score">9.2</span>
-                            </a>
-                            <span class="movie-title">海上钢琴师</span>
-
-                        </li>
-                        <li>
-                            <a href="movie.html" class="movie-poster">
-                                <img src="/static/image/poster/ruonengyuni.jpg" alt="" class="poster">
-                                <span class="movie-score">8.7</span>
-                            </a>
-                            <span class="movie-title">若能与你共乘海浪之上</span>
-
-                        </li>
-                        <li>
-                            <a href="movie.html" class="movie-poster">
-                                <img src="/static/image/poster/tianhuo.jpg" alt="" class="poster">
-                                <span class="movie-score">8.3</span>
-                            </a>
-                            <span class="movie-title">天·火</span>
-
-                        </li>
-                        <li>
-                            <a href="movie.html" class="movie-poster">
-                                <img src="/static/image/poster/yewen4.jpg" alt="" class="poster">
-                                <span class="movie-score">8.8</span>
-                            </a>
-                            <span class="movie-title">叶问4</span>
-
-                        </li>
-                        <li>
-                            <a href="movie.html" class="movie-poster">
-                                <img src="/static/image/poster/yishengyouni.jpg" alt="" class="poster">
-                                <span class="movie-score">8.3</span>
-                            </a>
-                            <span class="movie-title">一生有你</span>
-
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <div class="aside">
-                <div class="panel-header">
-                    <span class="panel-title">总排行</span>
-                    <a href="javascript:;" class="panel-more">更多</a>
-                </div>
-                <div class="movie-rank">
-                    <ul>
-                        <li class="movie-rank-top1">
-                            <a href="javascript:;">
-                                <span class="movie-rank-num movie-rank-top3">1</span>
-                                <img src="/static/image/poster/haishanggangqinshi.jpg" alt="">
-                                <div>
-                                    <p class="movie-rank-name">海上钢琴师</p>
-                                    <span class="box-office">1500万</span>
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="javascript:;">
-                                <span class="movie-rank-num movie-rank-top3">2</span>
-                                <p class="movie-rank-name">叶问4</p>
-                                <span class="box-office">1400万</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="javascript:;">
-                                <span class="movie-rank-num movie-rank-top3">3</span>
-                                <p class="movie-rank-name">若能与你共乘海浪之上</p>
-                                <span class="box-office">1000万</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="javascript:;">
-                                <span class="movie-rank-num">4</span>
-                                <p class="movie-rank-name">吹哨人</p>
-                                <span class="box-office">900万</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="javascript:;">
-                                <span class="movie-rank-num">5</span>
-                                <p class="movie-rank-name">大约在冬季</p>
-                                <span class="box-office">800万</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="javascript:;">
-                                <span class="movie-rank-num">6</span>
-                                <p class="movie-rank-name">吹哨人</p>
-                                <span class="box-office">700万</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="javascript:;">
-                                <span class="movie-rank-num">7</span>
-                                <p class="movie-rank-name">天·火</p>
-                                <span class="box-office">600万</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="javascript:;">
-                                <span class="movie-rank-num">8</span>
-                                <p class="movie-rank-name">一生有你</p>
-                                <span class="box-office">550万</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="javascript:;">
-                                <span class="movie-rank-num">9</span>
-                                <p class="movie-rank-name">冰雪奇缘2</p>
-                                <span class="box-office">450万</span>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-        <div class="panel">
-            <div class="main">
-
-                <div class="movie-list">
-                    <ul>
-                        <li>
-                            <a href="movie.html" class="movie-poster">
-                                <img src="/static/image/poster/bingxueqiyuan2.jpg" alt="" class="poster">
-                                <span class="movie-score">8.0</span>
-                            </a>
-                            <span class="movie-title">冰雪奇缘2</span>
-
-                        </li>
-                        <li>
-                            <a href="movie.html" class="movie-poster">
-                                <img src="/static/image/poster/chuixiaoren.jpg" alt="" class="poster">
-                                <span class="movie-score">8.5</span>
-                            </a>
-                            <span class="movie-title">吹哨人</span>
-
-                        </li>
-                        <li>
-                            <a href="movie.html" class="movie-poster">
-                                <img src="/static/image/poster/dayuezaidongji.jpg" alt="" class="poster">
-                                <span class="movie-score">8.8</span>
-                            </a>
-                            <span class="movie-title">大约在冬季</span>
-
-                        </li>
-                        <li>
-                            <a href="movie.html" class="movie-poster">
-                                <img src="/static/image/poster/haishanggangqinshi.jpg" alt="" class="poster">
-                                <span class="movie-score">9.2</span>
-                            </a>
-                            <span class="movie-title">海上钢琴师</span>
-
-                        </li>
-                        <li>
-                            <a href="movie.html" class="movie-poster">
-                                <img src="/static/image/poster/ruonengyuni.jpg" alt="" class="poster">
-                                <span class="movie-score">8.7</span>
-                            </a>
-                            <span class="movie-title">若能与你共乘海浪之上</span>
-
-                        </li>
-                        <li>
-                            <a href="movie.html" class="movie-poster">
-                                <img src="/static/image/poster/tianhuo.jpg" alt="" class="poster">
-                                <span class="movie-score">8.3</span>
-                            </a>
-                            <span class="movie-title">天·火</span>
-
-                        </li>
-                        <li>
-                            <a href="movie.html" class="movie-poster">
-                                <img src="/static/image/poster/yewen4.jpg" alt="" class="poster">
-                                <span class="movie-score">8.8</span>
-                            </a>
-                            <span class="movie-title">叶问4</span>
-
-                        </li>
-                        <li>
-                            <a href="movie.html" class="movie-poster">
-                                <img src="/static/image/poster/yishengyouni.jpg" alt="" class="poster">
-                                <span class="movie-score">8.3</span>
-                            </a>
-                            <span class="movie-title">一生有你</span>
-
                         </li>
                     </ul>
                 </div>
@@ -701,32 +354,13 @@
         </div>
     </div>
 </div>
-
-<footer class="footer">
-    <div class="container">
-        <div class="link-nav">
-            <ul>
-                <li><a href="javascript:;">关于影乐宝</a></li>
-                <li><a href="javascript:;">加入我们</a></li>
-                <li><a href="javascript:;">联系我们</a></li>
-                <li><a href="javascript:;">隐私政策</a></li>
-                <li><a href="javascript:;">问题反馈</a></li>
-            </ul>
-            <div class="copyright">Copyright © 2024 影乐宝</div>
-        </div>
-        <div class="sns">
-            <a href="javascript:;" class="sina-icon icon"></a>
-            <a href="javascript:;" class="wechat-icon icon"></a>
-            <a href="javascript:;" class="rss-icon icon"></a>
-        </div>
-    </div>
-</footer>
+<div th:replace="footer::footer"></div>
 <div id="toTop"></div>
+
 <script type="text/javascript" src="/static/js/main.js"></script>
 <script type="text/javascript" src="/static/js/slidey.js"></script>
 <script type="text/javascript">
     window.onload = function () {
-        setPage("index.html");
         initPublic();
         initScrollToTop();
         new initSlidey();

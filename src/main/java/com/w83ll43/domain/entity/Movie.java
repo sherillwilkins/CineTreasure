@@ -6,6 +6,7 @@ import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 
 import java.io.Serializable;
+import java.util.Date;
 
 import lombok.Data;
 
@@ -45,7 +46,7 @@ public class Movie implements Serializable {
     /**
      * 上映年份
      */
-    private Integer year;
+    private Date year;
 
     /**
      * 地区
@@ -55,12 +56,17 @@ public class Movie implements Serializable {
     /**
      * 题材
      */
-    private Integer genre;
+    private String genre;
 
     /**
      * 类型
      */
-    private Integer type;
+    private String type;
+
+    /**
+     * 播放地址
+     */
+    private String url;
 
     /**
      * 评分

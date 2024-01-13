@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>登录 - 影乐宝</title>
     <link rel="stylesheet" type="text/css" href="/static/css/login.css">
+    <link href="/static/plugin/layui/css/layui.css" rel="stylesheet">
 </head>
 <body>
 <div th:replace="header::header"></div>
@@ -14,68 +15,94 @@
                 登录
                 <span class="sign-switch">
                     还没有账号？
-                    <a href="register.html">立即注册</a>
+                    <a th:href="@{/page/register}">立即注册</a>
                 </span>
             </h3>
         </div>
-        <form action="" id="center-box-form">
+        <form class="layui-form" id="center-box-form">
             <div class="form-item">
                 <i class="username-icon icon"></i>
-                <input type="text" name="" id="username" autocomplete="off" placeholder="请输入您的用户名">
-                <span class="input-tip"></span>
+                <input type="text" name="email" id="email" autocomplete="off" lay-verify="required|email"
+                       placeholder="请输入您的邮箱">
             </div>
             <div class="form-item">
                 <i class="password-icon icon"></i>
-                <input type="password" name="" id="password" autocomplete="off" placeholder="请输入您的密码">
-                <span class="input-tip"></span>
+                <input type="password" name="password" id="password" autocomplete="off" lay-verify="required|password"
+                       placeholder="请输入您的密码">
             </div>
             <div class="form-item">
                 <i class="captcha-icon icon"></i>
-                <input type="text" name="" id="captcha" autocomplete="off" placeholder="请输入验证码">
-                <span class="input-tip"></span>
-                <img id="captcha-img" src="" alt="验证码">
+                <input type="text" id="captcha" autocomplete="off" lay-verify="required|captcha"
+                       placeholder="请输入验证码">
+                <img id="captcha-img" alt="验证码">
                 <span class="captcha-tip">看不清，换一张</span>
             </div>
             <p>
-                <!--<label for="remember" style="color: #666;cursor: pointer;">
-                    <input type="checkbox" id="remember">
-                    记住登录状态
-                </label>-->
                 <a href="" class="forget-password">忘记密码？</a>
             </p>
-            <button id="form-submit-btn" type="button" onclick="login()">登录</button>
+            <button id="form-submit-btn" lay-submit lay-filter="login">登录</button>
         </form>
     </div>
 </div>
 
-<footer class="footer">
-    <div class="container">
-        <div class="link-nav">
-            <ul>
-                <li><a href="javascript:;">关于叮当</a></li>
-                <li><a href="javascript:;">加入我们</a></li>
-                <li><a href="javascript:;">联系我们</a></li>
-                <li><a href="javascript:;">隐私政策</a></li>
-                <li><a href="javascript:;">问题反馈</a></li>
-            </ul>
-            <div class="copyright">Copyright © 2019 叮当电影</div>
-        </div>
-        <div class="sns">
-            <a href="javascript:;" class="sina-icon icon"></a>
-            <a href="javascript:;" class="wechat-icon icon"></a>
-            <a href="javascript:;" class="rss-icon icon"></a>
-        </div>
-    </div>
-</footer>
+<div th:replace="footer::footer"></div>
 
 <script type="text/javascript" src="/static/js/main.js"></script>
 <script type="text/javascript" src="/static/js/login_register.js"></script>
+<script type="text/javascript" src="/static/plugin/layui/layui.js"></script>
 <script type="text/javascript">
     window.onload = function () {
-        setPage("login.html");
         initPublic();
         initLoginPage();
     };
+
+    layui.use(function () {
+        var $ = layui.$;
+        var util = layui.util;
+        var form = layui.form;
+        // 事件
+
+        // 自定义验证规则
+        form.verify({
+            // 验证邮箱，且为必填项
+            email: function (value, elem) {
+                if (!new RegExp("^[A-Za-z0-9]+([-._][A-Za-z0-9]+)*@[A-Za-z0-9]+(-[A-Za-z0-9]+)*(\\.[A-Za-z]{2,6}|[A-Za-z]{2,4}\\.[A-Za-z]{2,3})$").test(value)) {
+                    return '邮箱格式不正确';
+                }
+            },
+            // 验证密码，且为必填项
+            password: function (value, elem) {
+                if (!/^[\S]{6,16}$/.test(value)) {
+                    return '密码必须为 6 到 16 位的非空字符';
+                }
+            },
+            captcha: function (value, item) {
+                if (value !== getSession("Captcha").toLowerCase()) {
+                    return '验证码错误！';
+                }
+            }
+        });
+
+        // 提交事件
+        form.on('submit(login)', function (data) {
+            $.ajax({
+                url: "/api/user/login",
+                data: JSON.stringify(data.field),
+                method: "POST",
+                dataType: "json",
+                contentType: 'application/json',
+                success: function (res) {
+                    if (res.code == 0) {
+                        layer.msg(res.message);
+                    } else {
+                        layer.msg(res.message);
+                        window.location.href = "/page/index";
+                    }
+                }
+            });
+            return false;
+        });
+    });
 </script>
 </body>
 </html>

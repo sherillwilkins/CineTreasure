@@ -30,6 +30,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
     @Override
     public void register(UserRegisterDto userRegisterDto) {
         User user = new User();
+        user.setNickname(userRegisterDto.getUsername());
         user.setEmail(userRegisterDto.getEmail());
         user.setPassword(MD5Util.md5(userRegisterDto.getPassword()));
         this.save(user);

@@ -6,7 +6,7 @@
 .wrap {
     position: relative;
     height: 640px;
-    background-image: url("../imgs/login-register-backgroud-image.jpg");
+    background-image: url("/static/image/backgroud.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -48,7 +48,7 @@
     margin-bottom: 20px;
 }
 
-.form-item .icon{
+.form-item .icon {
     width: 24px;
     height: 24px;
     background-repeat: no-repeat;
@@ -57,19 +57,19 @@
 }
 
 .username-icon {
-    background-image: url("../imgs/icons/username-icon.png");
+    background-image: url("/static/image/icons/username-icon.png");
 }
 
-.e-mail-icon{
-    background-image: url("../imgs/icons/e-main.png");
+.e-mail-icon {
+    background-image: url("/static/image/icons/e-main.png");
 }
 
 .password-icon {
-    background-image: url("../imgs/icons/password-icon.png");
+    background-image: url("/static/image/icons/password-icon.png");
 }
 
-.re-password-icon{
-    background-image: url("../imgs/icons/re-password-icon.png");
+.re-password-icon {
+    background-image: url("/static/image/icons/re-password-icon.png");
 }
 
 .form-item input {
@@ -83,7 +83,7 @@
     border-bottom: 1px solid #ccc;
 }
 
-.form-item input:focus{
+.form-item input:focus {
     border-bottom: 1px solid #FF8D1B;
 }
 
