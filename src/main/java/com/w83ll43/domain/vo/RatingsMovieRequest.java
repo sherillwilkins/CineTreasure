@@ -8,4 +8,6 @@ public class RatingsMovieRequest {
     private Long mid;
 
     private Long score;
+
+    private String content;
 }

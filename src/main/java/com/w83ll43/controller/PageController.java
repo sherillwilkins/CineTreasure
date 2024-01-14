@@ -7,8 +7,10 @@ import com.w83ll43.domain.entity.User;
 import com.w83ll43.domain.enums.Role;
 import com.w83ll43.domain.vo.MovieRankRequest;
 import com.w83ll43.domain.vo.QueryMovieRequest;
+import com.w83ll43.domain.vo.RatingsVo;
 import com.w83ll43.service.FeedbackService;
 import com.w83ll43.service.MovieService;
+import com.w83ll43.service.RatingsService;
 import com.w83ll43.service.UserService;
 import com.w83ll43.utils.BaseContext;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,6 +36,9 @@ public class PageController {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private RatingsService ratingsService;
 
     @RequestMapping("/index")
     public String index(Model model) {
@@ -63,6 +68,7 @@ public class PageController {
     public String movieDetail(Model model, @PathVariable("mid") Long mid) {
         Movie movie = movieService.getMovieByMid(mid);
         model.addAttribute("movie", movie);
+        model.addAttribute("ratingsVos", ratingsService.getMovieRatings(mid));
         return "movie_detail";
     }
 

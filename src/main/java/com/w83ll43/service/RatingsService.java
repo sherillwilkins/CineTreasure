@@ -2,6 +2,7 @@ package com.w83ll43.service;
 
 import com.w83ll43.domain.entity.Ratings;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.w83ll43.domain.vo.RatingsVo;
 
 import java.util.Date;
 import java.util.List;
@@ -18,4 +19,6 @@ public interface RatingsService extends IService<Ratings> {
     List<Ratings> getUserRatings(Long uid);
 
     List<Ratings> queryRatingRangeTime(Date startTime, Date endTime);
+
+    List<RatingsVo> getMovieRatings(Long mid);
 }

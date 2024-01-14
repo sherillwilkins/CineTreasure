@@ -5,15 +5,16 @@
 <mapper namespace="com.w83ll43.mapper.RatingsMapper">
 
     <resultMap id="BaseResultMap" type="com.w83ll43.domain.entity.Ratings">
-            <id property="rid" column="rid" jdbcType="BIGINT"/>
-            <result property="uid" column="uid" jdbcType="BIGINT"/>
-            <result property="mid" column="mid" jdbcType="BIGINT"/>
-            <result property="value" column="value" jdbcType="BIGINT"/>
-            <result property="rtime" column="rtime" jdbcType="TIMESTAMP"/>
+        <id property="rid" column="rid" jdbcType="BIGINT"/>
+        <result property="uid" column="uid" jdbcType="BIGINT"/>
+        <result property="mid" column="mid" jdbcType="BIGINT"/>
+        <result property="value" column="value" jdbcType="BIGINT"/>
+        <result property="content" column="content" jdbcType="VARCHAR"/>
+        <result property="rtime" column="rtime" jdbcType="TIMESTAMP"/>
     </resultMap>
 
     <sql id="Base_Column_List">
         rid,uid,mid,
-        value,rtime
+        value,content,rtime
     </sql>
 </mapper>

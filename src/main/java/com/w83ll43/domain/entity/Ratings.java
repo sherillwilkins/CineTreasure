@@ -4,15 +4,17 @@ import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+
 import java.io.Serializable;
 import java.util.Date;
+
 import lombok.Data;
 
 /**
  * 电影评分表
  * @TableName ratings
  */
-@TableName(value ="ratings")
+@TableName(value = "ratings")
 @Data
 public class Ratings implements Serializable {
     /**
@@ -35,6 +37,11 @@ public class Ratings implements Serializable {
      * 评分值
      */
     private Long value;
+
+    /**
+     * 评价内容
+     */
+    private String content;
 
     /**
      * 评分时间

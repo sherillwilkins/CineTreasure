@@ -29,7 +29,7 @@ public class RatingsController {
      * @return
      */
     @PostMapping
-    @Transactional
+//    @Transactional
     public Result<String> rating(@RequestBody RatingsMovieRequest request) {
         Long uid = BaseContext.getCurrentId();
 
@@ -42,12 +42,13 @@ public class RatingsController {
         ratings.setUid(uid);
         ratings.setMid(request.getMid());
         ratings.setValue(request.getScore());
+        ratings.setContent(request.getContent());
         ratings.setRtime(new Date());
         ratingsService.save(ratings);
 
-        Movie movie = movieService.getMovieByMid(request.getMid());
-        movie.setRating(((movie.getRating() * movie.getRatingCount()) + request.getScore()) / (movie.getRatingCount() + 1));
-        movieService.updateMovie(movie);
+//        Movie movie = movieService.getMovieByMid(request.getMid());
+//        movie.setRating(((movie.getRating() * movie.getRatingCount()) + request.getScore()) / (movie.getRatingCount() + 1));
+//        movieService.updateMovie(movie);
         return Result.success("评分成功！");
     }
 }

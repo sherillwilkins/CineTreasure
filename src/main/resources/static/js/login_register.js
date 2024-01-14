@@ -4,6 +4,7 @@ var user = {'root': 'root', 'username': 'password'};
 function initLoginPage() {
     //初始化验证码
     const captcha = document.getElementById('captcha-img');
+    sessionStorage.removeItem("Captcha");
     captcha.src = generateCaptcha();
     captcha.onclick = function () {
         captcha.src = generateCaptcha();
@@ -15,6 +16,7 @@ function initLoginPage() {
  */
 function generateCaptcha() {
     var code = getRandomString();
+    sessionStorage.removeItem("Captcha");
     setSession('Captcha', code);
     var canvas = getStringCanvas(code);
     return canvasToBase64Image(canvas);
