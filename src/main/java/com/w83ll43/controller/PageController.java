@@ -87,7 +87,7 @@ public class PageController {
     @RequestMapping("/watch/{mid}")
     public String watch(@PathVariable("mid") Long mid, Model model) {
         Movie movie = movieService.getMovieByMid(mid);
-        model.addAttribute("movie", movie);
+        model.addAttribute("playingMovie", movie);
         model.addAttribute("recommendMovies", movieService.getMovieRanking(new MovieRankRequest(1, 4, 4)).getRecords());
         return "watch";
     }
@@ -96,5 +96,10 @@ public class PageController {
     public String search(Model model, @RequestParam String keyword) {
         model.addAttribute("movies", movieService.getQueryMovieList(QueryMovieRequest.builder().pageNo(1).pageSize(10).keyword(keyword).build()));
         return "search";
+    }
+
+    @RequestMapping("/report")
+    public String report() {
+        return "report";
     }
 }
