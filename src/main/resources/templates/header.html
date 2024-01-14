@@ -41,6 +41,7 @@
                 <span class="caret"></span>
                 <ul class="dropdown-menu">
                     <li><a th:href="@{/page/report}">报表</a></li>
+                    <li><a onclick="openVip()">开通 VIP</a></li>
                     <li><a th:href="@{/api/user/logout}">退出登录</a></li>
                 </ul>
             </div>
@@ -60,6 +61,7 @@
 <script type="text/javascript" src="/static/js/main.js"></script>
 <script type="text/javascript" src="/static/js/slidey.js"></script>
 <script type="text/javascript" src="/static/plugin/layui/layui.js"></script>
+<script type="text/javascript" src="/static/plugin/jquery/jquery-3.7.1.js"></script>
 <script type="text/javascript">
     window.onload = function () {
         initPublic();

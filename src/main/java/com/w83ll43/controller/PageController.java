@@ -3,10 +3,14 @@ package com.w83ll43.controller;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.w83ll43.domain.entity.Feedback;
 import com.w83ll43.domain.entity.Movie;
+import com.w83ll43.domain.entity.User;
+import com.w83ll43.domain.enums.Role;
 import com.w83ll43.domain.vo.MovieRankRequest;
 import com.w83ll43.domain.vo.QueryMovieRequest;
 import com.w83ll43.service.FeedbackService;
 import com.w83ll43.service.MovieService;
+import com.w83ll43.service.UserService;
+import com.w83ll43.utils.BaseContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -27,6 +31,9 @@ public class PageController {
 
     @Autowired
     private FeedbackService feedbackService;
+
+    @Autowired
+    private UserService userService;
 
     @RequestMapping("/index")
     public String index(Model model) {
@@ -87,6 +94,13 @@ public class PageController {
     @RequestMapping("/watch/{mid}")
     public String watch(@PathVariable("mid") Long mid, Model model) {
         Movie movie = movieService.getMovieByMid(mid);
+        if (movie.getNeedVip() == 1) {
+            Long uid = BaseContext.getCurrentId();
+            User user = userService.getUserByUid(uid);
+            if (!(Role.of(user.getRole()) == Role.VIPER || Role.of(user.getRole()) == Role.ADMINISTRATOR)) {
+                movie.setUrl("");
+            }
+        }
         model.addAttribute("playingMovie", movie);
         model.addAttribute("recommendMovies", movieService.getMovieRanking(new MovieRankRequest(1, 4, 4)).getRecords());
         return "watch";

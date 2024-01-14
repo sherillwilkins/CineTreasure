@@ -4,6 +4,24 @@
     <meta charset="UTF-8">
     <title>影乐宝</title>
     <link rel="stylesheet" type="text/css" href="/static/css/index.css">
+    <link rel="stylesheet" type="text/css" href="/static/plugin/layui/css/layui.css">
+    <style>
+        .aside .movie-rank .movie-rank-name {
+            display: block;
+            overflow: hidden;
+            color: #666;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .aside .movie-rank .movie-rank-num {
+            float: left;
+        }
+
+        .aside .movie-rank .movie-rank-top1 .movie-rank-name {
+            width: 120px;
+        }
+    </style>
 </head>
 <body>
 <div th:replace="header::header"></div>
@@ -17,7 +35,7 @@
             </li>
         </ul>
         <div class="slidey-main">
-            <a href="movie.html" class="slidey-main-link"></a>
+            <a href="" class="slidey-main-link"></a>
             <div class="slidey-overlay">
                 <p class="slidey-overlay-title"></p>
                 <p class="slidey-overlay-description"></p>
@@ -78,7 +96,7 @@
                                 <img th:src="@{/static/image/{image}(image=${movie.image})}">
                                 <div>
                                     <p class="movie-rank-name" th:text="${movie.title}"></p>
-                                    <span class="box-office" th:text="${movie.popularity}"></span>
+                                    <span class="box-office" th:text="${movie.hitsWeek}"></span>
                                 </div>
                             </a>
                             <a th:href="@{/page/movie/detail/{mid}(mid=${movie.mid})}" th:if="${status.count != 1}">
@@ -87,7 +105,7 @@
                                 <span th:if="${status.count > 3}" th:text="${status.count}"
                                       class="movie-rank-num"></span>
                                 <p class="movie-rank-name" th:text="${movie.title}"></p>
-                                <span class="box-office" th:text="${movie.popularity}"></span>
+                                <span class="box-office" th:text="${movie.hitsWeek}"></span>
                             </a>
                         </li>
                     </ul>
@@ -107,7 +125,7 @@
                                 <img th:src="@{/static/image/{image}(image=${movie.image})}">
                                 <div>
                                     <p class="movie-rank-name" th:text="${movie.title}"></p>
-                                    <span class="box-office" th:text="${movie.popularity}"></span>
+                                    <span class="box-office" th:text="${movie.hitsMonth}"></span>
                                 </div>
                             </a>
                             <a th:href="@{/page/movie/detail/{mid}(mid=${movie.mid})}" th:if="${status.count != 1}">
@@ -116,7 +134,7 @@
                                 <span th:if="${status.count > 3}" th:text="${status.count}"
                                       class="movie-rank-num"></span>
                                 <p class="movie-rank-name" th:text="${movie.title}"></p>
-                                <span class="box-office" th:text="${movie.popularity}"></span>
+                                <span class="box-office" th:text="${movie.hitsMonth}"></span>
                             </a>
                         </li>
                     </ul>
@@ -136,7 +154,7 @@
                                 <img th:src="@{/static/image/{image}(image=${movie.image})}">
                                 <div>
                                     <p class="movie-rank-name" th:text="${movie.title}"></p>
-                                    <span class="box-office" th:text="${movie.popularity}"></span>
+                                    <span class="box-office" th:text="${movie.hits}"></span>
                                 </div>
                             </a>
                             <a th:href="@{/page/movie/detail/{mid}(mid=${movie.mid})}" th:if="${status.count != 1}">
@@ -145,7 +163,7 @@
                                 <span th:if="${status.count > 3}" th:text="${status.count}"
                                       class="movie-rank-num"></span>
                                 <p class="movie-rank-name" th:text="${movie.title}"></p>
-                                <span class="box-office" th:text="${movie.popularity}"></span>
+                                <span class="box-office" th:text="${movie.hits}"></span>
                             </a>
                         </li>
                     </ul>
@@ -158,12 +176,15 @@
 <div id="toTop"></div>
 <script type="text/javascript" src="/static/js/main.js"></script>
 <script type="text/javascript" src="/static/js/slidey.js"></script>
+<script type="text/javascript" src="/static/plugin/layui/layui.js"></script>
 <script type="text/javascript">
     window.onload = function () {
         initPublic();
         initScrollToTop();
         new initSlidey();
     };
+
+
 </script>
 </body>
 </html>

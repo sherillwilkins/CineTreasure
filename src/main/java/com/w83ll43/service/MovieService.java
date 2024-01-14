@@ -4,7 +4,9 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.w83ll43.domain.entity.Movie;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.w83ll43.domain.entity.Ratings;
+import com.w83ll43.domain.vo.MoviePopularityReport;
 import com.w83ll43.domain.vo.MovieRankRequest;
+import com.w83ll43.domain.vo.MovieReport;
 import com.w83ll43.domain.vo.QueryMovieRequest;
 
 import java.util.List;
@@ -29,4 +31,8 @@ public interface MovieService extends IService<Movie> {
     List<Movie> getRecommendMovie();
 
     Page<Movie> getMovieRanking(MovieRankRequest request);
+
+    List<MovieReport> getReportVip();
+
+    MoviePopularityReport getReportPopularity();
 }

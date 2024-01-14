@@ -65,6 +65,10 @@
 
 <script type="text/javascript" src="/static/js/main.js"></script>
 <script type="text/javascript" src="/static/plugin/hls/hls.js"></script>
+<script type="text/javascript" src="/static/plugin/layui/layui.js"></script>
+<script th:inline="javascript">
+    var movie = [[${playingMovie}]];
+</script>
 <script type="text/javascript">
     if (Hls.isSupported()) {
         var video = document.getElementById('video');
@@ -72,8 +76,10 @@
         // bind them together
         hls.attachMedia(video);
         hls.on(Hls.Events.MEDIA_ATTACHED, function () {
-            console.log('video and hls.js are now bound together !');
-            hls.loadSource('https://hnzy.bfvvs.com/play/9b6w2n9d/index.m3u8');
+            if (movie.url === "") {
+                layer.msg("本电影为 VIP 电影, 您没有权限播放！");
+            }
+            hls.loadSource(movie.url);
             hls.on(Hls.Events.MANIFEST_PARSED, function (event, data) {
                 console.log(
                     'manifest loaded, found ' + data.levels.length + ' quality level'

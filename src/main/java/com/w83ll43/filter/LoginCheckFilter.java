@@ -40,8 +40,15 @@ public class LoginCheckFilter implements Filter {
                 "/page/**"
         };
 
+        String[] need_permissions = new String[]{
+                "/page/watch/**"
+        };
+
         // 2、判断本次请求是否需要处理
-        boolean check = check(urls, requestURI);
+        boolean check = false;
+        if (!check(need_permissions, requestURI)) {
+            check = check(urls, requestURI);
+        }
 
         // 3、如果不需要处理则直接放行
         if (check) {

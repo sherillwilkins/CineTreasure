@@ -1,4 +1,6 @@
 /**********/
+import('/static/plugin/jquery/jquery-3.7.1.js')
+import('/static/plugin/layui/layui.js')
 
 /**
  * 判断指定的元素是否存在给定类名
@@ -78,6 +80,15 @@ function initPublic() {
     initSearch();
 }
 
+function openVip() {
+    $.ajax({
+        url: "/api/user/vip",
+        method: "PUT",
+        success: function (res) {
+            layer.msg(res.message);
+        }
+    });
+}
 
 /**
  * 初始化搜索框动画

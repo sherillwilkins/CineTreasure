@@ -48,6 +48,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
         User user = this.getById(uid);
         user.setRole(Role.VIPER.getType());
         this.updateById(user);
+        redisTemplate.delete(RedisConstant.getKey(RedisConstant.USER_INFO_STRING, uid));
     }
 
     @Override

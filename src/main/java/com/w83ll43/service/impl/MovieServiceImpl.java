@@ -7,7 +7,9 @@ import com.w83ll43.constant.RedisConstant;
 import com.w83ll43.domain.Averages;
 import com.w83ll43.domain.entity.Movie;
 import com.w83ll43.domain.entity.Ratings;
+import com.w83ll43.domain.vo.MoviePopularityReport;
 import com.w83ll43.domain.vo.MovieRankRequest;
+import com.w83ll43.domain.vo.MovieReport;
 import com.w83ll43.domain.vo.QueryMovieRequest;
 import com.w83ll43.service.MovieService;
 import com.w83ll43.mapper.MovieMapper;
@@ -142,6 +144,35 @@ public class MovieServiceImpl extends ServiceImpl<MovieMapper, Movie>
         // 排行榜每天更新
         redisTemplate.opsForValue().set(RedisConstant.getKey(RedisConstant.MOVIE_RANK_SIRING, request.getType(), request.getPageNo(), request.getPageSize()), page, 60 * 60 * 24, TimeUnit.SECONDS);
         return page;
+    }
+
+    @Override
+    public List<MovieReport> getReportVip() {
+        List<MovieReport> reports = Arrays.asList(
+                new MovieReport("VIP 电影", lambdaQuery().eq(Movie::getNeedVip, 1).count()),
+                new MovieReport("普通电影", lambdaQuery().eq(Movie::getNeedVip, 0).count())
+        );
+        return reports;
+    }
+
+    @Override
+    public MoviePopularityReport getReportPopularity() {
+        Long count1 = lambdaQuery()
+                .between(Movie::getPopularity, 0, 199)
+                .count();
+        Long count2 = lambdaQuery()
+                .between(Movie::getPopularity, 200, 399)
+                .count();
+        Long count3 = lambdaQuery()
+                .between(Movie::getPopularity, 400, 599)
+                .count();
+        Long count4 = lambdaQuery()
+                .between(Movie::getPopularity, 600, 799)
+                .count();
+        Long count5 = lambdaQuery()
+                .between(Movie::getPopularity, 800, 1000)
+                .count();
+        return new MoviePopularityReport(Arrays.asList(count5, count4, count3, count2, count1));
     }
 
     private void genWrapper(MovieRankRequest request, Date startTime, Date endTime, LambdaQueryWrapper<Movie> lambdaQueryWrapper) {

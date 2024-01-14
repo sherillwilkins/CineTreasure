@@ -6,7 +6,9 @@ import com.w83ll43.domain.entity.History;
 import com.w83ll43.domain.entity.Movie;
 import com.w83ll43.domain.entity.User;
 import com.w83ll43.domain.enums.Role;
+import com.w83ll43.domain.vo.MoviePopularityReport;
 import com.w83ll43.domain.vo.MovieRankRequest;
+import com.w83ll43.domain.vo.MovieReport;
 import com.w83ll43.domain.vo.QueryMovieRequest;
 import com.w83ll43.service.HistoryService;
 import com.w83ll43.service.MovieService;
@@ -109,5 +111,15 @@ public class MovieController {
     public Result<Page<Movie>> getMovieRanking(@RequestBody MovieRankRequest request) {
         Page<Movie> page = movieService.getMovieRanking(request);
         return Result.success(page);
+    }
+
+    @GetMapping("/report/vip")
+    public Result<List<MovieReport>> reportVip() {
+        return Result.success(movieService.getReportVip());
+    }
+
+    @GetMapping("/report/popularity")
+    public Result<MoviePopularityReport> reportPopularity() {
+        return Result.success(movieService.getReportPopularity());
     }
 }

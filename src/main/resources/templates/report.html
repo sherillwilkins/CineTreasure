@@ -9,8 +9,9 @@
 <body>
 <div th:replace="header::header"></div>
 <div class="container" style="height: 800px;">
-    <div class="layui-bg-gray" style="padding: 16px; margin-top: 80px;">
-        <div id="main" style="width: 600px;height:400px;"></div>
+    <div class="layui-bg-gray" style="padding: 16px; margin-top: 80px; text-align: center;">
+        <div id="popularity" style="width: 800px;height:400px;"></div>
+        <div id="vip" style="width: 800px;height:400px;"></div>
     </div>
 </div>
 <div th:replace="footer::footer"></div>
@@ -19,6 +20,68 @@
 <script type="text/javascript" src="/static/plugin/jquery/jquery-3.7.1.js"></script>
 <script type="text/javascript" src="/static/plugin/echarts/echarts.js"></script>
 <script type="text/javascript">
+    $(function () {
+        $.ajax({
+            url: '/api/movie/report/popularity',
+            type: 'GET',
+            dataType: 'json',
+            success: function (data) {
+                if (data.code === 0) {
+                    layer.msg(data.message);
+                    window.location.href = '/page/login';
+                } else {
+                    var option = {
+                        title: {
+                            text: '电影热度统计'
+                        },
+                        legend: {
+                            data: ['热度']
+                        },
+                        xAxis: {
+                            data: ['800~1000', '600~799', '400~599', '200~399', '0~199']
+                        },
+                        yAxis: {},
+                        series: [
+                            {
+                                data: data.data.data,
+                                type: 'bar',
+                                stack: 'x'
+                            }
+                        ]
+                    };
+                    var chart = echarts.init(document.getElementById('popularity'));
+                    chart.setOption(option);
+                }
+            }
+        });
+        $.ajax({
+            url: '/api/movie/report/vip',
+            type: 'GET',
+            dataType: 'json',
+            success: function (data) {
+                if (data.code === 0) {
+                    layer.msg(data.message);
+                    window.location.href = '/page/login';
+                } else {
+                    var vipData = data.data;
+                    var vipOption = {
+                        title: {
+                            text: 'VIP 电影与普通电影占比图示'
+                        },
+                        series: [
+                            {
+                                type: 'pie',
+                                data: vipData
+                            }
+                        ]
+                    };
+                    var vipChart = echarts.init(document.getElementById('vip'));
+                    vipChart.setOption(vipOption);
+                }
+            }
+        });
+    })
+
     // 基于准备好的dom，初始化echarts实例
     var myChart = echarts.init(document.getElementById('main'));
 
@@ -43,6 +106,7 @@
             }
         ]
     };
+
 
     // 使用刚指定的配置项和数据显示图表。
     myChart.setOption(option);

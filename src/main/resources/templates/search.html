@@ -11,21 +11,23 @@
     <div style="width: 650px;">
         <ul>
             <li th:each="movie : ${movies}" style="margin-top: 10px; margin-bottom: 80px;">
-                <div>
-                    <img th:src="@{/static/image/{image}(image=${movie.image})}"
-                         style="float: left;width: 160px; border-radius: 8px;">
-                </div>
-                <div style="margin-left: 180px;">
-                    <h2 style="margin: 10px; line-height: 50px;" th:text="${movie.title}"></h2>
-                    <p style="margin: 10px; line-height: 40px; color: #666; display: block; overflow: hidden;text-overflow: ellipsis;white-space: nowrap;">
-                        <span>演员: </span><span
-                            th:text="${movie.actor}"></span>
-                    </p>
-                    <p style="margin: 10px; line-height: 40px; color: #666;"><span>导演: </span>王川&nbsp;</p>
-                    <p style="margin: 10px; width: 100%; line-height: 30px; display: block; overflow: hidden; color: #666;text-overflow: ellipsis;white-space: nowrap;">
-                        <span>简介: </span><span th:text="${movie.description}"></span>
-                    </p>
-                </div>
+                <a th:href="@{/page/movie/detail/{mid}(mid=${movie.mid})}">
+                    <div>
+                        <img th:src="@{/static/image/{image}(image=${movie.image})}"
+                             style="float: left;width: 160px; border-radius: 8px;">
+                    </div>
+                    <div style="margin-left: 180px;">
+                        <h2 style="margin: 10px; line-height: 50px;" th:text="${movie.title}"></h2>
+                        <p style="margin: 10px; line-height: 40px; color: #666; display: block; overflow: hidden;text-overflow: ellipsis;white-space: nowrap;">
+                            <span>演员: </span><span
+                                th:text="${movie.actor}"></span>
+                        </p>
+                        <p style="margin: 10px; line-height: 40px; color: #666;"><span>导演: </span>王川&nbsp;</p>
+                        <p style="margin: 10px; width: 100%; line-height: 30px; display: block; overflow: hidden; color: #666;text-overflow: ellipsis;white-space: nowrap;">
+                            <span>简介: </span><span th:text="${movie.description}"></span>
+                        </p>
+                    </div>
+                </a>
             </li>
         </ul>
     </div>
