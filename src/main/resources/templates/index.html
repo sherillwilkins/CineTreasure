@@ -26,7 +26,7 @@
 <body>
 <div th:replace="header::header"></div>
 <div class="container">
-    <div class="slidey">
+    <div class="slidey" style="margin-top: 60px;">
         <ul id="slidey-content" style="display: none">
             <li th:each="movie : ${recommendMovies}">
                 <img th:src="@{/static/image/{image}(image=${movie.image})}" th:alt="${movie.title}">

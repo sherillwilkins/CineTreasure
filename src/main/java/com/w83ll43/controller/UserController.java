@@ -79,6 +79,7 @@ public class UserController {
     @PostMapping("/logout")
     public Result<String> logout(HttpSession session) {
         session.removeAttribute("user");
+        session.removeAttribute("info");
         return Result.success("退出登录成功！");
     }
 

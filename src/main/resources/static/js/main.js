@@ -90,6 +90,17 @@ function openVip() {
     });
 }
 
+function logout() {
+    $.ajax({
+        url: "/api/user/logout",
+        method: "POST",
+        success: function (res) {
+            layer.msg(res.message);
+            window.location.href = "/page/index";
+        }
+    });
+}
+
 /**
  * 初始化搜索框动画
  */

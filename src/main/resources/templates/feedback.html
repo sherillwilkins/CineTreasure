@@ -28,7 +28,7 @@
                                     <p th:text="${feedback.content}"></p>
                                 </div>
                                 <div class="layui-col-md3">
-                                    <p th:text="${#dates.format(feedback.ftime, 'yyyy-MM-dd')}"></p>
+                                    <p th:text="${#dates.format(feedback.ftime, 'yyyy-MM-dd HH:mm:ss')}"></p>
                                 </div>
                                 <div class="layui-col-md2">
                                     <p>第<span th:text="${status.count}" style="color: #ffb800"></span>条留言</p>
