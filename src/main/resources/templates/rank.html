@@ -42,7 +42,7 @@
                                 <div class="movie-item-info">
                                     <p class="name">
                                         <a th:href="@{/page/movie/detail/{mid}(mid=${movie.mid})}"
-                                           th:title="${movie.title}"></a>
+                                           th:title="${movie.title}" th:text="${movie.title}"></a>
                                     </p>
                                     <p class="star">
                                         主演：<span th:text="${movie.actor}"></span>
@@ -52,10 +52,10 @@
                                 </div>
                                 <div class="movie-item-number score-num">
                                     <p class="score">
-                                        <i class="integer" th:text="${movie.rating}"></i>
-                                        <!--                                        <i class="integer"-->
-                                        <!--                                           th:text="${movie.rating.toString().length() == 1 ? movie.rating + '.' : Integer.parseInt(movie.rating.toString().split('.')[0]) + '.'}"></i>-->
-                                        <!--                                        <i class="fraction" th:text="${movie.rating.toString().length() == 1 ? '0' : movie.rating.toString().split('.')[1]}"></i>-->
+                                        <i th:if="${type == 4}" class="integer" th:text="${movie.rating}"></i>
+                                        <i th:if="${type == 3}" class="integer" th:text="${movie.popularity}"></i>
+                                        <i th:if="${type == 2}" class="integer" th:text="${movie.hitsMonth}"></i>
+                                        <i th:if="${type == 1}" class="integer" th:text="${movie.hitsWeek}"></i>
                                     </p>
                                 </div>
                             </div>

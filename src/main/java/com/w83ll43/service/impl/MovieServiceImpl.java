@@ -17,7 +17,10 @@ import com.w83ll43.utils.DateTimeUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.*;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
@@ -39,25 +42,21 @@ public class MovieServiceImpl extends ServiceImpl<MovieMapper, Movie>
 
     @Override
     public List<Movie> getQueryMovieList(QueryMovieRequest request) {
-        Page<Movie> page = new Page<>(request.getPageNo(), request.getPageSize());
-        LambdaQueryWrapper<Movie> lambdaQueryWrapper = new LambdaQueryWrapper<>();
-
-        lambdaQueryWrapper.like(request.getKeyword() != null, Movie::getTitle, request.getKeyword());
-        lambdaQueryWrapper.or();
-        lambdaQueryWrapper.like(request.getKeyword() != null, Movie::getActor, request.getKeyword());
-        if (request.getYear() != null) {
-            lambdaQueryWrapper.between(request.getYear() != null, Movie::getYear, DateTimeUtil.getYearFirst(request.getYear()), DateTimeUtil.getYearLast(request.getYear()));
-        }
-        lambdaQueryWrapper.like(request.getRegion() != null, Movie::getRegion, request.getRegion());
-        lambdaQueryWrapper.like(request.getGenre() != null, Movie::getGenre, request.getGenre());
-        lambdaQueryWrapper.like(request.getType() != null, Movie::getType, request.getType());
-
-        return this.page(page, lambdaQueryWrapper).getRecords();
+        return getMoviePage(request).getRecords();
     }
 
     @Override
     public Page<Movie> getQueryMoviePage(QueryMovieRequest request) {
-        Page<Movie> page = new Page<>(request.getPageNo(), request.getPageSize());
+        return getMoviePage(request);
+    }
+
+    private Page<Movie> getMoviePage(QueryMovieRequest request) {
+        HttpServletRequest servletRequest = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
+        Page<Movie> page = (Page<Movie>) redisTemplate.opsForValue().get(RedisConstant.getKey(RedisConstant.MOVIE_SEARCH_STRING, servletRequest.getRequestURI() + servletRequest.getQueryString()));
+        if (page != null) {
+            return page;
+        }
+        page = new Page<>(request.getPageNo(), request.getPageSize());
         LambdaQueryWrapper<Movie> lambdaQueryWrapper = new LambdaQueryWrapper<>();
 
         lambdaQueryWrapper.like(request.getKeyword() != null, Movie::getTitle, request.getKeyword());
@@ -69,8 +68,10 @@ public class MovieServiceImpl extends ServiceImpl<MovieMapper, Movie>
         lambdaQueryWrapper.like(request.getRegion() != null, Movie::getRegion, request.getRegion());
         lambdaQueryWrapper.like(request.getGenre() != null, Movie::getGenre, request.getGenre());
         lambdaQueryWrapper.like(request.getType() != null, Movie::getType, request.getType());
+        this.page(page, lambdaQueryWrapper);
 
-        return this.page(page, lambdaQueryWrapper);
+        redisTemplate.opsForValue().set(RedisConstant.getKey(RedisConstant.MOVIE_SEARCH_STRING, servletRequest.getRequestURI() + servletRequest.getQueryString()), page, 60 * 60 * 24, TimeUnit.SECONDS);
+        return page;
     }
 
     @Override

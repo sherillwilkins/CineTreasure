@@ -289,7 +289,7 @@
     var obj = [[${obj}]]
 </script>
 <script type="text/javascript">
-    window.onload = function () {
+    $(document).ready(function(){
         initPublic();
 
 
@@ -320,7 +320,7 @@
                 $(this).addClass('active');
             }
         })
-    };
+    });
 
     function filter(key, value, that) {
         obj[key] = value;

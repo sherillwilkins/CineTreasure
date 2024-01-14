@@ -34,11 +34,6 @@ public class PageController {
         return "index";
     }
 
-    @RequestMapping("/test")
-    public String test() {
-        return "test";
-    }
-
     @RequestMapping("/movie")
     public String movie(Model model, @RequestParam(defaultValue = "1") Integer pageNo, @RequestParam(defaultValue = "12") Integer pageSize, String type, String genre, String region, Integer year) {
         Page<Movie> moviePage = movieService.getQueryMoviePage(QueryMovieRequest.builder().type(type).genre(genre).region(region).year(year).pageNo(pageNo).pageSize(pageSize).build());
