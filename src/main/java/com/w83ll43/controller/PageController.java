@@ -1,9 +1,11 @@
 package com.w83ll43.controller;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.w83ll43.domain.entity.Feedback;
 import com.w83ll43.domain.entity.Movie;
 import com.w83ll43.domain.vo.MovieRankRequest;
 import com.w83ll43.domain.vo.QueryMovieRequest;
+import com.w83ll43.service.FeedbackService;
 import com.w83ll43.service.MovieService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -22,6 +24,9 @@ public class PageController {
 
     @Autowired
     private MovieService movieService;
+
+    @Autowired
+    private FeedbackService feedbackService;
 
     @RequestMapping("/index")
     public String index(Model model) {
@@ -73,7 +78,8 @@ public class PageController {
     }
 
     @RequestMapping("/feedback")
-    public String feedback() {
+    public String feedback(Model model, @RequestParam(defaultValue = "1") Integer pageNo, @RequestParam(defaultValue = "5") Integer pageSize) {
+        model.addAttribute("feedbackPage", feedbackService.getFeedbackList(pageNo, pageSize));
         return "feedback";
     }
 

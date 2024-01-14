@@ -52,7 +52,7 @@ public class MovieServiceImpl extends ServiceImpl<MovieMapper, Movie>
 
     private Page<Movie> getMoviePage(QueryMovieRequest request) {
         HttpServletRequest servletRequest = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
-        Page<Movie> page = (Page<Movie>) redisTemplate.opsForValue().get(RedisConstant.getKey(RedisConstant.MOVIE_SEARCH_STRING, servletRequest.getRequestURI() + servletRequest.getQueryString()));
+        Page<Movie> page = (Page<Movie>) redisTemplate.opsForValue().get(RedisConstant.getKey(RedisConstant.MOVIE_SEARCH_STRING, servletRequest.getRequestURI() + "?" + servletRequest.getQueryString()));
         if (page != null) {
             return page;
         }
@@ -70,7 +70,7 @@ public class MovieServiceImpl extends ServiceImpl<MovieMapper, Movie>
         lambdaQueryWrapper.like(request.getType() != null, Movie::getType, request.getType());
         this.page(page, lambdaQueryWrapper);
 
-        redisTemplate.opsForValue().set(RedisConstant.getKey(RedisConstant.MOVIE_SEARCH_STRING, servletRequest.getRequestURI() + servletRequest.getQueryString()), page, 60 * 60 * 24, TimeUnit.SECONDS);
+        redisTemplate.opsForValue().set(RedisConstant.getKey(RedisConstant.MOVIE_SEARCH_STRING, servletRequest.getRequestURI() + "?" + servletRequest.getQueryString()), page, 60 * 60 * 24, TimeUnit.SECONDS);
         return page;
     }
 

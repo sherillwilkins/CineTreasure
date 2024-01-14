@@ -39,7 +39,7 @@ public class FeedbackController {
      * @return
      */
     @GetMapping("/list")
-    public Result<Page<Feedback>> list(int pageNo, int pageSize) {
+    public Result<Page<Feedback>> list(@RequestParam(defaultValue = "1") int pageNo, @RequestParam(defaultValue = "2") int pageSize) {
         Page<Feedback> page = new Page<>(pageNo, pageSize);
         feedbackService.page(page);
         return Result.success(page);

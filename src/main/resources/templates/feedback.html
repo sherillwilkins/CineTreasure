@@ -4,76 +4,134 @@
     <meta charset="UTF-8">
     <title>影乐宝</title>
     <link rel="stylesheet" type="text/css" href="/static/css/index.css">
-    <link rel="stylesheet" type="text/css" href="/static/css/mxone.css">
+    <link rel="stylesheet" type="text/css" href="/static/plugin/layui/css/layui.css">
 </head>
-<body id="graypage">
+<body>
 
 <div th:replace="header::header"></div>
 
-<div class="container white_pal">
-    <div class="input_row">
-        <div class="pannel clearfix">
-            <!--留言开始-->
-            <div class="mac_msg_r">
-                <form class="gbook_form gbook_font">
-                    <input class="gbook_content" name="gbook_content" placeholder="输入留言内容"></input>
-                    <div class="msg_code">
-                        <div class="remaining_w">提示：还可输入<span class="gbook_remaining remaining">200</span>字</div>
-                        <input type="text" name="verify" placeholder="验证码" class="verify">
-                        <img class="comm-code"
-                             src="/index.php/verify/index.html"
-                             data-role="/index.php/verify/index.html"
-                             title="看不清楚? 换一张！"
-                             onclick="this.src=this.src+'?v=1705133506'">
-                        <input type="button" class="gbook_submit submit_btn" value="提交留言">
-                    </div>
-                </form>
-            </div>
-            <!--留言结束-->
-
-        </div>
-    </div>
-    <div class="commlist_row">
-        <div class="comm_list pannel clearfix">
-            <div class="pannel_head clearfix">
-                <span class="pull_right">共&nbsp;<span class="mycol">2</span>&nbsp;条留言，当前第&nbsp;<span
-                        class="mycol">1</span>&nbsp;页</span>
-                <h2 class="title">留言</h2>
-            </div>
-            <ul class="part_rows">
-                <li class="comm_each line_top margin">
-                    <img class="comm_avat part_roun" src="/static/images/touxiang.png">
-                    <div class="comm_head">
-                        <strong class="text_line">1234567</strong>
-                        <span class="part_tips hidden_mb">2024-01-13 16:10<span class="split_line"></span><span
-                                class="mycol">2#</span></span>
-                        <span class="part_tips hidden_xs">2024-01-13 16:10:10<span class="split_line"></span><span
-                                class="mycol">第2条</span>留言</span>
-                    </div>
-                    <div class="comm_cont">
-                        <div class="comm_content">3209
-                            565
+<div class="container">
+    <div class="layui-bg-gray" style="padding: 16px; margin-top: 80px;">
+        <div class="layui-row layui-col-space15">
+            <div class="layui-col-md8">
+                <div class="layui-card">
+                    <div class="layui-card-header">留言列表</div>
+                    <div class="layui-card-body">
+                        <div class="card" th:each="feedback, status: ${feedbackPage.records}">
+                            <div class="layui-row layui-col-space4">
+                                <div class="layui-col-md1">
+                                    <img style=" width: 48px; height: 48px; border: 1px solid #FF8D1B; border-radius: 50%;"
+                                         th:src="${feedback.avatar}"/>
+                                </div>
+                                <div class="layui-col-md6">
+                                    <p th:text="${feedback.nickname}"></p>
+                                    <p th:text="${feedback.content}"></p>
+                                </div>
+                                <div class="layui-col-md3">
+                                    <p th:text="${#dates.format(feedback.ftime, 'yyyy-MM-dd')}"></p>
+                                </div>
+                                <div class="layui-col-md2">
+                                    <p>第<span th:text="${status.count}" style="color: #ffb800"></span>条留言</p>
+                                </div>
+                            </div>
+                            <hr class="ws-space-16">
                         </div>
+                        <div id="page" style="text-align: center;"></div>
                     </div>
-                </li>
-                <li class="comm_each line_top margin">
-                    <img class="comm_avat part_roun" src="/static/images/touxiang.png">
-                    <div class="comm_head">
-                        <strong class="text_line">1234567</strong>
-                        <span class="part_tips hidden_mb">2024-01-13 13:31<span class="split_line"></span><span
-                                class="mycol">1#</span></span>
-                        <span class="part_tips hidden_xs">2024-01-13 13:31:07<span class="split_line"></span><span
-                                class="mycol">第1条</span>留言</span>
+                </div>
+            </div>
+            <div class="layui-col-md4">
+                <div class="layui-card">
+                    <div class="layui-card-header">留言</div>
+                    <div class="layui-card-body">
+                        <form class="layui-form">
+                            <textarea name="content" placeholder="请输入你想要留言的内容" lay-verify="required"
+                                      class="layui-textarea"></textarea>
+                            <hr class="ws-space-16">
+                            <div class="layui-row layui-col-space10">
+                                <div class="layui-col-md4">
+                                    <input type="text" name="captcha" lay-verify="required|captcha" placeholder="验证码"
+                                           class="layui-input">
+                                </div>
+                                <div class="layui-col-md4">
+                                    <img id="captcha-img" alt="验证码" style="width: 100%;">
+                                </div>
+                                <div class="layui-col-md4">
+                                    <button type="button" class="layui-btn layui-bg-orange"
+                                            lay-submit lay-filter="submitFeedback" style="width: 100%;">
+                                        提交留言
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
                     </div>
-                    <div class="comm_cont">
-                        <div class="comm_content">123</div>
-                    </div>
-                </li>
-            </ul>
+                </div>
+            </div>
         </div>
     </div>
 </div>
-<!--评分-->
 
+<div th:replace="footer::footer"></div>
+<script type="text/javascript" src="/static/js/main.js"></script>
+<script type="text/javascript" src="/static/js/login_register.js"></script>
+<script type="text/javascript" src="/static/plugin/layui/layui.js"></script>
+<script th:inline="javascript">
+    var total = [[${feedbackPage.total}]];
+    var curr = [[${feedbackPage.current}]];
+    var size = [[${feedbackPage.size}]];
+</script>
+<script>
+    window.onload = function () {
+        initPublic();
+        initLoginPage();
+    };
+    layui.use(function () {
+        var $ = layui.$;
+        var form = layui.form;
+        var laypage = layui.laypage;
+        laypage.render({
+            elem: 'page',
+            count: total,
+            curr: curr,
+            limit: size,
+            theme: '#FFB800',
+            jump: function (obj, first) {
+                if (!first) {
+                    window.location.href = '/page/feedback/' + type + '?pageNo=' + obj.curr + '&pageSize=' + obj.limit;
+                }
+            }
+        });
+
+        // 自定义验证规则
+        form.verify({
+            captcha: function (value, item) {
+                if (value !== getSession("Captcha").toLowerCase()) {
+                    return '验证码错误！';
+                }
+            }
+        });
+
+        // 提交事件
+        form.on('submit(submitFeedback)', function (data) {
+            $.ajax({
+                url: "/api/feedback",
+                data: JSON.stringify(data.field),
+                method: "POST",
+                dataType: "json",
+                contentType: 'application/json',
+                success: function (res) {
+                    if (res.code == 0) {
+                        layer.msg(res.message);
+                        window.location.href = "/page/login";
+                    } else {
+                        layer.msg(res.message);
+                        window.location.reload();
+                    }
+                }
+            });
+            return false;
+        });
+    });
+</script>
 </body>
 </html>
